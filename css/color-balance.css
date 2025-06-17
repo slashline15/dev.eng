@@ -1,0 +1,30 @@
+/* Sistema de cores mais equilibrado */
+:root {
+    /* Laranja principal - mais suave */
+    --orange-primary: #ff7a45;    /* Era #ff6b35 - agora mais suave */
+    --orange-accent: #ff9d75;     /* Para destaques sutis */
+    --orange-muted: #cc5530;      /* Para textos secundários */
+    
+    /* Usar laranja apenas em elementos estratégicos */
+    --text-primary: #000000;      /* Texto principal em branco */
+    --text-secondary: #b0b0b0;    /* Texto secundário em cinza */
+}
+
+/* Aplicar cores com mais sutileza */
+/*h1, h2, h3 {
+    color: var(--text-primary);  /* Títulos em branco */
+
+
+/* Laranja apenas em elementos interativos e destaques */
+.highlight,
+.btn:hover,
+.nav-link:hover,
+.progress-bar {
+    color: var(--orange-primary);
+}
+
+/* Reduzir intensidade das partículas */
+.particle {
+    opacity: 0.8;  /* Era 0.4 */
+    background: var(--orange-accent);
+}

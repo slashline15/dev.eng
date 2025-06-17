@@ -1,0 +1,46 @@
+/* Sobrescrever TODAS as cores azuis por laranja */
+:root {
+    --primary-color: #ff6b35 !important;
+    --primary-dark: #e55a2b !important;
+    --accent-color: #ff8c42 !important;
+}
+
+/* Corrigir elementos específicos que ainda estão azuis */
+.btn-primary,
+.progress-bar,
+.nav-link.active,
+.typing-text,
+a:hover {
+    color: #ff6b35 !important;
+}
+
+/* Barra de progresso */
+.progress-bar {
+    background: linear-gradient(90deg, #ff6b35 0%, #ff8c42 100%) !important;
+}
+
+/* Botões */
+.btn-primary {
+    background: #ff6b35 !important;
+    border-color: #ff6b35 !important;
+}
+
+.btn-primary:hover {
+    background: #e55a2b !important;
+    border-color: #e55a2b !important;
+}
+
+/* Links e destaques */
+.text-primary {
+    color: #ff6b35 !important;
+}
+
+/* Efeito de digitação */
+.typing-cursor {
+    border-right-color: #ff6b35 !important;
+}
+
+/* Toggle dark/light mode */
+.theme-toggle {
+    background: #ff6b35 !important;
+}

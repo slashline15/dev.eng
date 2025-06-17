@@ -1,0 +1,331 @@
+/* Reset e variáveis */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --dark-bg: #0a0a0a;
+    --dark-surface: #141414;
+    --orange-primary: #ff7a45;
+    --orange-glow: rgba(255, 122, 69, 0.3);
+    --text-primary: #f5f5f5;
+    --text-secondary: #b0b0b0;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+body {
+    background: var(--dark-bg);
+    color: var(--text-primary);
+    font-family: 'Poppins', sans-serif;
+    padding: 2rem;
+}
+
+/* Container principal */
+.projects-section {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    position: relative;
+    display: inline-block;
+}
+
+.section-header h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--orange-primary);
+}
+
+/* Filtros de categoria */
+.project-filters {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 0.5rem 1.5rem;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    color: var(--text-secondary);
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    border-color: var(--orange-primary);
+    color: var(--orange-primary);
+    background: rgba(255, 122, 69, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Container do carrossel */
+.projects-carousel {
+    position: relative;
+    overflow: hidden;
+    padding: 2rem 0;
+}
+
+.projects-wrapper {
+    display: flex;
+    gap: 2rem;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 0 4rem;
+}
+
+/* Card de projeto */
+.project-card {
+    flex: 0 0 350px;
+    height: 450px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.project-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4),
+        0 0 60px var(--orange-glow);
+    border-color: var(--orange-primary);
+}
+
+/* Imagem do projeto */
+.project-image {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    position: relative;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.1);
+}
+
+/* Overlay com gradiente */
+.project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom,
+            transparent 0%,
+            rgba(0, 0, 0, 0.7) 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.project-card:hover .project-overlay {
+    opacity: 1;
+}
+
+/* Conteúdo do projeto */
+.project-content {
+    padding: 1.5rem;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-category {
+    color: var(--orange-primary);
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+
+.project-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+}
+
+.project-description {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    flex-grow: 1;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+/* Tags do projeto */
+.project-tags {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.tag {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.75rem;
+    background: rgba(255, 122, 69, 0.1);
+    border: 1px solid rgba(255, 122, 69, 0.3);
+    border-radius: 15px;
+    color: var(--orange-primary);
+}
+
+/* Botões de navegação */
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.carousel-nav:hover {
+    background: rgba(255, 122, 69, 0.1);
+    border-color: var(--orange-primary);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-nav.prev {
+    left: 1rem;
+}
+
+.carousel-nav.next {
+    right: 1rem;
+}
+
+/* Indicadores */
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+}
+
+.indicator {
+    width: 40px;
+    height: 4px;
+    background: var(--glass-border);
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indicator.active {
+    background: var(--orange-primary);
+    width: 60px;
+}
+
+/* Animação de entrada */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.project-card {
+    animation: slideIn 0.6s ease forwards;
+    animation-delay: calc(var(--index) * 0.1s);
+    opacity: 0;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .project-card {
+        flex: 0 0 280px;
+        height: 380px;
+    }
+
+    .project-image {
+        height: 200px;
+    }
+
+    .projects-wrapper {
+        padding: 0 2rem;
+    }
+}
+
+/* Botão Ver Mais */
+.view-all-btn {
+    display: block;
+    margin: 3rem auto 0;
+    padding: 1rem 2rem;
+    background: transparent;
+    border: 2px solid var(--orange-primary);
+    color: var(--orange-primary);
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.view-all-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--orange-primary);
+    transition: left 0.3s ease;
+    z-index: -1;
+}
+
+.view-all-btn:hover {
+    color: var(--dark-bg);
+}
+
+.view-all-btn:hover::before {
+    left: 0;
+}

@@ -1,0 +1,185 @@
+/* Variáveis para Glassmorphism */
+:root {
+    --glass-background: rgba(255, 255, 255, 0.25);
+    --glass-background-dark: rgba(35, 35, 35, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.18);
+    --glass-border-dark: rgba(255, 255, 255, 0.08);
+    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    --glass-blur: blur(12px);
+  }
+  
+  /* Classes para aplicar Glassmorphism */
+  .glass-card {
+    background: var(--glass-background);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border-radius: 10px;
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    transition: all 0.3s ease;
+  }
+  
+  .glass-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.5);
+  }
+  
+  body.dark-mode .glass-card {
+    background: var(--glass-background-dark);
+    border: 1px solid var(--glass-border-dark);
+  }
+  
+  /* Aplicar no header quando scrollar */
+  header.sticky {
+    background: var(--glass-background);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border-bottom: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+  }
+  
+  body.dark-mode header.sticky {
+    background: var(--glass-background-dark);
+    border-bottom: 1px solid var(--glass-border-dark);
+  }
+  
+  /* Cards de estatísticas com Glassmorphism */
+  .stat-counter {
+    background: var(--glass-background);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    padding: 2rem;
+    border-radius: 16px;
+  }
+  
+  body.dark-mode .stat-counter {
+    background: var(--glass-background-dark);
+    border: 1px solid var(--glass-border-dark);
+  }
+  
+  /* Hero section com efeito de vidro */
+  .hero-content {
+    position: relative;
+    z-index: 5;
+    padding: 2.5rem;
+    border-radius: 20px;
+    background: var(--glass-background);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+  }
+  
+  body.dark-mode .hero-content {
+    background: var(--glass-background-dark);
+    /* segura ai */
+    border: 1px solid var(--glass-border-dark);
+  }
+  
+  /* Depoimentos com glassmorphism */
+  .testimonial-content {
+    background: var(--glass-background);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+  }
+  
+  body.dark-mode .testimonial-content {
+    background: var(--glass-background-dark);
+    border: 1px solid var(--glass-border-dark);
+  }
+  
+  /* Formulários com glassmorphism */
+  .contact-form form,
+  form#economyForm {
+    background: var(--glass-background);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    padding: 2rem;
+    border-radius: 16px;
+  }
+  
+  body.dark-mode .contact-form form,
+  body.dark-mode form#economyForm {
+    background: var(--glass-background-dark);
+    border: 1px solid var(--glass-border-dark);
+  }
+  
+  /* Inputs com glassmorphism */
+  .form-group input,
+  .form-group textarea {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid var(--glass-border);
+    color: var(--text-color);
+  }
+  
+  body.dark-mode .form-group input,
+  body.dark-mode .form-group textarea {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--glass-border-dark);
+    color: var(--dark-text-color);
+  }
+  
+  /* Botões com glassmorphism */
+  .btn-glass {
+    background: hsla(203, 100%, 37%, 0.936);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid rgba(66, 133, 244, 0.18);
+    box-shadow: var(--glass-shadow);
+    color: white;
+    font-weight: 500;
+  }
+  
+  .btn-glass:hover {
+    background: rgba(66, 134, 244, 0.845);
+    transform: translateY(-3px);
+  }
+  
+  body.dark-mode .btn-glass {
+    background: rgba(66, 133, 244, 0.2);
+    border: 1px solid rgba(66, 133, 244, 0.1);
+    color: white;
+  }
+  
+  /* Projetos com glassmorphism */
+  .project-overlay {
+    background: rgba(66, 133, 244, 0.7);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+  }
+  
+  /* Simulador de Economia com efeito glassmorphism */
+  .economy-simulator {
+    background: var(--glass-background);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+  }
+  
+  body.dark-mode .economy-simulator {
+    background: var(--glass-background-dark);
+    border: 1px solid var(--glass-border-dark);
+  }
+  
+  /* Modal criativo com glassmorphism */
+  .creative-modal-content {
+    background: var(--glass-background);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+  }
+  
+  body.dark-mode .creative-modal-content {
+    background: var(--glass-background-dark);
+    border: 1px solid var(--glass-border-dark);
+  }

@@ -1,0 +1,512 @@
+/* effects.css */
+/* Animações */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.appear {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Efeito de digitação */
+.typing-done {
+    border-right: 2px solid var(--primary-color);
+    animation: blink-border 0.7s infinite;
+    padding-right: 5px;
+}
+
+.cursor {
+    display: inline-block;
+    width: 3px;
+    background-color: var(--primary-color);
+    animation: blink-opacity 1s infinite;
+    margin-left: 2px;
+}
+
+@keyframes blink-border {
+
+    0%,
+    100% {
+        border-right-color: transparent;
+    }
+
+    50% {
+        border-right-color: var(--primary-color);
+    }
+}
+
+@keyframes blink-opacity {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+/* Fundo de Partículas */
+.particle-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+}
+
+/* Partículas flutuantes */
+.particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #ff6b35;
+    border-radius: 50%;
+    opacity: 0;
+    animation: float-up 15s infinite linear;
+}
+
+@keyframes float-up {
+    0% {
+        opacity: 0;
+        transform: translateY(100vh) scale(0);
+    }
+    10% {
+        opacity: 0.4;
+    }
+    90% {
+        opacity: 0.4;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-100vh) scale(1);
+    }
+}
+
+/* Criar múltiplas partículas com delays diferentes */
+.particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+.particle:nth-child(2) { left: 20%; animation-delay: 3s; }
+.particle:nth-child(3) { left: 30%; animation-delay: 6s; }
+.particle:nth-child(4) { left: 40%; animation-delay: 9s; }
+.particle:nth-child(5) { left: 50%; animation-delay: 12s; }
+.particle:nth-child(6) { left: 60%; animation-delay: 2s; }
+.particle:nth-child(7) { left: 70%; animation-delay: 5s; }
+.particle:nth-child(8) { left: 80%; animation-delay: 8s; }
+.particle:nth-child(9) { left: 90%; animation-delay: 11s; }
+.particle:nth-child(10) { left: 5%; animation-delay: 14s; }
+
+/* Fundo Dinâmico */
+.dynamic-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.dynamic-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(40deg,
+            rgba(18, 18, 18, 0.05),
+            rgba(255, 107, 0, 0.1),
+            rgba(255, 179, 128, 0.05),
+            rgba(45, 45, 45, 0.05));
+    filter: blur(40px);
+    opacity: 0.7;
+    transform-origin: center;
+    animation: gradientAnimation 15s ease infinite;
+}
+
+.dynamic-background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 70% 30%,
+            rgba(255, 107, 0, 0.2) 0%,
+            rgba(0, 131, 188, 0.2) 20%,
+            transparent 70%);
+    filter: blur(40px);
+    opacity: 0.4;
+    animation: pulseAnimation 10s ease-in-out infinite alternate;
+}
+
+/* Garante que o conteúdo principal fique acima do dynamic-background */
+.about-content,
+.hero-content,
+.skills-content,
+.contact-content,
+.economy-content {
+    position: relative;
+    z-index: 2;
+    /* Maior que o background */
+}
+
+/* Ajuste específico para a seção about */
+.about-text {
+    position: relative;
+    z-index: 2;
+    background-color: rgba(255, 255, 255, 0.85);
+    /* Fundo semi-transparente para light mode */
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius);
+}
+
+body.dark-mode .about-text {
+    background-color: rgba(18, 18, 18, 0.85);
+    /* Fundo escuro para dark mode */
+}
+
+@keyframes gradientAnimation {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+
+    50% {
+        transform: rotate(180deg) scale(1.1);
+    }
+
+    100% {
+        transform: rotate(360deg) scale(1);
+    }
+}
+
+@keyframes pulseAnimation {
+    0% {
+        opacity: 0.3;
+        transform: scale(0.95);
+    }
+
+    100% {
+        opacity: 0.6;
+        transform: scale(1.05);
+    }
+}
+
+/* Efeito Parallax */
+.parallax-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.parallax-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120%;
+    background-image: url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background-size: cover;
+    background-position: center;
+    transform: translateY(0);
+    z-index: -1;
+}
+
+.parallax-content {
+    position: relative;
+    z-index: 1;
+    padding: 100px 0;
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: var(--border-radius);
+}
+
+/* Animações de entrada específicas */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.slide-in-left {
+    animation: slideInLeft 1s forwards;
+    opacity: 0;
+}
+
+.about-image-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.about-image-container img {
+    width: 700px;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+.slide-in-right {
+    animation: slideInRight 1s forwards;
+    opacity: 0;
+}
+
+.zoom-in {
+    animation: zoomIn 1s forwards;
+    opacity: 0;
+}
+
+/* Efeito Tilt para cartões */
+.tilt-card {
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease;
+}
+
+.tilt-card-inner {
+    transform: translateZ(20px);
+    transition: transform 0.5s ease;
+}
+
+/* Ajustes para modo escuro */
+body.dark-mode .particle {
+    background-color: rgba(255, 107, 0, 0.15);
+}
+
+body.dark-mode .dynamic-background::before {
+    background: linear-gradient(40deg,
+            rgba(18, 18, 18, 0.5),
+            rgba(204, 85, 0, 0.2),
+            rgba(45, 45, 45, 0.2),
+            rgba(18, 18, 18, 0.5));
+}
+
+body.dark-mode .dynamic-background::after {
+    background: radial-gradient(circle at 70% 30%,
+            rgba(255, 107, 0, 0.15) 0%,
+            rgba(18, 18, 18, 0.3) 50%,
+            transparent 70%);
+}
+
+body.dark-mode .parallax-content {
+    background-color: rgba(30, 30, 30, 0.85);
+}
+
+/* Efeitos técnicos - detalhes de engenharia */
+.glass-card::before,
+.glass-card::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+}
+
+.glass-card::before {
+    top: 10px;
+    right: 10px;
+    border-top: 2px solid var(--primary-color);
+    border-right: 2px solid var(--primary-color);
+}
+
+.glass-card::after {
+    bottom: 10px;
+    left: 10px;
+    border-bottom: 2px solid var(--primary-color);
+    border-left: 2px solid var(--primary-color);
+}
+
+.glass-card:hover::before,
+.glass-card:hover::after {
+    opacity: 0.2;
+}
+
+/* Efeito blueprint para estatísticas */
+.stats-section {
+    position: relative;
+}
+
+.stats-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(0deg, transparent 9px, rgba(255, 107, 0, 0.05) 10px),
+        linear-gradient(90deg, transparent 9px, rgba(255, 107, 0, 0.05) 10px);
+    background-size: 10px 10px;
+    pointer-events: none;
+    opacity: 0.2;
+    z-index: 0;
+}
+
+/* Decoração técnica para cabeçalhos de seção */
+.section-header::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 4px;
+    background: var(--primary-color);
+    border-radius: 2px;
+    opacity: 0.7;
+}
+
+/* Cantos técnicos para cartões */
+.about-image-container::before,
+.about-image-container::after,
+.glass-card::before,
+.glass-card::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+    z-index: 3;
+    /* Acima de outros elementos */
+}
+
+.about-image-container::before,
+.glass-card::before {
+    top: 10px;
+    right: 10px;
+    border-top: 2px solid var(--primary-color);
+    border-right: 2px solid var(--primary-color);
+}
+
+.about-image-container::after,
+.glass-card::after {
+    bottom: 10px;
+    left: 10px;
+    border-bottom: 2px solid var(--primary-color);
+    border-left: 2px solid var(--primary-color);
+}
+
+.about-image-container:hover::before,
+.about-image-container:hover::after,
+.glass-card:hover::before,
+.glass-card:hover::after {
+    opacity: 0.8;
+}
+
+/* Ajuste para o modo escuro */
+body.dark-mode .about-image-container::before,
+body.dark-mode .about-image-container::after,
+body.dark-mode .glass-card::before,
+body.dark-mode .glass-card::after {
+    border-color: var(--primary-color);
+    opacity: 0.3;
+}
+
+body.dark-mode .about-image-container:hover::before,
+body.dark-mode .about-image-container:hover::after,
+body.dark-mode .glass-card:hover::before,
+body.dark-mode .glass-card:hover::after {
+    opacity: 0.5;
+}
+
+/* Adicione esse código no arquivo pages.css, na seção do simulador de economia */
+
+/* Layout básico do simulador */
+.economy-simulator-container {
+    display: flex;
+    gap: var(--spacing-lg);
+    align-items: flex-start;
+}
+
+.simulator-controls {
+    flex: 1;
+    border-radius: var(--border-radius);
+}
+
+.simulator-results {
+    flex: 1;
+    border-radius: var(--border-radius);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Layout responsivo do simulador */
+@media (max-width: 992px) {
+    .economy-simulator-container {
+        flex-direction: column;
+    }
+
+    .simulator-controls,
+    .simulator-results {
+        width: 100%;
+    }
+
+    .simulator-controls {
+        margin-bottom: var(--spacing-md);
+    }
+
+    /* Melhorar visualização dos gráficos em telas menores */
+    .chart-container {
+        height: 300px;
+        /* Aumentar altura para melhor visualização */
+    }
+}
