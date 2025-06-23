@@ -989,28 +989,9 @@
         const closeButton = modal ? modal.querySelector('.modal-close') : null;
         const terminal = document.getElementById('terminal');
 
-        const scanLines = [
-            "Iniciando varredura profunda...",
-            "Acessando redes neurais...",
-            "Analisando dumps de memória...",
-            "Cruzando dados com bancos de dados vazados...",
-            "Entrando na Deep Web... Conexão segura estabelecida.",
-            "Buscando por assinaturas de invasores...",
-            "Anomalia detectada!",
-            "Rastreando origem da anomalia...",
-            "IP de origem: 172.67.146.148",
-            "Identidade do invasor encontrada.",
-            "Compilando relatório final...",
-            "Varredura concluída."
-        ];
-
-        function typeLine(line) {
+        function typeLine(line, p, speed) {
             return new Promise(resolve => {
                 let i = 0;
-                const p = document.createElement('p');
-                if (terminal) {
-                    terminal.appendChild(p);
-                }
                 const interval = setInterval(() => {
                     if (i < line.length) {
                         p.innerHTML += line[i];
@@ -1019,20 +1000,74 @@
                         clearInterval(interval);
                         resolve();
                     }
-                }, 50);
+                }, speed);
             });
+        }
+
+        function createProgressBar(p) {
+            const barContainer = document.createElement('span');
+            barContainer.style.display = 'inline-block';
+            barContainer.style.width = '50%';
+            barContainer.style.border = '1px solid var(--matrix-green)';
+            barContainer.style.marginLeft = '10px';
+            
+            const barFill = document.createElement('span');
+            barFill.style.display = 'block';
+            barFill.style.height = '1em';
+            barFill.style.width = '0%';
+            barFill.style.backgroundColor = 'var(--matrix-green)';
+            
+            barContainer.appendChild(barFill);
+            p.appendChild(barContainer);
+            return barFill;
         }
 
         async function startScan() {
             if (!terminal) return;
             terminal.innerHTML = '';
+
+            const scanLines = [
+                "Iniciando varredura profunda...",
+                "Acessando redes neurais...",
+                "Analisando dumps de memória... [PROGRESS]",
+                "Cruzando dados com bancos de dados vazados...",
+                "Entrando na Deep Web... Conexão segura estabelecida.",
+                "Buscando por assinaturas de invasores... [PROGRESS]",
+                "Anomalia detectada!",
+                "Rastreando origem da anomalia...",
+                "IP de origem: 172.67.146.148",
+                "Identidade do invasor encontrada.",
+                "Compilando relatório final... [PROGRESS]",
+                "Varredura concluída."
+            ];
+
             for (const line of scanLines) {
-                await typeLine(line);
-                await new Promise(resolve => setTimeout(resolve, 200));
+                const p = document.createElement('p');
+                terminal.appendChild(p);
+                
+                const typingSpeed = 20 + Math.random() * 30; // Faster, more varied typing
+                
+                if (line.includes('[PROGRESS]')) {
+                    const text = line.replace(' [PROGRESS]', '');
+                    await typeLine(text, p, typingSpeed);
+                    
+                    const barFill = createProgressBar(p);
+                    const duration = 1000 + Math.random() * 1500;
+                    
+                    // Animate progress bar
+                    setTimeout(() => { barFill.style.width = '100%'; barFill.style.transition = `width ${duration}ms linear`; }, 50);
+                    await new Promise(resolve => setTimeout(resolve, duration));
+
+                } else {
+                    await typeLine(line, p, typingSpeed);
+                }
+
+                const delay = 100 + Math.random() * 400; // Random delay between lines
+                await new Promise(resolve => setTimeout(resolve, delay));
             }
 
             const invaderButton = document.createElement('a');
-            invaderButton.href = "https://www.google.com";
+            invaderButton.href = "https://www.cartacapital.com.br/wp-content/uploads/2023/06/lula-finlandia_mcamgo_abr_01062023-2-1024x768.jpg";
             invaderButton.className = 'cyber-button';
             invaderButton.textContent = 'Clique aqui para ver o invasor';
             invaderButton.style.marginTop = '20px';
