@@ -572,7 +572,7 @@ document.addEventListener('DOMContentLoaded', function () {
             title: {
               display: true,
               text: 'Comparação de Custos: Tradicional vs. Automação com IA',
-              color: window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? '#f5f5f5' : '#333333',
+              color: document.body.classList.contains('dark-mode') ? '#f5f5f5' : '#333333',
               font: {
                 size: 14,
                 weight: 'bold'
@@ -598,7 +598,7 @@ document.addEventListener('DOMContentLoaded', function () {
             legend: {
               position: 'bottom',
               labels: {
-                color: window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? '#f5f5f5' : '#333333',
+                color: document.body.classList.contains('dark-mode') ? '#f5f5f5' : '#333333',
                 padding: 15,
                 usePointStyle: true,
                 pointStyle: 'circle'
@@ -615,18 +615,18 @@ document.addEventListener('DOMContentLoaded', function () {
                     maximumFractionDigits: 0
                   });
                 },
-                color: window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? '#aaaaaa' : '#666666'
+                color: document.body.classList.contains('dark-mode') ? '#aaaaaa' : '#666666'
               },
               grid: {
-                color: window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'
+                color: document.body.classList.contains('dark-mode') ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'
               }
             },
             x: {
               ticks: {
-                color: window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? '#aaaaaa' : '#666666'
+                color: document.body.classList.contains('dark-mode') ? '#aaaaaa' : '#666666'
               },
               grid: {
-                color: window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'
+                color: document.body.classList.contains('dark-mode') ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'
               }
             }
           }
@@ -665,7 +665,47 @@ document.addEventListener('DOMContentLoaded', function () {
   setupCreativeModal();
   setupClippyAssistant();
   setupEconomySimulator();
+  setupInteractiveMap();
 });
+
+function setupInteractiveMap() {
+  if (typeof L === 'undefined') {
+    return;
+  }
+
+  const map = L.map('interactive-map').setView([-3.07, -60.02], 12);
+
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+    subdomains: 'abcd',
+    maxZoom: 19
+  }).addTo(map);
+
+  for (const projectId in projectsData) {
+    const project = projectsData[projectId];
+    if (project.coords) {
+      const customIcon = L.divIcon({
+        className: 'custom-marker-icon',
+        html: '',
+        iconSize: [20, 20]
+      });
+
+      const marker = L.marker(project.coords, { icon: customIcon }).addTo(map);
+
+      let popupContent = `<div class="popup-title">${project.title}</div>`;
+      popupContent += `<div class="popup-description">${project.description}</div>`;
+      if (project.technologies) {
+        popupContent += '<div class="popup-tags">';
+        project.technologies.forEach(tag => {
+          popupContent += `<span class="tag">${tag}</span>`;
+        });
+        popupContent += '</div>';
+      }
+
+      marker.bindPopup(popupContent);
+    }
+  }
+}
 
 // 4. PARTÍCULAS COM MOVIMENTO ALEATÓRIO
 document.querySelectorAll('.particle').forEach((particle, index) => {

@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com/">
   <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
   <link rel="stylesheet" href="css/all.min.css">
-
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
   <link rel="stylesheet" href="css/main.css">
 </head>
 
@@ -70,7 +70,8 @@
           <span id="typing-text"></span>
           <span class="cursor">|</span>
         </h2>
-        <p class="hero-description">Engenheiro civil com mão na massa, programador de GPT autodidata com sede de resolver
+        <p class="hero-description">Engenheiro civil com mão na massa, programador de GPT autodidata com sede de
+          resolver
           problemas. Unindo tecnologia e experiência de obra pra entregar resultado de verdade. Precisa de algo? Bora
           conversar.</p>
         <div class="hero-cta">
@@ -100,9 +101,12 @@
         </div>
         <div class="about-text fade-in appear slide-in-right" data-animation="slide-in-right">
           <h3>Quem sou eu</h3>
-          <p>Sou engenheiro civil desde 2021, com experiência em execução e gestão de obras no setor privado. Também atuo na área de projetos. Nos últimos anos, mergulhei na programação – especialmente Python – e comecei a criar soluções
+          <p>Sou engenheiro civil desde 2021, com experiência em execução e gestão de obras no setor privado. Também
+            atuo na área de projetos. Nos últimos anos, mergulhei na programação – especialmente Python – e comecei a
+            criar soluções
             automatizadas que economizam tempo, dinheiro e neurônio.</p>
-          <p>Acredito que a construção civil precisa evoluir, e eu tô aqui pra ajudar nessa virada. Se você precisa de alguém que entenda tanto de concreto quanto de código, encontrou.</p>
+          <p>Acredito que a construção civil precisa evoluir, e eu tô aqui pra ajudar nessa virada. Se você precisa de
+            alguém que entenda tanto de concreto quanto de código, encontrou.</p>
           <h4><a href="apagado.html" style="color: rgb(255, 255, 255);">Já conhece o Cleyton? Gente fina!</a></h4>
           <h6><a href="style-page.html" style="color: rgba(255, 174, 0, 0.256);">Só não olha nos olhos dele</a></h6>
           <div class="about-stats">
@@ -114,7 +118,7 @@
             </div>
 
             <div class="stat-item"><a href="manifesto.html">.</a><i class="fas fa-robot"></i>
-              <div class="stat-text", color="green">
+              <div class="stat-text" , color="green">
                 <h4>Especialidade</h4>
                 <p>Automação com IA</p>
               </div>
@@ -125,36 +129,17 @@
     </div>
   </section>
 
-  <div class="stats-section">
+  <section id="map-section" class="map-section">
     <div class="container">
-      <div class="stats-container">
-        <div class="stat-counter tilt-card glass-card">
-          <div class="tilt-card-inner"><i class="fas fa-project-diagram"></i>
-            <div class="counter" data-target="150">0</div>
-            <h4>Projetos Concluídos</h4>
-          </div>
-        </div>
-        <div class="stat-counter tilt-card glass-card">
-          <div class="tilt-card-inner"><i class="fas fa-users"></i>
-            <div class="counter" data-target="Clientes Satisfeutos">0</div>
-            <h4>Clientes Satisfeitos</h4>
-          </div>
-        </div>
-        <div class="stat-counter tilt-card glass-card">
-          <div class="tilt-card-inner"><i class="fas fa-award"></i>
-            <div class="counter" data-target="12">0</div>
-            <h4>e</h4>
-          </div>
-        </div>
-        <div class="stat-counter tilt-card glass-card">
-          <div class="tilt-card-inner"><i class="fas fa-robot"></i>
-            <div class="counter" data-target="35">0</div>
-            <h4>Automações Implementadas</h4>
-          </div>
-        </div>
+      <div class="section-header">
+        <h2>Obras Realizadas</h2>
+        <div class="section-line"></div>
       </div>
+      <div id="interactive-map" class="interactive-map"></div>
     </div>
-  </div>
+  </section>
+
+
 
   <section id="skills" class="skills parallax-section">
     <div class="parallax-bg"></div>
@@ -306,6 +291,29 @@
               <div class="project-tags">
                 <span class="tag">Eberick</span>
                 <span class="tag">AutoCAD</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Projeto 4 - Marquise metálica -->
+          <article class="project-card" style="--index: 3;" data-category="execucao"
+            data-project-id="estrutura-metalica">
+            <div class="project-image">
+              <img src="images/projects/valeu-a-pena.png" alt="Marquise metálica com vão de 12 metros">
+              <div class="project-overlay"></div>
+            </div>
+            <div class="project-content">
+              <span class="project-category">Execução e Planejamento</span>
+              <h3 class="project-title">Içamento de estrutura metálica</h3>
+              <p class="project-description">
+                Planejamento cirúrgico, duas semanas de negociação para conseguir a interdição da pista e viabilizar o
+                içamento final das tesouras. Um dos dias mais intensos da obra — estresse à flor da pele, mas também
+                aquele tipo de entrega que marca uma carreira. Essa foto não é sorte: é suor sincronizado com execução.
+              </p>
+              <div class="project-tags">
+                <span class="tag">Execução</span>
+                <span class="tag">Estrutura Metálica</span>
+                <span class="tag">Planejamento</span>
               </div>
             </div>
           </article>
@@ -801,63 +809,59 @@
         }
       }
     </style>
-    </head>
+    <div class="chat-widget">
+      <!-- Botão Flutuante -->
+      <button class="chat-button" onclick="toggleChat()">
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M12 2C6.48 2 2 6.48 2 12c0 1.54.36 3 .97 4.29L1 23l6.71-1.97C9 21.64 10.46 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.41 0-2.73-.36-3.88-.99l-.28-.15-2.9.85.85-2.9-.15-.28C4.36 14.73 4 13.41 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8z" />
+          <circle cx="8.5" cy="12" r="1" />
+          <circle cx="12" cy="12" r="1" />
+          <circle cx="15.5" cy="12" r="1" />
+        </svg>
+      </button>
 
-    <body>
-      <!-- Widget do Chatbot -->
-      <div class="chat-widget">
-        <!-- Botão Flutuante -->
-        <button class="chat-button" onclick="toggleChat()">
-          <svg viewBox="0 0 24 24">
-            <path
-              d="M12 2C6.48 2 2 6.48 2 12c0 1.54.36 3 .97 4.29L1 23l6.71-1.97C9 21.64 10.46 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.41 0-2.73-.36-3.88-.99l-.28-.15-2.9.85.85-2.9-.15-.28C4.36 14.73 4 13.41 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8z" />
-            <circle cx="8.5" cy="12" r="1" />
-            <circle cx="12" cy="12" r="1" />
-            <circle cx="15.5" cy="12" r="1" />
-          </svg>
-        </button>
+      <!-- Container do Chat -->
+      <div class="chat-container" id="chatContainer">
+        <!-- Header -->
+        <div class="chat-header">
+          <h3>Daniel AI Assistant</h3>
+          <button class="chat-close" onclick="toggleChat()">×</button>
+        </div>
 
-        <!-- Container do Chat -->
-        <div class="chat-container" id="chatContainer">
-          <!-- Header -->
-          <div class="chat-header">
-            <h3>Daniel AI Assistant</h3>
-            <button class="chat-close" onclick="toggleChat()">×</button>
-          </div>
-
-          <!-- Mensagens -->
-          <div class="chat-messages" id="chatMessages">
-            <div class="message bot">
-              <div class="message-bubble">
-                👋 Oi! Sou o assistente virtual do Daniel. Como posso ajudar você hoje?
-              </div>
+        <!-- Mensagens -->
+        <div class="chat-messages" id="chatMessages">
+          <div class="message bot">
+            <div class="message-bubble">
+              👋 Oi! Sou o assistente virtual do Daniel. Como posso ajudar você hoje?
             </div>
           </div>
+        </div>
 
-          <!-- Indicador de digitação -->
-          <div class="typing-indicator" id="typingIndicator">
-            <div class="typing-dot"></div>
-            <div class="typing-dot"></div>
-            <div class="typing-dot"></div>
-          </div>
+        <!-- Indicador de digitação -->
+        <div class="typing-indicator" id="typingIndicator">
+          <div class="typing-dot"></div>
+          <div class="typing-dot"></div>
+          <div class="typing-dot"></div>
+        </div>
 
-          <!-- Input -->
-          <div class="chat-input">
-            <input type="text" id="messageInput" placeholder="Digite sua mensagem..."
-              onkeypress="handleKeyPress(event)">
-            <button onclick="sendMessage()">
-              <svg viewBox="0 0 24 24">
-                <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
-              </svg>
-            </button>
-          </div>
+        <!-- Input -->
+        <div class="chat-input">
+          <input type="text" id="messageInput" placeholder="Digite sua mensagem..." onkeypress="handleKeyPress(event)">
+          <button onclick="sendMessage()">
+            <svg viewBox="0 0 24 24">
+              <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
+            </svg>
+          </button>
         </div>
       </div>
+    </div>
   </div>
 
   <!-- Scripts JavaScript -->
-  <script src="js/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="js/glassmorphism.js"></script>
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
   <script src="js/script.js"></script>
   <script src="js/data/projects-data.js"></script>
   <!-- Modal de projetos -->
