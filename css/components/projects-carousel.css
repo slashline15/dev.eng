@@ -14,20 +14,22 @@
     --text-secondary: #b0b0b0;
     --glass-bg: rgba(255, 255, 255, 0.05);
     --glass-border: rgba(255, 255, 255, 0.1);
+    --card-gap: 2rem;
+    --transition-speed: 0.5s;
+    --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
     background: var(--dark-bg);
     color: var(--text-primary);
     font-family: 'Poppins', sans-serif;
-    padding: 2rem;
 }
 
 /* Container principal */
 .projects-section {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 4rem 2rem;
+    padding: 4rem 1rem;
 }
 
 .section-header {
@@ -53,6 +55,13 @@ body {
     background: var(--orange-primary);
 }
 
+.section-header p {
+    color: var(--text-secondary);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
 /* Filtros de categoria */
 .project-filters {
     display: flex;
@@ -60,6 +69,7 @@ body {
     gap: 1rem;
     margin-bottom: 3rem;
     flex-wrap: wrap;
+    padding: 0 1rem;
 }
 
 .filter-btn {
@@ -71,6 +81,7 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
+    font-size: 0.9rem;
 }
 
 .filter-btn:hover,
@@ -85,14 +96,20 @@ body {
 .projects-carousel {
     position: relative;
     overflow: hidden;
-    padding: 2rem 0;
+    padding: 1rem 0;
+    width: 100%;
+    touch-action: pan-y;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 .projects-wrapper {
     display: flex;
-    gap: 2rem;
-    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    padding: 0 4rem;
+    gap: var(--card-gap);
+    transition: transform var(--transition-speed) var(--transition-timing);
+    will-change: transform;
+    padding: 1rem 0;
+    min-height: 480px;
 }
 
 /* Card de projeto */
@@ -107,19 +124,43 @@ body {
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
+    max-width: 100%;
+    transform-origin: center bottom;
+    margin-bottom: 1rem;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: 0 0 0 0 rgba(255, 122, 69, 0);
+    opacity: 0;
+    transition: opacity 0.4s ease, box-shadow 0.4s ease;
+    z-index: -1;
+    pointer-events: none;
 }
 
 .project-card:hover {
     transform: translateY(-10px) scale(1.02);
+    border-color: var(--orange-primary);
+}
+
+.project-card:hover::before {
+    opacity: 1;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4),
         0 0 60px var(--orange-glow);
-    border-color: var(--orange-primary);
+}
+
+.project-card:active {
+    transform: translateY(-5px) scale(1.01);
+    transition: transform 0.2s;
 }
 
 /* Imagem do projeto */
 .project-image {
     width: 100%;
-    height: 250px;
+    height: 220px;
     overflow: hidden;
     position: relative;
 }
@@ -156,7 +197,7 @@ body {
 /* Conteúdo do projeto */
 .project-content {
     padding: 1.5rem;
-    height: 200px;
+    height: 230px;
     display: flex;
     flex-direction: column;
 }
@@ -221,20 +262,26 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     z-index: 10;
+    color: var(--text-primary);
 }
 
 .carousel-nav:hover {
     background: rgba(255, 122, 69, 0.1);
     border-color: var(--orange-primary);
     transform: translateY(-50%) scale(1.1);
+    color: var(--orange-primary);
 }
 
 .carousel-nav.prev {
-    left: 1rem;
+    left: 0.5rem;
 }
 
 .carousel-nav.next {
-    right: 1rem;
+    right: 0.5rem;
+}
+
+.carousel-nav i {
+    font-size: 1.2rem;
 }
 
 /* Indicadores */
@@ -243,6 +290,7 @@ body {
     justify-content: center;
     gap: 0.5rem;
     margin-top: 2rem;
+    flex-wrap: wrap;
 }
 
 .indicator {
@@ -252,6 +300,10 @@ body {
     border-radius: 2px;
     cursor: pointer;
     transition: all 0.3s ease;
+}
+
+.indicator:hover {
+    background: rgba(255, 122, 69, 0.5);
 }
 
 .indicator.active {
@@ -278,27 +330,28 @@ body {
     opacity: 0;
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
-    .project-card {
-        flex: 0 0 280px;
-        height: 380px;
+/* Animações adicionais */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
     }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
 
-    .project-image {
-        height: 200px;
-    }
-
-    .projects-wrapper {
-        padding: 0 2rem;
-    }
+.carousel-nav:active {
+    animation: pulse 0.3s;
 }
 
 /* Botão Ver Mais */
 .view-all-btn {
     display: block;
     margin: 3rem auto 0;
-    padding: 1rem 2rem;
+    padding: 1rem 2.5rem;
     background: transparent;
     border: 2px solid var(--orange-primary);
     color: var(--orange-primary);
@@ -308,6 +361,7 @@ body {
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    z-index: 1;
 }
 
 .view-all-btn::before {
@@ -328,4 +382,102 @@ body {
 
 .view-all-btn:hover::before {
     left: 0;
+}
+
+/* Responsividade */
+@media (max-width: 1200px) {
+    .project-card {
+        flex: 0 0 320px;
+        height: 420px;
+    }
+    
+    .project-image {
+        height: 200px;
+    }
+}
+
+@media (max-width: 992px) {
+    .projects-section {
+        padding: 3rem 1rem;
+    }
+    
+    .project-card {
+        flex: 0 0 300px;
+        height: 400px;
+    }
+    
+    .project-image {
+        height: 180px;
+    }
+    
+    .project-content {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .projects-section {
+        padding: 2rem 1rem;
+    }
+    
+    .section-header h2 {
+        font-size: 2rem;
+    }
+    
+    .project-card {
+        flex: 0 0 280px;
+        height: 380px;
+    }
+    
+    .carousel-nav {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .carousel-nav.prev {
+        left: 0.25rem;
+    }
+    
+    .carousel-nav.next {
+        right: 0.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-header h2 {
+        font-size: 1.75rem;
+    }
+    
+    .project-card {
+        flex: 0 0 260px;
+        height: 360px;
+    }
+    
+    .project-image {
+        height: 160px;
+    }
+    
+    .project-content {
+        padding: 1rem;
+        height: 200px;
+    }
+    
+    .project-title {
+        font-size: 1.1rem;
+    }
+    
+    .filter-btn {
+        padding: 0.4rem 1.2rem;
+        font-size: 0.8rem;
+    }
+}
+
+/* Efeito de transição para quando os cards são filtrados */
+.project-card {
+    transition: opacity 0.4s ease, transform 0.4s ease, display 0s;
+}
+
+.project-card[style*="display: none"] {
+    opacity: 0;
+    transform: scale(0.8);
 }

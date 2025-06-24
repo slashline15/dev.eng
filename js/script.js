@@ -727,30 +727,7 @@ document.querySelectorAll('.particle').forEach((particle, index) => {
   particle.style.opacity = 0.4 + Math.random() * 0.4;
 });
 
-// Scroll horizontal com mouse
-const carousel = document.querySelector('.projects-carousel');
-if (carousel) {
-  carousel.addEventListener('wheel', (e) => {
-    e.preventDefault();
-    carousel.scrollLeft += e.deltaY;
-  });
-}
-
-// Efeito hover nos cards
-document.querySelectorAll('.project-card').forEach(card => {
-  card.style.cursor = 'pointer';
-  card.style.transition = 'all 0.3s ease';
-
-  card.addEventListener('mouseenter', () => {
-    card.style.transform = 'translateY(-10px) scale(1.02)';
-    card.style.boxShadow = '0 20px 40px rgba(255, 107, 53, 0.3)';
-  });
-
-  card.addEventListener('mouseleave', () => {
-    card.style.transform = 'translateY(0) scale(1)';
-    card.style.boxShadow = 'none';
-  });
-});
+// O carrossel agora é gerenciado por js/modules/projects-carousel.js
 
 // Garante que as partículas estão animadas
 document.querySelectorAll('.particle').forEach((particle, index) => {

@@ -230,11 +230,11 @@
       <!-- Carrossel -->
       <div class="projects-carousel">
         <!-- Botão Anterior -->
-        <button class="carousel-nav prev">
+        <button class="carousel-nav prev" aria-label="Projeto anterior">
           <i class="fas fa-chevron-left"></i>
         </button>
 
-        <div class="projects-wrapper">
+        <div class="projects-wrapper" tabindex="0">
           <!-- Projeto 1 - Clash Detective -->
           <article class="project-card" style="--index: 0;" data-category="bim"
             data-project-id="clash-detective-metalica">
@@ -320,16 +320,14 @@
         </div>
 
         <!-- Botão Próximo -->
-        <button class="carousel-nav next">
+        <button class="carousel-nav next" aria-label="Próximo projeto">
           <i class="fas fa-chevron-right"></i>
         </button>
       </div>
 
       <!-- Indicadores -->
       <div class="carousel-indicators">
-        <span class="indicator active"></span>
-        <span class="indicator"></span>
-        <span class="indicator"></span>
+        <!-- Indicadores serão gerados dinamicamente pelo JavaScript -->
       </div>
 
       <!-- Botão Ver Todos -->
@@ -864,7 +862,8 @@
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
   <script src="js/script.js"></script>
   <script src="js/data/projects-data.js"></script>
-  <!-- Modal de projetos -->
+  <!-- Carrossel e Modal de projetos -->
+  <script src="js/modules/projects-carousel.js"></script>
   <script src="js/modules/project-modal.js"></script>
   <script>
     // Estado do chat

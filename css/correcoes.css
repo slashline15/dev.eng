@@ -234,7 +234,7 @@ h6 {
 
 /* Partículas continuam como estavam */
 .particle {
-  background: #21ff51 !important;
+  background: #ff7700ed !important;
   opacity: 0.4 !important;
 }
 @keyframes float-up {
