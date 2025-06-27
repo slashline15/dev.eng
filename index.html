@@ -12,11 +12,6 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
   <link rel="stylesheet" href="css/main.css">
   <style>
-    canvas {
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
   </style>
 </head>
 
@@ -68,7 +63,7 @@
   </header>
 
   <section id="home" class="hero">
-    <canvas id=c></canvas>
+
     <div class="particle-background"></div>
     <div class="dynamic-background"></div>
     <div class="container">
@@ -856,6 +851,7 @@
         <div class="chat-input">
           <input type="text" id="messageInput" placeholder="Digite sua mensagem..." onkeypress="handleKeyPress(event)">
           <button onclick="sendMessage()">
+                <canvas id=c></canvas>
             <svg viewBox="0 0 24 24">
               <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
             </svg>

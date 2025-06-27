@@ -54,9 +54,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const typingElement = document.getElementById('typing-text');
     const phrases = [
       'Engenheiro Civil',
-      'Especialista em IA',
       'Gestor de Projetos',
-      'Inovador em Construção'
+      'Projetista multidisciplinar',
+      'Entusiasta de IA e automação'      
+
     ];
     let phraseIndex = 0, charIndex = 0, isDeleting = false, typingSpeed = 100;
 
@@ -190,37 +191,37 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // Slider de depoimentos
-  function setupTestimonialSlider() {
-    const slides = document.querySelectorAll('.testimonial-item');
-    const dots = document.querySelectorAll('.dot');
-    const prevBtn = document.querySelector('.testimonial-prev');
-    const nextBtn = document.querySelector('.testimonial-next');
-    let currentSlide = 0;
-    const showSlide = index => {
-      slides.forEach(slide => slide.classList.remove('active'));
-      dots.forEach(dot => dot.classList.remove('active'));
-      slides[index].classList.add('active');
-      dots[index].classList.add('active');
-      currentSlide = index;
-    };
-    if (prevBtn) {
-      prevBtn.addEventListener('click', () => {
-        showSlide((currentSlide - 1 + slides.length) % slides.length);
-      });
-    }
-    if (nextBtn) {
-      nextBtn.addEventListener('click', () => {
-        showSlide((currentSlide + 1) % slides.length);
-      });
-    }
-    dots.forEach((dot, i) => {
-      dot.addEventListener('click', () => showSlide(i));
-    });
-    setInterval(() => {
-      if (nextBtn) nextBtn.click();
-    }, 5000);
-  }
+  // // Slider de depoimentos
+  // function setupTestimonialSlider() {
+  //   const slides = document.querySelectorAll('.testimonial-item');
+  //   const dots = document.querySelectorAll('.dot');
+  //   const prevBtn = document.querySelector('.testimonial-prev');
+  //   const nextBtn = document.querySelector('.testimonial-next');
+  //   let currentSlide = 0;
+  //   const showSlide = index => {
+  //     slides.forEach(slide => slide.classList.remove('active'));
+  //     dots.forEach(dot => dot.classList.remove('active'));
+  //     slides[index].classList.add('active');
+  //     dots[index].classList.add('active');
+  //     currentSlide = index;
+  //   };
+  //   if (prevBtn) {
+  //     prevBtn.addEventListener('click', () => {
+  //       showSlide((currentSlide - 1 + slides.length) % slides.length);
+  //     });
+  //   }
+  //   if (nextBtn) {
+  //     nextBtn.addEventListener('click', () => {
+  //       showSlide((currentSlide + 1) % slides.length);
+  //     });
+  //   }
+  //   dots.forEach((dot, i) => {
+  //     dot.addEventListener('click', () => showSlide(i));
+  //   });
+  //   setInterval(() => {
+  //     if (nextBtn) nextBtn.click();
+  //   }, 5000);
+  // }
 
   // Modo Escuro
   function setupDarkMode() {
@@ -307,30 +308,30 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Função para configurar o assistente Clippy
-  function setupClippyAssistant() {
-    const clippy = document.getElementById('clippy');
-    const chatBox = document.getElementById('clippy-chat');
-    const input = document.getElementById('clippy-input');
+  // Função para configurar o assistente Bot
+  function setupbotAssistant() {
+    const bot = document.getElementById('bot');
+    const chatBox = document.getElementById('bot-chat');
+    const input = document.getElementById('bot-input');
     
-    if (!clippy || !chatBox || !input) return;
+    if (!bot || !chatBox || !input) return;
 
-    // Verificar se deve mostrar o Clippy com base no tamanho da tela
-    function checkClippyVisibility() {
+    // Verificar se deve mostrar o bot com base no tamanho da tela
+    function checkbotVisibility() {
       if (window.innerWidth <= 480) {
         // Em telas muito pequenas, reduz o tamanho ou oculta
-        clippy.style.width = '50px';
+        bot.style.width = '50px';
       } else {
-        clippy.style.width = '80px';
+        bot.style.width = '80px';
       }
     }
     
     // Verificar visibilidade ao carregar e ao redimensionar
-    checkClippyVisibility();
-    window.addEventListener('resize', checkClippyVisibility);
+    checkbotVisibility();
+    window.addEventListener('resize', checkbotVisibility);
 
-    // Alterna a exibição da janela de chat ao clicar no Clippy
-    clippy.addEventListener('click', function () {
+    // Alterna a exibição da janela de chat ao clicar no bot
+    bot.addEventListener('click', function () {
       chatBox.style.display = (chatBox.style.display === 'none' || chatBox.style.display === '') ? 'block' : 'none';
       
       // Rolagem para garantir que o chat esteja visível
@@ -663,7 +664,7 @@ document.addEventListener('DOMContentLoaded', function () {
   setupDarkMode();
   setupTiltEffect();
   setupCreativeModal();
-  setupClippyAssistant();
+  setupbotAssistant();
   setupEconomySimulator();
   setupInteractiveMap();
 });
