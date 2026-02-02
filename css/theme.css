@@ -275,10 +275,95 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: 
+    background-image:
       linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
       linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
     background-size: 10px 10px;
     opacity: 0.2;
     z-index: 0;
   }
+
+/* ======================================== */
+/* Overrides integrados de correcoes.css    */
+/* ======================================== */
+
+/* Forçar dark mode */
+body {
+  background: #0a0a0a !important;
+  color: #f5f5f5 !important;
+}
+
+.theme-toggle {
+  display: none !important;
+}
+
+.glass-card,
+.project-card,
+.about-text,
+.skills-text {
+  background: rgba(20, 20, 20, 0.8) !important;
+  color: #f5f5f5 !important;
+}
+
+body,
+body.dark-mode {
+  background: #0a0a0a !important;
+  color: #f5f5f5 !important;
+  font-family: 'Poppins', sans-serif !important;
+}
+
+p,
+span {
+  color: #f5f5f5 !important;
+}
+
+/* Grid sutil de fundo */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(rgba(255, 107, 53, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 107, 53, 0.08) 1px, transparent 1px);
+  background-size: 30px 30px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Remover qualquer azul residual */
+* {
+  --primary-color: #ff6b35 !important;
+  --primary-color-rgb: 255, 107, 53 !important;
+}
+
+.btn-primary {
+  background: #ff6b35 !important;
+  border-color: #ff6b35 !important;
+}
+
+.progress-bar {
+  background: #ff6b35 !important;
+}
+
+/* Hover com laranja nos cards */
+.glass-card:hover,
+.project-card:hover,
+.stat-counter:hover {
+  box-shadow: 0 8px 32px rgba(255, 107, 53, 0.3) !important;
+  border-color: rgba(255, 107, 53, 0.3) !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #ff6b35 !important;
+}
+
+.glass-card,
+.hero-content,
+.project-card,
+.stat-counter {
+  background: rgba(20, 20, 20, 0.8) !important;
+  backdrop-filter: blur(10px) !important;
+}

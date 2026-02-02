@@ -506,3 +506,9 @@ body.dark-mode .glass-card:hover::after {
         /* Aumentar altura para melhor visualização */
     }
 }
+
+/* Override de partículas (integrado de correcoes.css) */
+.particle {
+  background: #ff7700ed !important;
+  opacity: 0.4 !important;
+}

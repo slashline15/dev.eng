@@ -353,3 +353,32 @@
         .modal-info-section::-webkit-scrollbar-thumb:hover {
             background: rgba(255, 122, 69, 0.7);
         }
+
+/* Overrides de imagens e fundo do modal (integrado de correcoes.css) */
+.modal-main-image {
+  width: 100% !important;
+  height: auto !important;
+  max-height: 70vh !important;
+  object-fit: contain !important;
+}
+
+.modal-image-section {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 1rem !important;
+}
+
+.project-modal {
+  background: rgba(10, 10, 10, 0.98) !important;
+  backdrop-filter: blur(20px) !important;
+}
+
+.modal-info-section {
+  background: rgba(5, 5, 5, 0.95) !important;
+}
+
+.detail-section {
+  background: rgba(20, 20, 20, 0.9) !important;
+  border: 1px solid rgba(255, 107, 53, 0.2) !important;
+}

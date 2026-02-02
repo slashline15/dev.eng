@@ -343,3 +343,57 @@ body.dark-mode .theme-toggle i {
   body.dark-mode .automation-option label small {
     color: var(--text-light-dark);
   }
+
+/* ======================================== */
+/* Overrides integrados de correcoes.css    */
+/* ======================================== */
+
+/* Formulários */
+.form-group input,
+.form-group textarea {
+  background: rgba(0, 0, 0, 0.5) !important;
+  border: 1px solid rgba(255, 107, 53, 0.3) !important;
+  color: #f5f5f5 !important;
+  padding: 1rem !important;
+  font-size: 1rem !important;
+  border-radius: 10px !important;
+  width: 100% !important;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #808080 !important;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none !important;
+  border-color: #ff6b35 !important;
+  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1) !important;
+}
+
+/* Social links */
+.social-links {
+  display: flex !important;
+  gap: 1rem !important;
+  margin-top: 2rem !important;
+}
+
+.social-link {
+  width: 50px !important;
+  height: 50px !important;
+  border: 2px solid rgba(255, 107, 53, 0.3) !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #f5f5f5 !important;
+  font-size: 1.2rem !important;
+  transition: all 0.3s ease !important;
+}
+
+.social-link:hover {
+  background: #ff6b35 !important;
+  color: #0a0a0a !important;
+  transform: translateY(-3px) !important;
+}
