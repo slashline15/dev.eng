@@ -1,46 +1,109 @@
-const projectsData = {
-    'clash-detective-metalica': {
-        category: 'Coordenação BIM / Compatibilização de Projetos',
-        title: 'Detecção e Análise de Interferências – Diferentes disciplinas conflitando com estrutura metálica e arquitetura.',
+// Fonte de dados unica para todos os projetos
+const projectsData = [
+    {
+        id: 'clash-detective-metalica',
+        slug: 'clash-detective-metalica',
+        title: 'Detecção e Análise de Interferências',
+        subtitle: 'Diferentes disciplinas conflitando com estrutura metálica e arquitetura',
+        category: 'bim',
+        categoryLabel: 'Coordenação BIM / Compatibilização de Projetos',
+        tags: ['BIM', 'Compatibilização', 'Navisworks', 'Estruturas metálicas'],
         description: 'Estudo completo de interferências entre estruturas metálicas, dutos de HVAC e instalações (elétrica e hidráulica), utilizando Clash Detective do Navisworks. Através da análise espacial e agrupamento inteligente das colisões, foram identificados os principais conflitos físicos entre disciplinas, facilitando a tomada de decisão e reduzindo retrabalhos na obra.',
+        solution: 'Utilização do Clash Detective do Navisworks para análise espacial e agrupamento inteligente de colisões, consolidando interferências duplicadas em grupos reais de conflito com relatório técnico visual.',
+        deliverables: ['Relatório técnico visual de interferências', 'Planilha navegável com coordenadas', 'Agrupamento lógico por elemento envolvido', 'Modelo 3D compatibilizado'],
         image: 'images/projects/clash-detective-metalica.png',
+        cover: 'images/projects/clash-detective-metalica.png',
+        images: ['images/projects/clash-detective-metalica.png'],
         client: 'Fábrica de Manaus',
         date: 'Junho 2025',
         location: 'Manaus, AM',
         coords: [-3.1019, -60.025],
         status: 'Concluído',
+        role: 'Coordenador BIM',
+        year: '2025',
         technologies: ['Navisworks', 'Revit', 'AutoCAD', 'Python'],
         challenges: 'Alto número de interferências duplicadas geradas pelo Navisworks, exigindo agrupamento lógico por elemento envolvido. Necessidade de clareza na comunicação com equipes que não utilizam softwares BIM.',
         results: 'Consolidação de mais de 300 interferências em apenas 19 grupos reais de conflito, com relatório técnico visual, coordenadas, e entrega em planilha navegável. Otimização do processo de compatibilização e melhora significativa na comunicação entre projetistas.'
     },
-
-    'nippon-seiki-ampliacao': {
-        category: 'Engenharia Civil / Planejamento de Obras',
+    {
+        id: 'nippon-seiki-ampliacao',
+        slug: 'nippon-seiki-ampliacao',
         title: 'Ampliação da Fábrica Nippon Seiki',
+        subtitle: 'Estudo técnico para ampliação de unidade fabril em operação',
+        category: 'engenharia',
+        categoryLabel: 'Engenharia Civil / Planejamento de Obras',
+        tags: ['Concreto armado', 'Estruturas metálicas', 'BIM', 'Planejamento'],
         description: 'Estudo técnico e modelagem em Revit para ampliação de unidade fabril em operação. Análise de fases executivas, gargalos logísticos e soluções para execução sem interrupção da produção.',
+        solution: 'Redefinição do acesso principal com ganho logístico, eliminação de viga de transição de alto custo e proposta de sequenciamento eficiente para entrega parcial da obra sem interrupção da produção.',
+        deliverables: ['Modelo BIM completo em Revit', 'Cronograma em MS Project', 'Estudo de fases executivas', 'Análise de gargalos logísticos'],
         image: 'images/projects/nippon-seiki-main.jpg',
+        cover: 'images/projects/nippon-seiki-main.jpg',
+        images: ['images/projects/nippon-seiki-main.jpg'],
         client: 'Nippon Seiki do Brasil',
         date: 'Junho 2025',
         location: 'Manaus, AM',
         coords: [-3.0482, -59.9977],
         status: 'Estudo Preliminar / Em Planejamento',
+        role: 'Engenheiro Projetista',
+        year: '2025',
         technologies: ['Revit', 'Ftool', 'Python', 'MS Project', 'Navisworks'],
         challenges: 'Conciliar execução de grande porte com operação contínua da fábrica, restrições de acesso logístico e interferências com estruturas existentes como docas e depósito de inflamáveis.',
         results: 'Redefinição do acesso principal com ganho logístico, eliminação de viga de transição de alto custo, melhor distribuição estrutural e proposta de sequenciamento mais eficiente para entrega parcial da obra.'
     },
-
-    'reforco-estrutura-guaranas': {
-        category: 'Engenharia Estrutural',
+    {
+        id: 'reforco-estrutura-guaranas',
+        slug: 'reforco-estrutura-guaranas',
         title: 'Projeto de Reforço Estrutural – Av. Guaranás',
+        subtitle: 'Reforço de edificação comercial com deficiências estruturais graves',
+        category: 'engenharia',
+        categoryLabel: 'Engenharia Estrutural',
+        tags: ['Reforço estrutural', 'Concreto armado', 'Laudos técnicos'],
         description: 'Análise técnica de estrutura existente em edificação comercial com deficiências graves, como ausência de pilares e lajes pré-moldadas apoiadas incorretamente. Foi realizada inspeção in loco, levantamento dimensional e modelagem em software especializado (Eberick), resultando na proposta de reforço com 6 pilares e uma viga de travamento para garantir estabilidade e segurança.',
+        solution: 'Inspeção in loco, levantamento dimensional e modelagem em Eberick para proposta de reforço com 6 pilares e uma viga de travamento, garantindo estabilidade e segurança sem demolições drásticas.',
+        deliverables: ['Laudo técnico estrutural', 'Projeto de reforço em Eberick', 'Plantas executivas em AutoCAD', 'Relatório de inspeção'],
         image: 'images/projects/reforco-guaranas-main.png',
+        cover: 'images/projects/reforco-guaranas-main.png',
+        images: ['images/projects/reforco-guaranas-main.png'],
         client: 'Administradora Manaus Norte',
         date: 'Março 2025',
         location: 'Manaus, AM',
         coords: [-3.0354, -60.0435],
         status: 'Concluído',
+        role: 'Engenheiro Estrutural',
+        year: '2025',
         technologies: ['Eberick', 'AutoCAD'],
         challenges: 'Ausência de pilares, sobrecarga em lajes apoiadas indevidamente, riscos estruturais iminentes exigindo intervenção imediata com escoramento e reforço.',
         results: 'Garantia de segurança estrutural com inclusão de novos elementos, mantendo a funcionalidade da edificação sem demolições drásticas. Laudo técnico emitido para respaldo documental.'
+    },
+    {
+        id: 'estrutura-metalica',
+        slug: 'estrutura-metalica',
+        title: 'Içamento de Estrutura Metálica',
+        subtitle: 'Marquise metálica com vão de 12 metros',
+        category: 'execucao',
+        categoryLabel: 'Execução e Planejamento',
+        tags: ['Estruturas metálicas', 'Execução de obras', 'Planejamento'],
+        description: 'Planejamento cirúrgico, duas semanas de negociação para conseguir a interdição da pista e viabilizar o içamento final das tesouras. Um dos dias mais intensos da obra — estresse à flor da pele, mas também aquele tipo de entrega que marca uma carreira. Essa foto não é sorte: é suor sincronizado com execução.',
+        solution: 'Planejamento cirúrgico do içamento com interdição de via pública, coordenação de equipe e equipamentos para execução segura em prazo restrito.',
+        deliverables: ['Plano de içamento', 'Coordenação de interdição viária', 'Execução da montagem estrutural'],
+        image: 'images/projects/valeu-a-pena.png',
+        cover: 'images/projects/valeu-a-pena.png',
+        images: ['images/projects/valeu-a-pena.png'],
+        client: '',
+        date: '2024',
+        location: 'Manaus, AM',
+        coords: [-3.08, -60.01],
+        status: 'Concluído',
+        role: 'Engenheiro Responsável',
+        year: '2024',
+        technologies: ['Execução', 'Estrutura Metálica', 'Planejamento'],
+        challenges: 'Necessidade de interdição de via pública, coordenação logística complexa com prazos apertados e riscos de içamento de peças pesadas em ambiente urbano.',
+        results: 'Içamento concluído com sucesso dentro do prazo da interdição, sem incidentes de segurança. Estrutura montada e liberada conforme planejamento.'
     }
-};
+];
+
+// Mapa auxiliar para lookup por id/slug - retrocompativel
+const projectsDataMap = {};
+projectsData.forEach(function(project) {
+    projectsDataMap[project.id] = project;
+});

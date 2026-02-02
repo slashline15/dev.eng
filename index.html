@@ -73,9 +73,10 @@
       </div>
       <nav>
         <ul class="nav-links">
-          <li><a href="#home" class="nav-link">Início</a></li>
+          <li><a href="index.html" class="nav-link active">Início</a></li>
+          <li><a href="#services" class="nav-link">Serviços</a></li>
+          <li><a href="portfolio.html" class="nav-link">Projetos</a></li>
           <li><a href="#about" class="nav-link">Sobre</a></li>
-          <li><a href="#skills" class="nav-link">Habilidades</a></li>
           <li><a href="#contact" class="nav-link">Contato</a></li>
         </ul>
         <div class="theme-toggle">
@@ -156,6 +157,26 @@
     </div>
   </section>
 
+  <section id="services" class="services-tags">
+    <div class="container">
+      <div class="section-header">
+        <h2>Serviços</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="tags-container">
+        <a href="portfolio.html?tag=Concreto+armado" class="service-tag">Concreto armado</a>
+        <a href="portfolio.html?tag=Estruturas+metalicas" class="service-tag">Estruturas metálicas</a>
+        <a href="portfolio.html?tag=Reforço+estrutural" class="service-tag">Reforço estrutural</a>
+        <a href="portfolio.html?tag=Laudos+técnicos" class="service-tag">Laudos técnicos</a>
+        <a href="portfolio.html?tag=Execução+de+obras" class="service-tag">Execução de obras</a>
+        <a href="portfolio.html?tag=BIM" class="service-tag">BIM / Revit</a>
+        <a href="portfolio.html?tag=Compatibilização" class="service-tag">Compatibilização</a>
+        <a href="portfolio.html?tag=Planejamento" class="service-tag">Planejamento de obras</a>
+        <span class="service-tag service-tag--secondary">Automação (Python)</span>
+      </div>
+    </div>
+  </section>
+
   <section id="map-section" class="map-section">
     <div class="container">
       <div class="section-header">
@@ -163,76 +184,6 @@
         <div class="section-line"></div>
       </div>
       <div id="interactive-map" class="interactive-map"></div>
-    </div>
-  </section>
-
-
-
-  <section id="skills" class="skills parallax-section">
-    <div class="parallax-bg"></div>
-    <div class="dynamic-background"></div>
-    <div class="container">
-      <div class="parallax-content">
-        <div class="section-header">
-          <h2>Minhas Habilidades</h2>
-          <div class="section-line"></div>
-        </div>
-        <div class="skills-content">
-          <div class="skills-text fade-in glass-card appear zoom-in" data-animation="zoom-in">
-            <h3>Competências Profissionais</h3>
-            <p>Engenheiro estrutural com foco em projetos, reforço e acompanhamento de obras. Ferramentas BIM e automação aplicadas para maior precisão e agilidade nas entregas.</p>
-          </div>
-          <div class="skills-grid">
-            <!-- Habilidade 1: Projetos Estruturais -->
-            <div class="skill-card" data-level="avancado">
-              <div class="skill-icon"><i class="fas fa-drafting-compass"></i></div>
-              <h4 class="skill-title">Projetos Estruturais</h4>
-              <div class="skill-level">
-                <span class="level-dot filled"></span>
-                <span class="level-dot filled"></span>
-                <span class="level-dot filled"></span>
-              </div>
-              <span class="level-text">Avançado</span>
-            </div>
-
-            <!-- Habilidade 2: Reforço Estrutural -->
-            <div class="skill-card" data-level="avancado">
-              <div class="skill-icon"><i class="fas fa-hard-hat"></i></div>
-              <h4 class="skill-title">Reforço Estrutural</h4>
-              <div class="skill-level">
-                <span class="level-dot filled"></span>
-                <span class="level-dot filled"></span>
-                <span class="level-dot filled"></span>
-              </div>
-              <span class="level-text">Avançado</span>
-            </div>
-
-            <!-- Habilidade 3: Gestão de Obras -->
-            <div class="skill-card" data-level="avancado">
-              <div class="skill-icon"><i class="fas fa-project-diagram"></i></div>
-              <h4 class="skill-title">Gestão de Obras</h4>
-              <div class="skill-level">
-                <span class="level-dot filled"></span>
-                <span class="level-dot filled"></span>
-                <span class="level-dot filled"></span>
-              </div>
-              <span class="level-text">Avançado</span>
-            </div>
-
-            <!-- Habilidade 4: BIM e Automação -->
-            <div class="skill-card" data-level="intermediario">
-              <div class="skill-icon"><i class="fas fa-cube"></i></div>
-              <h4 class="skill-title">BIM e Automação</h4>
-              <div class="skill-level">
-                <span class="level-dot filled"></span>
-                <span class="level-dot filled"></span>
-                <span class="level-dot"></span>
-              </div>
-              <span class="level-text">Intermediário</span>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -357,84 +308,12 @@
       </div>
 
       <!-- Botão Ver Todos -->
-      <button class="view-all-btn">
+      <a href="portfolio.html" class="view-all-btn">
         Ver Todos os Projetos
-      </button>
+      </a>
     </div>
   </section>
 
-
-  <section id="economy" class="economy">
-    <div class="container">
-      <div class="section-header">
-        <h2>Simulador de Economia com IA</h2>
-        <div class="section-line"></div>
-      </div>
-      <div class="economy-content">
-        <div class="economy-simulator fade-in glass-card appear zoom-in" data-animation="zoom-in">
-          <div class="economy-intro">
-            <h3>Descubra quanto você pode economizar</h3>
-            <p>A automação com IA pode reduzir custos e aumentar a eficiência nos seus projetos de construção civil.
-              Simule agora mesmo o potencial de economia!</p>
-          </div>
-          <div class="economy-simulator-container">
-            <div class="simulator-controls">
-              <form id="economyForm" class="glass-card">
-                <div class="form-group slider-group"><label for="projectValue">Valor do Projeto (R$)</label>
-                  <div class="slider-container"><input type="range" id="projectValueSlider" min="50000" max="10000000"
-                      step="50000" value="500000">
-                    <div class="value-display"><input type="number" id="projectValue" name="projectValue" value="500000"
-                        min="50000" max="10000000"></div>
-                  </div>
-                  <div class="slider-markers"><span>R$ 50 mil</span><span>R$ 10 milhões</span></div>
-                </div>
-                <div class="form-group"><label for="automationLevel">Nível de Automação Desejado</label>
-                  <div class="automation-options">
-                    <div class="automation-option"><input type="radio" id="automationLow" name="automationLevel"
-                        value="low" checked=""><label for="automationLow"><i
-                          class="fas fa-robot"></i><span>Básico</span><small>Automações simples</small></label></div>
-                    <div class="automation-option"><input type="radio" id="automationMedium" name="automationLevel"
-                        value="medium"><label for="automationMedium"><i class="fas fa-robot"></i><i
-                          class="fas fa-robot small"></i><span>Intermediário</span><small>Automações
-                          avançadas</small></label></div>
-                    <div class="automation-option"><input type="radio" id="automationHigh" name="automationLevel"
-                        value="high"><label for="automationHigh"><i class="fas fa-robot"></i><i
-                          class="fas fa-robot"></i><i class="fas fa-robot"></i><span>Completo</span><small>IA integrada
-                          total</small></label></div>
-                  </div>
-                </div>
-                <button type="submit" class="btn btn-primary btn-glass simulator-submit"><i
-                    class="fas fa-calculator"></i> Calcular Economia</button>
-              </form>
-            </div>
-            <div class="simulator-results glass-card">
-              <div class="chart-container"><canvas id="economyChart"></canvas>
-                <div class="chart-placeholder"><i class="fas fa-chart-bar"></i>
-                  <p>O gráfico será exibido após o cálculo</p>
-                </div>
-              </div>
-              <div id="economyResult" class="economy-result">
-                <div class="economy-metrics">
-                  <div class="metric">
-                    <h4>Economia Estimada</h4><span class="metric-value" id="savingsValue">R$ 0</span>
-                  </div>
-                  <div class="metric">
-                    <h4>ROI Estimado</h4><span class="metric-value" id="roiValue">0x</span>
-                  </div>
-                  <div class="metric">
-                    <h4>Tempo de Implementação</h4><span class="metric-value" id="timeValue">-</span>
-                  </div>
-                </div>
-                <div id="economyAnalysis" class="economy-analysis">
-                  <p>Preencha os dados e clique em "Calcular" para ver sua economia potencial.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <section id="contact" class="contact">
     <div class="dynamic-background"></div>
@@ -465,6 +344,7 @@
         <div class="contact-form fade-in appear">
           <h3>Envie uma Mensagem</h3>
           <form id="contactForm" class="glass-card">
+            <div class="form-group" style="position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden" aria-hidden="true"><input type="text" name="website" tabindex="-1" autocomplete="off"></div>
             <div class="form-group"><input type="text" id="name" name="name" placeholder="Seu Nome" required></div>
             <div class="form-group"><input type="email" id="email" name="email" placeholder="Seu E-mail" required></div>
             <div class="form-group"><input type="text" id="subject" name="subject" placeholder="Assunto" required></div>
@@ -487,10 +367,11 @@
         <div class="footer-links">
           <h4>Links Rápidos</h4>
           <ul>
-            <li><a href="#home">Início</a></li>
+            <li><a href="index.html">Início</a></li>
             <li><a href="#about">Sobre</a></li>
-            <li><a href="#skills">Habilidades</a></li>
+            <li><a href="portfolio.html">Projetos</a></li>
             <li><a href="#contact">Contato</a></li>
+            <li><a href="calculadora.html">Calculadora</a></li>
           </ul>
         </div>
       </div>
@@ -527,6 +408,10 @@
               <p id="modalResults"></p>
             </div>
           </div>
+          <div class="modal-actions">
+            <a id="modalCaseStudyLink" class="modal-btn primary" href="#">Abrir estudo de caso</a>
+            <button class="modal-btn secondary modal-close">Fechar</button>
+          </div>
         </div>
       </div>
     </div>
@@ -534,6 +419,11 @@
 
 
 
+
+  <!-- WhatsApp FAB -->
+  <a href="https://wa.me/5592985528345?text=Ol%C3%A1%20Daniel!%20Vi%20seu%20site%20e%20gostaria%20de%20conversar%20sobre%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="whatsapp-fab" aria-label="Contato via WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
 
   <div class="chat-widget">
       <!-- Botão Flutuante -->
@@ -589,10 +479,10 @@
   <!-- Carrossel e Modal de projetos -->
   <script src="js/modules/projects-carousel.js"></script>
   <script src="js/modules/project-modal.js"></script>
-  <!-- Lazy load: Chart.js e Leaflet carregados sob demanda -->
+  <!-- Lazy load: Leaflet carregado sob demanda -->
   <script>
     (function() {
-      var chartLoaded = false, leafletLoaded = false;
+      var leafletLoaded = false;
 
       function loadScript(src, cb) {
         var s = document.createElement('script');
@@ -611,12 +501,7 @@
       var observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
           if (!entry.isIntersecting) return;
-          var id = entry.target.id;
-          if (id === 'economy' && !chartLoaded) {
-            chartLoaded = true;
-            loadScript('https://cdn.jsdelivr.net/npm/chart.js');
-          }
-          if (id === 'map-section' && !leafletLoaded) {
+          if (entry.target.id === 'map-section' && !leafletLoaded) {
             leafletLoaded = true;
             loadCSS('https://unpkg.com/leaflet@1.7.1/dist/leaflet.css');
             loadScript('https://unpkg.com/leaflet@1.7.1/dist/leaflet.js', function() {
@@ -626,9 +511,7 @@
         });
       }, { rootMargin: '200px' });
 
-      var eco = document.getElementById('economy');
       var mapS = document.getElementById('map-section');
-      if (eco) observer.observe(eco);
       if (mapS) observer.observe(mapS);
     })();
   </script>

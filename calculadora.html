@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Retrabalho & Produtividade - Daniel Alves</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+  <link rel="stylesheet" href="css/all.min.css">
+  <link rel="stylesheet" href="css/main.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+</head>
+<body class="dark-mode">
+  <header>
+    <div class="container">
+      <div class="logo"><h1><a href="index.html" style="color:inherit;text-decoration:none">DA</a></h1></div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Início</a></li>
+          <li><a href="index.html#services" class="nav-link">Serviços</a></li>
+          <li><a href="portfolio.html" class="nav-link">Projetos</a></li>
+          <li><a href="index.html#about" class="nav-link">Sobre</a></li>
+          <li><a href="index.html#contact" class="nav-link">Contato</a></li>
+        </ul>
+        <div class="hamburger">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="calculadora-page">
+    <div class="container">
+      <div class="section-header">
+        <h2>Calculadora de Retrabalho & Produtividade</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="economy-content">
+        <div class="economy-simulator glass-card">
+          <div class="economy-intro">
+            <h3>Descubra quanto você pode economizar</h3>
+            <p>A automação com IA pode reduzir custos e aumentar a eficiência nos seus projetos de construção civil.
+              Simule agora mesmo o potencial de economia!</p>
+          </div>
+          <div class="economy-simulator-container">
+            <div class="simulator-controls">
+              <form id="economyForm" class="glass-card">
+                <div class="form-group slider-group"><label for="projectValue">Valor do Projeto (R$)</label>
+                  <div class="slider-container"><input type="range" id="projectValueSlider" min="50000" max="10000000"
+                      step="50000" value="500000">
+                    <div class="value-display"><input type="number" id="projectValue" name="projectValue" value="500000"
+                        min="50000" max="10000000"></div>
+                  </div>
+                  <div class="slider-markers"><span>R$ 50 mil</span><span>R$ 10 milhões</span></div>
+                </div>
+                <div class="form-group"><label for="automationLevel">Nível de Automação Desejado</label>
+                  <div class="automation-options">
+                    <div class="automation-option"><input type="radio" id="automationLow" name="automationLevel"
+                        value="low" checked=""><label for="automationLow"><i
+                          class="fas fa-robot"></i><span>Básico</span><small>Automações simples</small></label></div>
+                    <div class="automation-option"><input type="radio" id="automationMedium" name="automationLevel"
+                        value="medium"><label for="automationMedium"><i class="fas fa-robot"></i><i
+                          class="fas fa-robot small"></i><span>Intermediário</span><small>Automações
+                          avançadas</small></label></div>
+                    <div class="automation-option"><input type="radio" id="automationHigh" name="automationLevel"
+                        value="high"><label for="automationHigh"><i class="fas fa-robot"></i><i
+                          class="fas fa-robot"></i><i class="fas fa-robot"></i><span>Completo</span><small>IA integrada
+                          total</small></label></div>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-glass simulator-submit"><i
+                    class="fas fa-calculator"></i> Calcular Economia</button>
+              </form>
+            </div>
+            <div class="simulator-results glass-card">
+              <div class="chart-container"><canvas id="economyChart"></canvas>
+                <div class="chart-placeholder"><i class="fas fa-chart-bar"></i>
+                  <p>O gráfico será exibido após o cálculo</p>
+                </div>
+              </div>
+              <div id="economyResult" class="economy-result">
+                <div class="economy-metrics">
+                  <div class="metric">
+                    <h4>Economia Estimada</h4><span class="metric-value" id="savingsValue">R$ 0</span>
+                  </div>
+                  <div class="metric">
+                    <h4>ROI Estimado</h4><span class="metric-value" id="roiValue">0x</span>
+                  </div>
+                  <div class="metric">
+                    <h4>Tempo de Implementação</h4><span class="metric-value" id="timeValue">-</span>
+                  </div>
+                </div>
+                <div id="economyAnalysis" class="economy-analysis">
+                  <p>Preencha os dados e clique em "Calcular" para ver sua economia potencial.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="detail-ctas" style="margin-top:2rem">
+        <a href="index.html#contact" class="btn btn-primary btn-glass">Solicitar Orçamento</a>
+        <a href="portfolio.html" class="btn btn-secondary">Ver Projetos</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <h3>Daniel Alves</h3>
+          <p>Engenheiro Civil</p>
+        </div>
+        <div class="footer-links">
+          <h4>Links Rápidos</h4>
+          <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="index.html#about">Sobre</a></li>
+            <li><a href="portfolio.html">Projetos</a></li>
+            <li><a href="index.html#contact">Contato</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Daniel Alves. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <script>
+    // Mobile menu toggle
+    var hamburger = document.querySelector('.hamburger');
+    var navLinks = document.querySelector('.nav-links');
+    if (hamburger) {
+      hamburger.addEventListener('click', function() {
+        navLinks.classList.toggle('active');
+        document.querySelectorAll('.bar').forEach(function(bar) { bar.classList.toggle('active'); });
+      });
+    }
+  </script>
+</body>
+</html>

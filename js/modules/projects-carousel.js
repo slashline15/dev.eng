@@ -116,8 +116,8 @@ class ProjectsCarousel {
     this.cards.forEach(card => {
       card.addEventListener('click', () => {
         const projectId = card.dataset.projectId;
-        if (window.ProjectModal && projectsData && projectsData[projectId]) {
-          ProjectModal.open(projectsData[projectId]);
+        if (window.ProjectModal && projectsDataMap && projectsDataMap[projectId]) {
+          ProjectModal.open(projectsDataMap[projectId]);
         }
       });
     });

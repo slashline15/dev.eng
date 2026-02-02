@@ -450,12 +450,66 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
+  // Contact Form Handler
+  function setupContactForm() {
+    var form = document.getElementById('contactForm');
+    if (!form) return;
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var submitBtn = form.querySelector('button[type="submit"]');
+      var originalText = submitBtn.textContent;
+
+      var data = {
+        name: form.querySelector('[name="name"]').value,
+        email: form.querySelector('[name="email"]').value,
+        subject: form.querySelector('[name="subject"]').value,
+        message: form.querySelector('[name="message"]').value,
+        website: form.querySelector('[name="website"]').value
+      };
+
+      submitBtn.textContent = 'Enviando...';
+      submitBtn.disabled = true;
+
+      fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      })
+      .then(function(res) { return res.json().then(function(d) { return { ok: res.ok, data: d }; }); })
+      .then(function(result) {
+        if (result.ok && result.data.success) {
+          submitBtn.textContent = 'Enviado!';
+          submitBtn.style.background = '#4CAF50';
+          form.reset();
+          setTimeout(function() {
+            submitBtn.textContent = originalText;
+            submitBtn.style.background = '';
+            submitBtn.disabled = false;
+          }, 3000);
+        } else {
+          throw new Error(result.data.error || 'Erro ao enviar');
+        }
+      })
+      .catch(function() {
+        submitBtn.textContent = 'Erro - Tente novamente';
+        submitBtn.style.background = '#f44336';
+        setTimeout(function() {
+          submitBtn.textContent = originalText;
+          submitBtn.style.background = '';
+          submitBtn.disabled = false;
+        }, 3000);
+      });
+    });
+  }
+
   // Inicializações
   checkFade();
   typeEffect();
   setupDarkMode();
   setupTiltEffect();
   setupEconomySimulator();
+  setupContactForm();
   // Map is now lazy-loaded via IntersectionObserver in index.html
   // setupInteractiveMap() will be called when Leaflet finishes loading
 });
@@ -473,8 +527,7 @@ function setupInteractiveMap() {
     maxZoom: 19
   }).addTo(map);
 
-  for (const projectId in projectsData) {
-    const project = projectsData[projectId];
+  projectsData.forEach(function(project) {
     if (project.coords) {
       const customIcon = L.divIcon({
         className: 'custom-marker-icon',
@@ -496,6 +549,6 @@ function setupInteractiveMap() {
 
       marker.bindPopup(popupContent);
     }
-  }
+  });
 }
 

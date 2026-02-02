@@ -21,7 +21,8 @@ const ProjectModal = (function() {
             mainImage: document.getElementById('modalMainImage'),
             technologies: document.getElementById('modalTechnologies'),
             challenges: document.getElementById('modalChallenges'),
-            results: document.getElementById('modalResults')
+            results: document.getElementById('modalResults'),
+            caseStudyLink: document.getElementById('modalCaseStudyLink')
         };
     }
     
@@ -37,14 +38,16 @@ const ProjectModal = (function() {
             if (e.key === 'Escape') close();
         });
         
-        // Botão fechar
-        document.querySelector('.modal-close').addEventListener('click', close);
+        // Botões fechar
+        document.querySelectorAll('.modal-close').forEach(function(btn) {
+            btn.addEventListener('click', close);
+        });
     }
     
     // Abrir modal
     function open(projectData) {
         // Preencher dados básicos
-        elements.category.textContent = projectData.category;
+        elements.category.textContent = projectData.categoryLabel || projectData.category;
         elements.title.textContent = projectData.title;
         elements.description.textContent = projectData.description;
         elements.mainImage.src = projectData.image;
@@ -70,6 +73,11 @@ const ProjectModal = (function() {
             document.getElementById('resultsSection').style.display = 'block';
         }
         
+        // Link para estudo de caso
+        if (elements.caseStudyLink && projectData.slug) {
+            elements.caseStudyLink.href = 'projetos/' + projectData.slug + '.html';
+        }
+
         // Mostrar modal
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
@@ -98,8 +106,8 @@ document.addEventListener('DOMContentLoaded', function() {
     cards.forEach(card => {
         card.addEventListener('click', function() {
             const projectId = this.dataset.projectId;
-            if (projectsData[projectId]) {
-                ProjectModal.open(projectsData[projectId]);
+            if (projectsDataMap[projectId]) {
+                ProjectModal.open(projectsDataMap[projectId]);
             }
         });
     });
