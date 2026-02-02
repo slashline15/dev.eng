@@ -101,63 +101,28 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  // Criação de partículas
-  function createParticles() {
-    const container = document.querySelector('.particle-background');
-    if (!container) return;
-    
-    // Ajusta a quantidade de partículas com base no tamanho da tela
-    const isMobile = window.innerWidth <= 768;
-    const particleCount = isMobile ? 8 : 15;
-    
-    // Remove partículas existentes (útil em caso de redimensionamento)
-    while (container.firstChild) {
-      container.removeChild(container.firstChild);
-    }
-    
-    // Cria novas partículas
-    for (let i = 0; i < particleCount; i++) {
-      const particle = document.createElement('div');
-      particle.classList.add('particle');
-      
-      // Tamanho menor em dispositivos móveis
-      const maxSize = isMobile ? 30 : 50;
-      const minSize = isMobile ? 5 : 10;
-      const size = Math.random() * (maxSize - minSize) + minSize;
-      
-      particle.style.width = `${size}px`;
-      particle.style.height = `${size}px`;
-      particle.style.left = `${Math.random() * 100}%`;
-      particle.style.top = `${Math.random() * 100}%`;
-      particle.style.animationDelay = `${Math.random() * 5}s`;
-      container.appendChild(particle);
-    }
-  }
-  
-  // Recriar partículas ao redimensionar a janela
-  window.addEventListener('resize', function() {
-    const container = document.querySelector('.particle-background');
-    if (container) {
-      // Usa debounce para evitar muitas chamadas durante o redimensionamento
-      clearTimeout(this.resizeTimer);
-      this.resizeTimer = setTimeout(function() {
-        createParticles();
-      }, 200);
-    }
-  });
 
-  // Efeito Parallax, barra de progresso e header fixo
+  // Efeito Parallax, barra de progresso e header fixo (throttled com rAF)
+  let scrollTicking = false;
+  const parallaxBg = document.querySelector('.parallax-bg');
+  const scrollProgressBar = document.querySelector('.scroll-progress-bar');
+  const headerEl = document.querySelector('header');
+
   window.addEventListener('scroll', function () {
-    const parallaxBg = document.querySelector('.parallax-bg');
-    if (parallaxBg) {
-      parallaxBg.style.transform = `translateY(${window.pageYOffset * 0.4}px)`;
+    if (!scrollTicking) {
+      requestAnimationFrame(function () {
+        if (parallaxBg) {
+          parallaxBg.style.transform = `translateY(${window.pageYOffset * 0.4}px)`;
+        }
+        const scrollPercent = (window.scrollY / (document.body.offsetHeight - window.innerHeight)) * 100;
+        scrollProgressBar.style.width = scrollPercent + '%';
+        if (window.scrollY > 50) headerEl.classList.add('sticky');
+        else headerEl.classList.remove('sticky');
+        checkFade();
+        scrollTicking = false;
+      });
+      scrollTicking = true;
     }
-    const scrollPercent = (window.scrollY / (document.body.offsetHeight - window.innerHeight)) * 100;
-    document.querySelector('.scroll-progress-bar').style.width = scrollPercent + '%';
-    const header = document.querySelector('header');
-    if (window.scrollY > 50) header.classList.add('sticky');
-    else header.classList.remove('sticky');
-    checkFade();
   });
 
   // Animação de contadores
@@ -259,144 +224,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Funções para o Modal Criativo
-  function showCreativeModal() {
-    const modal = document.getElementById('creativeModal');
-    const hasSeenModal = sessionStorage.getItem('hasSeenModal');
-    
-    // Só mostra o modal se o usuário ainda não o viu nesta sessão
-    if (modal && !hasSeenModal) {
-      modal.style.display = 'flex';
-      // Marca que o usuário já viu o modal nesta sessão
-      sessionStorage.setItem('hasSeenModal', 'true');
-    }
-  }
-
-  function setupCreativeModal() {
-    // Verifica se o dispositivo é móvel
-    const isMobile = window.innerWidth <= 768;
-    
-    // Em dispositivos móveis, espera mais tempo para mostrar o modal
-    const timeout = isMobile ? 15000 : 10000;
-    
-    // Exibe o modal após o timeout definido
-    setTimeout(showCreativeModal, timeout);
-    
-    // Fechar modal ao clicar no "x"
-    const closeBtn = document.querySelector('.close-modal');
-    if (closeBtn) {
-      closeBtn.addEventListener('click', () => {
-        document.getElementById('creativeModal').style.display = 'none';
-      });
-    }
-    
-    // Fechar modal ao clicar fora do conteúdo
-    window.addEventListener('click', function(event) {
-      const modal = document.getElementById('creativeModal');
-      if (event.target === modal) modal.style.display = 'none';
-    });
-    
-    // Fechar modal ao pressionar ESC
-    document.addEventListener('keydown', function(event) {
-      if (event.key === 'Escape') {
-        const modal = document.getElementById('creativeModal');
-        if (modal && modal.style.display === 'flex') {
-          modal.style.display = 'none';
-        }
-      }
-    });
-  }
-
-  // Função para configurar o assistente Clippy
-  function setupClippyAssistant() {
-    const clippy = document.getElementById('clippy');
-    const chatBox = document.getElementById('clippy-chat');
-    const input = document.getElementById('clippy-input');
-    
-    if (!clippy || !chatBox || !input) return;
-
-    // Verificar se deve mostrar o Clippy com base no tamanho da tela
-    function checkClippyVisibility() {
-      if (window.innerWidth <= 480) {
-        // Em telas muito pequenas, reduz o tamanho ou oculta
-        clippy.style.width = '50px';
-      } else {
-        clippy.style.width = '80px';
-      }
-    }
-    
-    // Verificar visibilidade ao carregar e ao redimensionar
-    checkClippyVisibility();
-    window.addEventListener('resize', checkClippyVisibility);
-
-    // Alterna a exibição da janela de chat ao clicar no Clippy
-    clippy.addEventListener('click', function () {
-      chatBox.style.display = (chatBox.style.display === 'none' || chatBox.style.display === '') ? 'block' : 'none';
-      
-      // Rolagem para garantir que o chat esteja visível
-      if (chatBox.style.display === 'block') {
-        setTimeout(() => {
-          chatBox.scrollIntoView({ behavior: 'smooth', block: 'end' });
-          input.focus();
-        }, 100);
-      }
-    });
-
-    // Exemplo de resposta simples ao enviar uma mensagem (pressionando Enter)
-    input.addEventListener('keypress', function (e) {
-      if (e.key === 'Enter') {
-        const userMsg = input.value.trim();
-        if (userMsg !== '') {
-          // Cria bolha da mensagem do usuário
-          const userBubble = document.createElement('div');
-          userBubble.classList.add('chat-bubble', 'user-bubble');
-          userBubble.textContent = userMsg;
-          chatBox.insertBefore(userBubble, input);
-          
-          // Limpa o input
-          input.value = '';
-          
-          // Resposta simulada (com pequeno atraso para parecer mais natural)
-          setTimeout(() => {
-            // Respostas pré-definidas baseadas em palavras-chave
-            let response = "Legal, vou te ajudar com isso!";
-            
-            const lowerMsg = userMsg.toLowerCase();
-            if (lowerMsg.includes('contato') || lowerMsg.includes('email') || lowerMsg.includes('telefone')) {
-              response = "Você pode entrar em contato pelo email daniel.alves66@hotmail.com ou pelo telefone (92) 98552-8345.";
-            } else if (lowerMsg.includes('projeto') || lowerMsg.includes('orçamento')) {
-              response = "Para solicitar um orçamento, preencha o formulário de contato com detalhes do seu projeto.";
-            } else if (lowerMsg.includes('oi') || lowerMsg.includes('olá') || lowerMsg.includes('ola')) {
-              response = "Olá! Como posso ajudar você hoje?";
-            }
-            
-            const responseBubble = document.createElement('div');
-            responseBubble.classList.add('chat-bubble');
-            responseBubble.textContent = response;
-            chatBox.insertBefore(responseBubble, input);
-            
-            // Rola para mostrar a mensagem mais recente
-            chatBox.scrollTop = chatBox.scrollHeight;
-          }, 600);
-        }
-      }
-    });
-    
-    // Adiciona botão para fechar o chat
-    const closeChat = document.createElement('span');
-    closeChat.innerHTML = '&times;';
-    closeChat.classList.add('close-chat');
-    closeChat.style.position = 'absolute';
-    closeChat.style.top = '5px';
-    closeChat.style.right = '10px';
-    closeChat.style.cursor = 'pointer';
-    closeChat.style.fontSize = '20px';
-    chatBox.insertBefore(closeChat, chatBox.firstChild);
-    
-    closeChat.addEventListener('click', function() {
-      chatBox.style.display = 'none';
-    });
-  }
 
   // Função para o simulador de economia com IA
   function setupEconomySimulator() {
@@ -656,16 +483,14 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // Inicializações
-  createParticles();
   checkFade();
   typeEffect();
   if (document.querySelector('.testimonial-slider')) setupTestimonialSlider();
   setupDarkMode();
   setupTiltEffect();
-  setupCreativeModal();
-  setupClippyAssistant();
   setupEconomySimulator();
-  setupInteractiveMap();
+  // Map is now lazy-loaded via IntersectionObserver in index.html
+  // setupInteractiveMap() will be called when Leaflet finishes loading
 });
 
 function setupInteractiveMap() {
@@ -707,35 +532,3 @@ function setupInteractiveMap() {
   }
 }
 
-// 4. PARTÍCULAS COM MOVIMENTO ALEATÓRIO
-document.querySelectorAll('.particle').forEach((particle, index) => {
-  // Posição horizontal aleatória
-  particle.style.left = `${Math.random() * 100}%`;
-
-  // Delay aleatório para cada partícula
-  particle.style.animationDelay = `${Math.random() * 15}s`;
-
-  // Duração aleatória (entre 10 e 20 segundos)
-  particle.style.animationDuration = `${10 + Math.random() * 10}s`;
-
-  // Tamanho aleatório (entre 2 e 6 pixels)
-  const size = 2 + Math.random() * 4;
-  particle.style.width = `${size}px`;
-  particle.style.height = `${size}px`;
-
-  // Opacidade variada
-  particle.style.opacity = 0.4 + Math.random() * 0.4;
-});
-
-// O carrossel agora é gerenciado por js/modules/projects-carousel.js
-
-// Garante que as partículas estão animadas
-document.querySelectorAll('.particle').forEach((particle, index) => {
-  particle.style.left = `${Math.random() * 100}%`;
-  particle.style.animationDelay = `${index * 2}s`;
-  particle.style.animationDuration = `${15 + Math.random() * 10}s`;
-});
-
-// Remove qualquer classe light-mode
-document.body.classList.remove('light-mode');
-document.body.classList.add('dark-mode');
