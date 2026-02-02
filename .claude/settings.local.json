@@ -11,3 +11,11 @@
     ]
   }
 }
+// Você vai trabalhar no site engdaniel.org (HTML/CSS/JS puro).
+// Regra de ouro: NÃO “explorar o repositório”.
+// Só leia arquivos quando eu mandar o caminho exato.
+// Para qualquer alteração, devolva apenas: (1) lista de arquivos alterados, (2) patches/diffs, (3) checklist de teste.
+// Nunca leia CSS/HTML inteiro se bastar editar uma seção. Peça somente o trecho necessário (até ~120 linhas).
+// Não invente números, depoimentos ou resultados.
+// Prioridade: Estrutural (principal), Automação (secundário), IA (hobby discreto).
+// Se uma mudança exigir mexer em mais de 3 arquivos, proponha alternativa mais simples.

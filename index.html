@@ -69,7 +69,7 @@
   <header class="">
     <div class="container">
       <div class="logo">
-        <h1>DA</h1>
+        <a href="index.html"><img src="images/logo-DA.png" alt="Daniel Alves - Engenheiro Civil" class="logo-img"></a>
       </div>
       <nav>
         <ul class="nav-links">
@@ -164,14 +164,14 @@
         <div class="section-line"></div>
       </div>
       <div class="tags-container">
-        <a href="portfolio.html?tag=Concreto+armado" class="service-tag">Concreto armado</a>
-        <a href="portfolio.html?tag=Estruturas+metalicas" class="service-tag">Estruturas metálicas</a>
-        <a href="portfolio.html?tag=Reforço+estrutural" class="service-tag">Reforço estrutural</a>
-        <a href="portfolio.html?tag=Laudos+técnicos" class="service-tag">Laudos técnicos</a>
-        <a href="portfolio.html?tag=Execução+de+obras" class="service-tag">Execução de obras</a>
-        <a href="portfolio.html?tag=BIM" class="service-tag">BIM / Revit</a>
-        <a href="portfolio.html?tag=Compatibilização" class="service-tag">Compatibilização</a>
-        <a href="portfolio.html?tag=Planejamento" class="service-tag">Planejamento de obras</a>
+        <a href="portfolio.html?tag=concreto-armado" class="service-tag">Concreto armado</a>
+        <a href="portfolio.html?tag=estruturas-metalicas" class="service-tag">Estruturas metálicas</a>
+        <a href="portfolio.html?tag=reforco-estrutural" class="service-tag">Reforço estrutural</a>
+        <a href="portfolio.html?tag=laudos-tecnicos" class="service-tag">Laudos técnicos</a>
+        <a href="portfolio.html?tag=execucao-de-obras" class="service-tag">Execução de obras</a>
+        <a href="portfolio.html?tag=bim" class="service-tag">BIM / Revit</a>
+        <a href="portfolio.html?tag=compatibilizacao" class="service-tag">Compatibilização</a>
+        <a href="portfolio.html?tag=planejamento" class="service-tag">Planejamento de obras</a>
         <span class="service-tag service-tag--secondary">Automação (Python)</span>
       </div>
     </div>
@@ -191,126 +191,87 @@
     <div class="container">
       <div class="section-header">
         <h2>Projetos Recentes</h2>
-        <p>
-          Explorando a interseção entre engenharia civil e tecnologia
-        </p>
+        <p>Explorando a interseção entre engenharia civil e tecnologia</p>
       </div>
+    </div>
 
-      <!-- Filtros -->
-      <div class="project-filters">
-        <button class="filter-btn active" data-filter="all">Todos</button>
-        <button class="filter-btn" data-filter="engenharia">Engenharia</button>
-        <button class="filter-btn" data-filter="automacao">Automação</button>
-        <button class="filter-btn" data-filter="bim">BIM/Revit</button>
+    <!-- Carrossel full-width -->
+    <div class="projects-carousel">
+      <div class="projects-wrapper">
+        <article class="project-card" data-category="bim" data-project-id="clash-detective-metalica">
+          <div class="project-image"><img src="images/projects/clash-detective-metalica.png" alt="Clash Detective" loading="lazy"></div>
+          <div class="project-overlay"></div>
+          <div class="project-content">
+            <span class="project-category">Coordenação BIM</span>
+            <h3 class="project-title">Detecção de Interferências</h3>
+            <div class="project-tags"><span class="tag">Navisworks</span><span class="tag">Revit</span></div>
+          </div>
+        </article>
+
+        <article class="project-card" data-category="engenharia" data-project-id="nippon-seiki-ampliacao">
+          <div class="project-image"><img src="images/projects/nippon-seiki-main.jpg" alt="Nippon Seiki" loading="lazy"></div>
+          <div class="project-overlay"></div>
+          <div class="project-content">
+            <span class="project-category">Planejamento de Obras</span>
+            <h3 class="project-title">Ampliação Nippon Seiki</h3>
+            <div class="project-tags"><span class="tag">Revit</span><span class="tag">MS Project</span></div>
+          </div>
+        </article>
+
+        <article class="project-card" data-category="engenharia" data-project-id="reforco-estrutura-guaranas">
+          <div class="project-image"><img src="images/projects/reforco-guaranas-main.png" alt="Reforço Estrutural" loading="lazy"></div>
+          <div class="project-overlay"></div>
+          <div class="project-content">
+            <span class="project-category">Engenharia Estrutural</span>
+            <h3 class="project-title">Reforço Estrutural – Guaranás</h3>
+            <div class="project-tags"><span class="tag">Eberick</span><span class="tag">AutoCAD</span></div>
+          </div>
+        </article>
+
+        <article class="project-card" data-category="execucao" data-project-id="estrutura-metalica">
+          <div class="project-image"><img src="images/projects/valeu-a-pena.png" alt="Estrutura metálica" loading="lazy"></div>
+          <div class="project-overlay"></div>
+          <div class="project-content">
+            <span class="project-category">Execução</span>
+            <h3 class="project-title">Içamento de Estrutura Metálica</h3>
+            <div class="project-tags"><span class="tag">Execução</span><span class="tag">Planejamento</span></div>
+          </div>
+        </article>
+
+        <article class="project-card" data-category="bim" data-project-id="projeto-bim">
+          <div class="project-image"><img src="images/projects/projeto_bim.png" alt="Modelagem BIM" loading="lazy"></div>
+          <div class="project-overlay"></div>
+          <div class="project-content">
+            <span class="project-category">BIM / Modelagem</span>
+            <h3 class="project-title">Modelagem BIM</h3>
+            <div class="project-tags"><span class="tag">Revit</span><span class="tag">AutoCAD</span></div>
+          </div>
+        </article>
+
+        <article class="project-card" data-category="engenharia" data-project-id="layout-canteiro">
+          <div class="project-image"><img src="images/projects/layout_canteiro.png" alt="Layout de canteiro" loading="lazy"></div>
+          <div class="project-overlay"></div>
+          <div class="project-content">
+            <span class="project-category">Planejamento</span>
+            <h3 class="project-title">Layout de Canteiro de Obras</h3>
+            <div class="project-tags"><span class="tag">AutoCAD</span><span class="tag">MS Project</span></div>
+          </div>
+        </article>
+
+        <article class="project-card" data-category="engenharia" data-project-id="vila">
+          <div class="project-image"><img src="images/projects/vila.jpg" alt="Projeto Residencial" loading="lazy"></div>
+          <div class="project-overlay"></div>
+          <div class="project-content">
+            <span class="project-category">Engenharia Estrutural</span>
+            <h3 class="project-title">Projeto Residencial Vila</h3>
+            <div class="project-tags"><span class="tag">Eberick</span><span class="tag">AutoCAD</span></div>
+          </div>
+        </article>
       </div>
+    </div>
 
-      <!-- Carrossel -->
-      <div class="projects-carousel">
-        <!-- Botão Anterior -->
-        <button class="carousel-nav prev" aria-label="Projeto anterior">
-          <i class="fas fa-chevron-left"></i>
-        </button>
-
-        <div class="projects-wrapper" tabindex="0">
-          <!-- Projeto 1 - Clash Detective -->
-          <article class="project-card" style="--index: 0;" data-category="bim"
-            data-project-id="clash-detective-metalica">
-            <div class="project-image">
-              <img src="images/projects/clash-detective-metalica.png" alt="Clash Detective" loading="lazy">
-              <div class="project-overlay"></div>
-            </div>
-            <div class="project-content">
-              <span class="project-category">Coordenação BIM</span>
-              <h3 class="project-title">Detecção de Interferências</h3>
-              <p class="project-description">
-                Análise completa de interferências entre estruturas metálicas e instalações usando Navisworks.
-              </p>
-              <div class="project-tags">
-                <span class="tag">Navisworks</span>
-                <span class="tag">Revit</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Projeto 2 - Nippon Seiki -->
-          <article class="project-card" style="--index: 1;" data-category="engenharia"
-            data-project-id="nippon-seiki-ampliacao">
-            <div class="project-image">
-              <img src="images/projects/nippon-seiki-main.jpg" alt="Nippon Seiki" loading="lazy">
-              <div class="project-overlay"></div>
-            </div>
-            <div class="project-content">
-              <span class="project-category">Planejamento de Obras</span>
-              <h3 class="project-title">Ampliação Nippon Seiki</h3>
-              <p class="project-description">
-                Estudo técnico e modelagem em Revit para ampliação de unidade fabril em operação.
-              </p>
-              <div class="project-tags">
-                <span class="tag">Revit</span>
-                <span class="tag">MS Project</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Projeto 3 - Reforço Estrutural -->
-          <article class="project-card" style="--index: 2;" data-category="engenharia"
-            data-project-id="reforco-estrutura-guaranas">
-            <div class="project-image">
-              <img src="images/projects/reforco-guaranas-main.png" alt="Reforço Estrutural" loading="lazy">
-              <div class="project-overlay"></div>
-            </div>
-            <div class="project-content">
-              <span class="project-category">Engenharia Estrutural</span>
-              <h3 class="project-title">Reforço Estrutural</h3>
-              <p class="project-description">
-                Análise técnica e projeto de reforço estrutural em edificação comercial com deficiências graves.
-              </p>
-              <div class="project-tags">
-                <span class="tag">Eberick</span>
-                <span class="tag">AutoCAD</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Projeto 4 - Marquise metálica -->
-          <article class="project-card" style="--index: 3;" data-category="execucao"
-            data-project-id="estrutura-metalica">
-            <div class="project-image">
-              <img src="images/projects/valeu-a-pena.png" alt="Marquise metálica com vão de 12 metros" loading="lazy">
-              <div class="project-overlay"></div>
-            </div>
-            <div class="project-content">
-              <span class="project-category">Execução e Planejamento</span>
-              <h3 class="project-title">Içamento de estrutura metálica</h3>
-              <p class="project-description">
-                Planejamento cirúrgico, duas semanas de negociação para conseguir a interdição da pista e viabilizar o
-                içamento final das tesouras. Um dos dias mais intensos da obra — estresse à flor da pele, mas também
-                aquele tipo de entrega que marca uma carreira. Essa foto não é sorte: é suor sincronizado com execução.
-              </p>
-              <div class="project-tags">
-                <span class="tag">Execução</span>
-                <span class="tag">Estrutura Metálica</span>
-                <span class="tag">Planejamento</span>
-              </div>
-            </div>
-          </article>
-        </div>
-
-        <!-- Botão Próximo -->
-        <button class="carousel-nav next" aria-label="Próximo projeto">
-          <i class="fas fa-chevron-right"></i>
-        </button>
-      </div>
-
-      <!-- Indicadores -->
-      <div class="carousel-indicators">
-        <!-- Indicadores serão gerados dinamicamente pelo JavaScript -->
-      </div>
-
-      <!-- Botão Ver Todos -->
-      <a href="portfolio.html" class="view-all-btn">
-        Ver Todos os Projetos
-      </a>
+    <div class="container">
+      <a href="portfolio.html" class="view-all-btn">Ver Todos os Projetos</a>
     </div>
   </section>
 
@@ -324,21 +285,22 @@
       </div>
       <div class="contact-content">
         <div class="contact-info fade-in glass-card appear">
-          <h3>Informações de Contato</h3>
-          <div class="contact-item"><i class="fas fa-phone"></i>
-            <p>(92) 98552-8345</p>
+          <h3>Vamos conversar?</h3>
+          <p class="contact-intro">Precisa de um projeto estrutural, laudo técnico ou consultoria? Entre em contato e vamos encontrar a melhor solução.</p>
+          <div class="contact-item"><i class="fab fa-whatsapp"></i>
+            <a href="https://wa.me/5592985528345" target="_blank" rel="noopener">(92) 98552-8345</a>
           </div>
           <div class="contact-item"><i class="fas fa-envelope"></i>
-            <p>daniel.alves66@hotmail.com</p>
+            <a href="mailto:daniel.alves66@hotmail.com">daniel.alves66@hotmail.com</a>
           </div>
           <div class="contact-item"><i class="fas fa-map-marker-alt"></i>
             <p>Manaus, AM</p>
           </div>
           <div class="social-links">
-            <a href="https://www.instagram.com/daniel.engdev/" target="_blank" rel="noopener" class="social-link"><i class="fab fa-instagram"></i></a>
-            <a href="https://wa.me/5592985528345" target="_blank" rel="noopener" class="social-link"><i class="fab fa-whatsapp"></i></a>
-            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+            <a href="https://wa.me/5592985528345" target="_blank" rel="noopener" class="social-link" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com/daniel.engdev/" target="_blank" rel="noopener" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/daniel-alves-pereira-8579b832b/" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/slashline15" target="_blank" rel="noopener" class="social-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
           </div>
         </div>
         <div class="contact-form fade-in appear">
@@ -581,33 +543,55 @@
       }
     }
 
-    // Respostas simuladas (substituir por integração com API)
+    // Respostas baseadas em palavras-chave
     function getResponse(message) {
-      const lowerMessage = message.toLowerCase();
+      const m = message.toLowerCase();
 
-      // Respostas baseadas em palavras-chave
-      if (lowerMessage.includes('projeto') || lowerMessage.includes('orçamento')) {
-        return 'Excelente! O Daniel tem experiência em diversos tipos de projetos. Para um orçamento personalizado, você pode usar o formulário de contato ou me dar mais detalhes sobre o que precisa.';
+      if (m.includes('oi') || m.includes('olá') || m.includes('ola') || m.includes('bom dia') || m.includes('boa tarde') || m.includes('boa noite')) {
+        return 'Olá! Bem-vindo ao site do Daniel Alves, engenheiro civil estrutural. Posso ajudar com informações sobre <b>projetos estruturais</b>, <b>reforço</b>, <b>laudos técnicos</b>, <b>BIM</b> ou <b>orçamentos</b>. O que precisa?';
       }
 
-      if (lowerMessage.includes('bim') || lowerMessage.includes('revit')) {
-        return 'O Daniel é especialista em BIM e Revit! Ele trabalha com coordenação de projetos, detecção de interferências e modelagem 3D. Já reduziu em 30% os custos operacionais de clientes através de automação.';
+      if (m.includes('orçamento') || m.includes('orcamento') || m.includes('preço') || m.includes('preco') || m.includes('valor') || m.includes('quanto custa')) {
+        return 'Para orçamentos, o melhor caminho é entrar em contato diretamente:<br><br>📱 <a href="https://wa.me/5592985528345" target="_blank">WhatsApp (92) 98552-8345</a><br>📧 <a href="mailto:daniel.alves66@hotmail.com">daniel.alves66@hotmail.com</a><br><br>Ou preencha o <a href="#contact">formulário de contato</a> que o Daniel retorna em até 24h.';
       }
 
-      if (lowerMessage.includes('contato') || lowerMessage.includes('telefone') || lowerMessage.includes('email')) {
-        return 'Você pode entrar em contato pelo email daniel.alves66@hotmail.com ou WhatsApp (92) 98552-8345. Ou se preferir, use o formulário de contato no site!';
+      if (m.includes('projeto') || m.includes('estrutural') || m.includes('dimensionamento')) {
+        return 'O Daniel trabalha com projetos estruturais completos — do dimensionamento à execução. Especialidades:<br><br>• Concreto armado (fundação a cobertura)<br>• Estruturas metálicas<br>• Reforço estrutural<br>• Laudos técnicos<br><br>Veja os <a href="portfolio.html">projetos realizados</a> ou solicite um <a href="https://wa.me/5592985528345" target="_blank">orçamento</a>.';
       }
 
-      if (lowerMessage.includes('experiência') || lowerMessage.includes('experiencia')) {
-        return 'O Daniel tem mais de 10 anos de experiência em engenharia civil, com foco em gestão de obras e agora está unindo isso com tecnologia. Ele já concluiu mais de 150 projetos!';
+      if (m.includes('reforço') || m.includes('reforco') || m.includes('patologia') || m.includes('trinca') || m.includes('fissura')) {
+        return 'O Daniel é especialista em reforço estrutural. Ele realiza inspeção in loco, análise de patologias (trincas, fissuras, deformações) e projeta soluções de reforço com pilares, vigas e travamentos. Veja o <a href="projetos/reforco-estrutura-guaranas.html">caso da Av. Guaranás</a>.';
       }
 
-      if (lowerMessage.includes('python') || lowerMessage.includes('automação') || lowerMessage.includes('automacao')) {
-        return 'Legal que você se interessa por automação! O Daniel desenvolve scripts em Python para automatizar tarefas repetitivas na construção civil. Isso pode economizar muito tempo e dinheiro no seu projeto.';
+      if (m.includes('laudo') || m.includes('vistoria') || m.includes('inspeção') || m.includes('inspecao')) {
+        return 'O Daniel emite laudos técnicos estruturais com inspeção in loco, levantamento dimensional e análise de segurança. Ideal para edificações com patologias, reformas ou regularização. <a href="https://wa.me/5592985528345" target="_blank">Solicite uma vistoria</a>.';
       }
 
-      // Resposta padrão
-      return 'Interessante! Posso te ajudar com informações sobre os serviços do Daniel, projetos realizados, ou agendar um contato. O que você gostaria de saber?';
+      if (m.includes('bim') || m.includes('revit') || m.includes('navisworks') || m.includes('modelagem')) {
+        return 'O Daniel utiliza ferramentas BIM (Revit, Navisworks) para modelagem 3D, coordenação de projetos e detecção de interferências. Isso reduz retrabalho e melhora a comunicação entre disciplinas. Veja o <a href="projetos/clash-detective-metalica.html">projeto de Clash Detective</a>.';
+      }
+
+      if (m.includes('contato') || m.includes('telefone') || m.includes('email') || m.includes('whatsapp') || m.includes('falar')) {
+        return '📱 <a href="https://wa.me/5592985528345" target="_blank">WhatsApp (92) 98552-8345</a><br>📧 <a href="mailto:daniel.alves66@hotmail.com">daniel.alves66@hotmail.com</a><br>📍 Manaus, AM<br><br>Ou use o <a href="#contact">formulário aqui no site</a>!';
+      }
+
+      if (m.includes('python') || m.includes('automação') || m.includes('automacao') || m.includes('programação') || m.includes('programacao')) {
+        return 'O Daniel utiliza Python para automatizar processos na engenharia civil — desde extração de dados de modelos BIM até geração de relatórios e planilhas. Um diferencial que reduz tempo e erros nas entregas.';
+      }
+
+      if (m.includes('metal') || m.includes('aço') || m.includes('aco') || m.includes('içamento') || m.includes('icamento')) {
+        return 'O Daniel tem experiência em execução de estruturas metálicas, incluindo planejamento de içamento e montagem. Veja o <a href="projetos/estrutura-metalica.html">projeto de içamento de marquise metálica</a>.';
+      }
+
+      if (m.includes('obra') || m.includes('execução') || m.includes('execucao') || m.includes('gestão') || m.includes('gestao')) {
+        return 'Com experiência em execução e gestão de obras no setor privado, o Daniel acompanha todas as etapas — do planejamento ao campo. Isso garante que o projeto saia do papel exatamente como foi dimensionado.';
+      }
+
+      if (m.includes('obrigado') || m.includes('valeu') || m.includes('thanks') || m.includes('agradeço')) {
+        return 'De nada! Se precisar de algo mais, é só mandar mensagem. Boa sorte com seu projeto! 💪';
+      }
+
+      return 'Posso ajudar com informações sobre:<br><br>• <b>Projetos estruturais</b> (concreto, metálica)<br>• <b>Reforço estrutural</b> e laudos<br>• <b>BIM/Revit</b> e compatibilização<br>• <b>Orçamentos</b> e contato<br><br>O que gostaria de saber?';
     }
 
   </script>

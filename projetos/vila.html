@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projeto Residencial Vila - Daniel Alves</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+  <link rel="stylesheet" href="../css/all.min.css">
+  <link rel="stylesheet" href="../css/main.css">
+</head>
+<body class="dark-mode">
+  <header>
+    <div class="container">
+      <div class="logo"><h1><a href="../index.html" style="color:inherit;text-decoration:none">DA</a></h1></div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="../index.html" class="nav-link">Início</a></li>
+          <li><a href="../index.html#services" class="nav-link">Serviços</a></li>
+          <li><a href="../portfolio.html" class="nav-link active">Projetos</a></li>
+          <li><a href="../index.html#about" class="nav-link">Sobre</a></li>
+          <li><a href="../index.html#contact" class="nav-link">Contato</a></li>
+        </ul>
+        <div class="hamburger">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="project-detail" data-project-slug="vila">
+    <!-- Breadcrumb -->
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Navegação">
+        <a href="../index.html">Início</a>
+        <span>/</span>
+        <a href="../portfolio.html">Projetos</a>
+        <span>/</span>
+        <span id="detailBreadcrumbTitle">Carregando...</span>
+      </nav>
+    </div>
+
+    <!-- Cover -->
+    <div class="detail-cover">
+      <img id="detailCover" src="" alt="" loading="lazy">
+    </div>
+
+    <!-- Content -->
+    <div class="container">
+      <div class="detail-header">
+        <span class="detail-category" id="detailCategory"></span>
+        <span class="detail-status" id="detailStatus"></span>
+        <h1 id="detailTitle"></h1>
+        <p class="detail-subtitle" id="detailSubtitle"></p>
+        <div class="detail-meta">
+          <span><i class="fas fa-user"></i> <span id="detailRole"></span></span>
+          <span><i class="fas fa-building"></i> <span id="detailClient"></span></span>
+          <span><i class="fas fa-calendar"></i> <span id="detailYear"></span></span>
+          <span><i class="fas fa-map-marker-alt"></i> <span id="detailLocation"></span></span>
+        </div>
+      </div>
+
+      <div class="detail-grid">
+        <div class="detail-block">
+          <h3>Resumo</h3>
+          <p id="detailDescription"></p>
+        </div>
+        <div class="detail-block">
+          <h3>Desafio</h3>
+          <p id="detailChallenge"></p>
+        </div>
+        <div class="detail-block">
+          <h3>Solução</h3>
+          <p id="detailSolution"></p>
+        </div>
+        <div class="detail-block">
+          <h3>Tecnologias</h3>
+          <div id="detailTechnologies" class="detail-tech-list"></div>
+        </div>
+        <div class="detail-block">
+          <h3>Entregáveis</h3>
+          <ul id="detailDeliverables"></ul>
+        </div>
+        <div class="detail-block">
+          <h3>Resultados</h3>
+          <p id="detailResults"></p>
+        </div>
+      </div>
+
+      <!-- Gallery -->
+      <div class="gallery-grid" id="detailGallery"></div>
+
+      <!-- CTAs -->
+      <div class="detail-ctas">
+        <a href="../portfolio.html" class="btn btn-secondary">Voltar ao Portfólio</a>
+        <a id="detailCtaWhatsapp" href="#" target="_blank" rel="noopener" class="btn btn-primary btn-glass">Solicitar Orçamento</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <h3>Daniel Alves</h3>
+          <p>Engenheiro Civil</p>
+        </div>
+        <div class="footer-links">
+          <h4>Links Rápidos</h4>
+          <ul>
+            <li><a href="../index.html">Início</a></li>
+            <li><a href="../index.html#about">Sobre</a></li>
+            <li><a href="../portfolio.html">Projetos</a></li>
+            <li><a href="../index.html#contact">Contato</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Daniel Alves. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/data/projects-data.js"></script>
+  <script src="../js/modules/project-detail.js"></script>
+  <script>
+    // Mobile menu toggle
+    var hamburger = document.querySelector('.hamburger');
+    var navLinks = document.querySelector('.nav-links');
+    if (hamburger) {
+      hamburger.addEventListener('click', function() {
+        navLinks.classList.toggle('active');
+        document.querySelectorAll('.bar').forEach(function(bar) { bar.classList.toggle('active'); });
+      });
+    }
+  </script>
+</body>
+</html>

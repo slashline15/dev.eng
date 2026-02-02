@@ -62,6 +62,12 @@ header.sticky {
     color: var(--primary-color);
 }
 
+.logo-img {
+    height: 45px;
+    width: auto;
+    display: block;
+}
+
 .nav-links {
     display: flex;
     gap: var(--spacing-md);

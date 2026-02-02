@@ -1,5 +1,21 @@
 // Fonte de dados unica para todos os projetos
-const projectsData = [
+// Tags usam {id, label} - id sem acento/espaco para querystring, label humano para exibicao
+
+// Mapa global de tags para lookup rapido
+var TAG = {
+    concreto:       { id: 'concreto-armado',       label: 'Concreto armado' },
+    metalica:       { id: 'estruturas-metalicas',   label: 'Estruturas metálicas' },
+    reforco:        { id: 'reforco-estrutural',     label: 'Reforço estrutural' },
+    laudos:         { id: 'laudos-tecnicos',        label: 'Laudos técnicos' },
+    execucao:       { id: 'execucao-de-obras',      label: 'Execução de obras' },
+    bim:            { id: 'bim',                    label: 'BIM / Revit' },
+    compatibiliza:  { id: 'compatibilizacao',       label: 'Compatibilização' },
+    planejamento:   { id: 'planejamento',           label: 'Planejamento' },
+    automacao:      { id: 'automacao',              label: 'Automação (Python)' },
+    navisworks:     { id: 'navisworks',             label: 'Navisworks' }
+};
+
+var projectsData = [
     {
         id: 'clash-detective-metalica',
         slug: 'clash-detective-metalica',
@@ -7,7 +23,7 @@ const projectsData = [
         subtitle: 'Diferentes disciplinas conflitando com estrutura metálica e arquitetura',
         category: 'bim',
         categoryLabel: 'Coordenação BIM / Compatibilização de Projetos',
-        tags: ['BIM', 'Compatibilização', 'Navisworks', 'Estruturas metálicas'],
+        tags: [TAG.bim, TAG.compatibiliza, TAG.navisworks, TAG.metalica],
         description: 'Estudo completo de interferências entre estruturas metálicas, dutos de HVAC e instalações (elétrica e hidráulica), utilizando Clash Detective do Navisworks. Através da análise espacial e agrupamento inteligente das colisões, foram identificados os principais conflitos físicos entre disciplinas, facilitando a tomada de decisão e reduzindo retrabalhos na obra.',
         solution: 'Utilização do Clash Detective do Navisworks para análise espacial e agrupamento inteligente de colisões, consolidando interferências duplicadas em grupos reais de conflito com relatório técnico visual.',
         deliverables: ['Relatório técnico visual de interferências', 'Planilha navegável com coordenadas', 'Agrupamento lógico por elemento envolvido', 'Modelo 3D compatibilizado'],
@@ -32,13 +48,13 @@ const projectsData = [
         subtitle: 'Estudo técnico para ampliação de unidade fabril em operação',
         category: 'engenharia',
         categoryLabel: 'Engenharia Civil / Planejamento de Obras',
-        tags: ['Concreto armado', 'Estruturas metálicas', 'BIM', 'Planejamento'],
+        tags: [TAG.concreto, TAG.metalica, TAG.bim, TAG.planejamento],
         description: 'Estudo técnico e modelagem em Revit para ampliação de unidade fabril em operação. Análise de fases executivas, gargalos logísticos e soluções para execução sem interrupção da produção.',
         solution: 'Redefinição do acesso principal com ganho logístico, eliminação de viga de transição de alto custo e proposta de sequenciamento eficiente para entrega parcial da obra sem interrupção da produção.',
         deliverables: ['Modelo BIM completo em Revit', 'Cronograma em MS Project', 'Estudo de fases executivas', 'Análise de gargalos logísticos'],
         image: 'images/projects/nippon-seiki-main.jpg',
         cover: 'images/projects/nippon-seiki-main.jpg',
-        images: ['images/projects/nippon-seiki-main.jpg'],
+        images: ['images/projects/nippon-seiki-main.jpg', 'images/projects/nippon-seiki-main.png'],
         client: 'Nippon Seiki do Brasil',
         date: 'Junho 2025',
         location: 'Manaus, AM',
@@ -57,7 +73,7 @@ const projectsData = [
         subtitle: 'Reforço de edificação comercial com deficiências estruturais graves',
         category: 'engenharia',
         categoryLabel: 'Engenharia Estrutural',
-        tags: ['Reforço estrutural', 'Concreto armado', 'Laudos técnicos'],
+        tags: [TAG.reforco, TAG.concreto, TAG.laudos],
         description: 'Análise técnica de estrutura existente em edificação comercial com deficiências graves, como ausência de pilares e lajes pré-moldadas apoiadas incorretamente. Foi realizada inspeção in loco, levantamento dimensional e modelagem em software especializado (Eberick), resultando na proposta de reforço com 6 pilares e uma viga de travamento para garantir estabilidade e segurança.',
         solution: 'Inspeção in loco, levantamento dimensional e modelagem em Eberick para proposta de reforço com 6 pilares e uma viga de travamento, garantindo estabilidade e segurança sem demolições drásticas.',
         deliverables: ['Laudo técnico estrutural', 'Projeto de reforço em Eberick', 'Plantas executivas em AutoCAD', 'Relatório de inspeção'],
@@ -82,7 +98,7 @@ const projectsData = [
         subtitle: 'Marquise metálica com vão de 12 metros',
         category: 'execucao',
         categoryLabel: 'Execução e Planejamento',
-        tags: ['Estruturas metálicas', 'Execução de obras', 'Planejamento'],
+        tags: [TAG.metalica, TAG.execucao, TAG.planejamento],
         description: 'Planejamento cirúrgico, duas semanas de negociação para conseguir a interdição da pista e viabilizar o içamento final das tesouras. Um dos dias mais intensos da obra — estresse à flor da pele, mas também aquele tipo de entrega que marca uma carreira. Essa foto não é sorte: é suor sincronizado com execução.',
         solution: 'Planejamento cirúrgico do içamento com interdição de via pública, coordenação de equipe e equipamentos para execução segura em prazo restrito.',
         deliverables: ['Plano de içamento', 'Coordenação de interdição viária', 'Execução da montagem estrutural'],
@@ -99,11 +115,86 @@ const projectsData = [
         technologies: ['Execução', 'Estrutura Metálica', 'Planejamento'],
         challenges: 'Necessidade de interdição de via pública, coordenação logística complexa com prazos apertados e riscos de içamento de peças pesadas em ambiente urbano.',
         results: 'Içamento concluído com sucesso dentro do prazo da interdição, sem incidentes de segurança. Estrutura montada e liberada conforme planejamento.'
+    },
+    {
+        id: 'projeto-bim',
+        slug: 'projeto-bim',
+        title: 'Modelagem BIM',
+        subtitle: 'Projeto estrutural em BIM/Revit',
+        category: 'bim',
+        categoryLabel: 'BIM / Modelagem Estrutural',
+        tags: [TAG.bim, TAG.concreto],
+        description: 'Modelagem estrutural em ambiente BIM para coordenação de projetos e extração de quantitativos.',
+        solution: '',
+        deliverables: [],
+        image: 'images/projects/projeto_bim.png',
+        cover: 'images/projects/projeto_bim.png',
+        images: ['images/projects/projeto_bim.png'],
+        client: '',
+        date: '2025',
+        location: 'Manaus, AM',
+        coords: null,
+        status: 'Concluído',
+        role: 'Engenheiro Projetista',
+        year: '2025',
+        technologies: ['Revit', 'AutoCAD'],
+        challenges: '',
+        results: ''
+    },
+    {
+        id: 'layout-canteiro',
+        slug: 'layout-canteiro',
+        title: 'Layout de Canteiro de Obras',
+        subtitle: 'Planejamento e organização de canteiro',
+        category: 'engenharia',
+        categoryLabel: 'Planejamento de Obras',
+        tags: [TAG.planejamento, TAG.execucao],
+        description: 'Planejamento de layout de canteiro de obras com foco em logística, segurança e eficiência operacional.',
+        solution: '',
+        deliverables: [],
+        image: 'images/projects/layout_canteiro.png',
+        cover: 'images/projects/layout_canteiro.png',
+        images: ['images/projects/layout_canteiro.png'],
+        client: '',
+        date: '2025',
+        location: 'Manaus, AM',
+        coords: null,
+        status: 'Concluído',
+        role: 'Engenheiro Responsável',
+        year: '2025',
+        technologies: ['AutoCAD', 'MS Project'],
+        challenges: '',
+        results: ''
+    },
+    {
+        id: 'vila',
+        slug: 'vila',
+        title: 'Projeto Residencial Vila',
+        subtitle: 'Projeto estrutural residencial',
+        category: 'engenharia',
+        categoryLabel: 'Engenharia Estrutural',
+        tags: [TAG.concreto, TAG.execucao],
+        description: 'Projeto estrutural para edificação residencial com dimensionamento em concreto armado.',
+        solution: '',
+        deliverables: [],
+        image: 'images/projects/vila.jpg',
+        cover: 'images/projects/vila.jpg',
+        images: ['images/projects/vila.jpg'],
+        client: '',
+        date: '2025',
+        location: 'Manaus, AM',
+        coords: null,
+        status: 'Concluído',
+        role: 'Engenheiro Estrutural',
+        year: '2025',
+        technologies: ['Eberick', 'AutoCAD'],
+        challenges: '',
+        results: ''
     }
 ];
 
 // Mapa auxiliar para lookup por id/slug - retrocompativel
-const projectsDataMap = {};
+var projectsDataMap = {};
 projectsData.forEach(function(project) {
     projectsDataMap[project.id] = project;
 });

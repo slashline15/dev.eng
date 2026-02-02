@@ -613,6 +613,58 @@ body.dark-mode .service-tag--secondary:hover {
 }
 
 /* Seção Contato */
+.contact-intro {
+    color: var(--text-light);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.contact-item a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-item a:hover {
+    color: #FF6B35;
+}
+
+body.dark-mode .contact-item a {
+    color: var(--text-dark);
+}
+
+body.dark-mode .contact-item a:hover {
+    color: #FF6B35;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.social-link {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 107, 53, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FF6B35;
+    font-size: 1.3rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.social-link:hover {
+    background: rgba(255, 107, 53, 0.15);
+    border-color: #FF6B35;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.25);
+}
+
 .contact-content {
     display: flex;
     gap: var(--spacing-lg);

@@ -8,7 +8,7 @@
         if (!grid || !projectsData) return;
 
         // Render all project cards
-        function renderCards(filterCategory, filterTag) {
+        function renderCards(filterCategory, filterTagId) {
             grid.innerHTML = '';
             var count = 0;
 
@@ -16,11 +16,10 @@
                 // Filter by category
                 if (filterCategory && filterCategory !== 'all' && p.category !== filterCategory) return;
 
-                // Filter by tag (from querystring)
-                if (filterTag) {
-                    var normalizedTag = filterTag.toLowerCase();
+                // Filter by tag id (from querystring)
+                if (filterTagId) {
                     var hasTag = p.tags && p.tags.some(function(t) {
-                        return t.toLowerCase().indexOf(normalizedTag) !== -1;
+                        return t.id === filterTagId;
                     });
                     if (!hasTag) return;
                 }
@@ -34,7 +33,7 @@
                 var tagsHTML = '';
                 if (p.tags) {
                     p.tags.forEach(function(tag) {
-                        tagsHTML += '<span class="portfolio-tag">' + tag + '</span>';
+                        tagsHTML += '<span class="portfolio-tag">' + tag.label + '</span>';
                     });
                 }
 
@@ -57,7 +56,7 @@
             }
         }
 
-        // Read ?tag= from querystring
+        // Read ?tag= from querystring (now uses tag id, e.g. "estruturas-metalicas")
         var params = new URLSearchParams(window.location.search);
         var tagParam = params.get('tag');
 
@@ -72,9 +71,7 @@
                     filterBtns.forEach(function(b) { b.classList.remove('active'); });
                     btn.classList.add('active');
                     var filter = btn.getAttribute('data-filter');
-                    // Clear tag filter when user clicks a category button
                     renderCards(filter, null);
-                    // Update URL without reload
                     var url = new URL(window.location);
                     url.searchParams.delete('tag');
                     window.history.replaceState({}, '', url);
