@@ -42,7 +42,10 @@ f.addEventListener("submit", async (e) => {
 
   const r = await fetch("https://api.engdaniel.org/chat", {
     method: "POST",
-    headers: {"Content-Type":"application/json"},
+    headers: {
+      "Content-Type": "application/json",
+      "X-Client": "engdaniel-chat-v2"
+    },
     body: JSON.stringify({ message: text, history })
   });
 

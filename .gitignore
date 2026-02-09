@@ -8,3 +8,5 @@ CONTEXT.md
 CONTEXT.md
 .claude/settings.local.json
 images/logo-DA - Copia.png
+chat/kb.json
+chat/app.py
