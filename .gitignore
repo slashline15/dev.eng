@@ -10,3 +10,19 @@ CONTEXT.md
 images/logo-DA - Copia.png
 chat/kb.json
 chat/app.py
+
+
+chat/.env
+chat/chat.db
+chat/*.pem
+chat/*.p12
+chat/*.json.bak
+chat/credentials*.json
+chat/service-account*.json
+chat/__pycache__/
+chat/*.pyc
+chat/.venv/
+chat/venv/
+chat/*.egg-info/
+chat/dist/
+chat/build/

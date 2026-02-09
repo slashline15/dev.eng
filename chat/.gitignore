@@ -1,0 +1,14 @@
+.env
+chat.db
+*.pem
+*.p12
+*.json.bak
+credentials*.json
+service-account*.json
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+dist/
+build/

@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(if not exist \"D:\\\\github\\\\dev.eng\\\\chat\\\\tests\" mkdir \"D:\\\\github\\\\dev.eng\\\\chat\\\\tests\")",
+      "Bash(powershell:*)",
+      "Bash(python -m venv:*)",
+      "Bash(..venvScriptspip.exe install -q -r requirements.txt)"
+    ]
+  }
+}
