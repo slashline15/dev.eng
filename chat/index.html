@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Chat (teste)</title>
+  <style>
+    body{font-family:system-ui;max-width:720px;margin:40px auto;padding:0 16px}
+    #log{white-space:pre-wrap;border:1px solid #ddd;padding:12px;border-radius:10px;min-height:180px}
+    form{display:flex;gap:8px;margin-top:10px}
+    input{flex:1;padding:10px;border-radius:10px;border:1px solid #ddd}
+    button{padding:10px 14px;border-radius:10px;border:1px solid #ddd;cursor:pointer}
+  </style>
+</head>
+<body>
+  <h1>Chat (teste)</h1>
+  <div id="log"></div>
+
+  <form id="f">
+    <input id="msg" placeholder="Digite..." autocomplete="off" />
+    <button>Enviar</button>
+  </form>
+
+<script>
+const log = document.getElementById("log");
+const f = document.getElementById("f");
+const msg = document.getElementById("msg");
+let history = [];
+
+function render() {
+  log.textContent = history.map(x => `${x.role}: ${x.content}`).join("\n\n");
+}
+
+f.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const text = msg.value.trim();
+  if(!text) return;
+
+  history.push({role:"user", content:text});
+  render();
+  msg.value = "";
+
+  const r = await fetch("https://api.engdaniel.org/chat", {
+    method: "POST",
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify({ message: text, history })
+  });
+
+  const data = await r.json();
+  history = data.history ?? history;
+  render();
+});
+</script>
+</body>
+</html>
