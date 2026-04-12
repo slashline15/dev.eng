@@ -35,7 +35,7 @@
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
     border-bottom: 1px solid var(--glass-border);
-    box-shadow: var(--glass-shadow);
+    box-shadow: 20px -9px 20px 11px rgb(255 107 53 / 17%)
   }
   
   body.dark-mode header.sticky {
