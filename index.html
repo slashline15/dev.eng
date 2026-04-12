@@ -66,11 +66,11 @@
     <div class="scroll-progress-bar"></div>
   </div>
 
-  <header class="">
+  <header>
     <div class="container">
-      <h1>
-        <div class="logo"><h1><a href="index.html" style="color:inherit;text-decoration:none">DA</a></h1></div>
-      </h1>
+      <div class="logo">
+        <h1><a href="index.html" style="color:inherit;text-decoration:none" aria-label="Daniel Alves - Engenheiro Civil">DA</a></h1>
+      </div>
       <nav>
         <ul class="nav-links">
           <li><a href="index.html" class="nav-link active">Início</a></li>
@@ -107,10 +107,10 @@
           <span id="typing-text"></span>
           <span class="cursor">|</span>
         </h2>
-        <p class="hero-description">Engenheiro civil com experiência em execução de obras e projetos estruturais. Atuo em dimensionamento, reforço estrutural e laudos técnicos para edificações residenciais e comerciais. Tecnologia e automação como ferramentas para entregas mais precisas.</p>
+        <p class="hero-description">Engenheiro civil com experiência em execução de obras e projetos estruturais. Atuo em dimensionamento, reforço estrutural e laudos técnicos para edificações residenciais e comerciais, com foco em segurança, clareza e entregas sem retrabalho.</p>
         <div class="hero-cta">
-          <a href="#contact" class="btn btn-primary btn-glass">Entre em contato</a>
-          <a href="#about" class="btn btn-secondary">Saiba mais</a>
+          <a href="https://wa.me/5592985528345?text=Ol%C3%A1%20Daniel!%20Vi%20seu%20site%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="btn btn-primary btn-glass">Falar no WhatsApp</a>
+          <a href="portfolio.html" class="btn btn-secondary">Ver projetos</a>
         </div>
       </div>
       <div class="hero-image">
@@ -173,6 +173,45 @@
         <a href="portfolio.html?tag=compatibilizacao" class="service-tag">Compatibilização</a>
         <a href="portfolio.html?tag=planejamento" class="service-tag">Planejamento de obras</a>
         <span class="service-tag service-tag--secondary">Automação (Python)</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="diferenciais" class="sales-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>RDO digital para sua obra</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="sales-intro glass-card">
+        <p>Se você quer organizar a obra com mais controle, registrar a rotina com clareza e facilitar a comunicação com a equipe, o RDO é o caminho mais simples para profissionalizar esse processo.</p>
+      </div>
+      <div class="sales-grid">
+        <article class="sales-card glass-card">
+          <i class="fas fa-shield-alt"></i>
+          <h3>Mais controle</h3>
+          <p>Registre avanço, ocorrências e pendências em um fluxo claro, sem depender de planilhas soltas ou anotações perdidas.</p>
+        </article>
+        <article class="sales-card glass-card">
+          <i class="fas fa-comments"></i>
+          <h3>Comunicação direta</h3>
+          <p>Tenha uma visão mais organizada do que aconteceu no dia e compartilhe a informação com quem precisa decidir rápido.</p>
+        </article>
+        <article class="sales-card glass-card">
+          <i class="fas fa-diagram-project"></i>
+          <h3>Entrada rápida</h3>
+          <p>Acesse a apresentação para entender o fluxo ou entre no painel e veja como o sistema funciona na prática.</p>
+        </article>
+      </div>
+      <div class="sales-cta glass-card">
+        <div class="sales-cta-text">
+          <h3>Quer conhecer o RDO?</h3>
+          <p>Abra a apresentação do sistema ou entre direto no painel para ver como a rotina da obra pode ficar mais simples.</p>
+        </div>
+        <div class="sales-cta-actions">
+          <a href="https://rdo.engdaniel.org/apresentacao" target="_blank" rel="noopener" class="btn btn-primary btn-glass">Ver apresentação</a>
+          <a href="https://rdo.engdaniel.org/login" target="_blank" rel="noopener" class="btn btn-secondary">Entrar no painel</a>
+        </div>
       </div>
     </div>
   </section>
@@ -387,54 +426,6 @@
     <i class="fab fa-whatsapp"></i>
   </a>
 
-  <div class="chat-widget">
-      <!-- Botão Flutuante -->
-      <button class="chat-button" onclick="toggleChat()">
-        <svg viewBox="0 0 24 24">
-          <path
-            d="M12 2C6.48 2 2 6.48 2 12c0 1.54.36 3 .97 4.29L1 23l6.71-1.97C9 21.64 10.46 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.41 0-2.73-.36-3.88-.99l-.28-.15-2.9.85.85-2.9-.15-.28C4.36 14.73 4 13.41 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8z" />
-          <circle cx="8.5" cy="12" r="1" />
-          <circle cx="12" cy="12" r="1" />
-          <circle cx="15.5" cy="12" r="1" />
-        </svg>
-      </button>
-
-      <!-- Container do Chat -->
-      <div class="chat-container" id="chatContainer">
-        <!-- Header -->
-        <div class="chat-header">
-          <h3>Daniel AI Assistant</h3>
-          <button class="chat-close" onclick="toggleChat()">×</button>
-        </div>
-
-        <!-- Mensagens -->
-        <div class="chat-messages" id="chatMessages">
-          <div class="message bot">
-            <div class="message-bubble">
-              👋 Oi! Sou o assistente virtual do Daniel. Como posso ajudar você hoje?
-            </div>
-          </div>
-        </div>
-
-        <!-- Indicador de digitação -->
-        <div class="typing-indicator" id="typingIndicator">
-          <div class="typing-dot"></div>
-          <div class="typing-dot"></div>
-          <div class="typing-dot"></div>
-        </div>
-
-        <!-- Input -->
-        <div class="chat-input">
-          <input type="text" id="messageInput" placeholder="Digite sua mensagem..." onkeypress="handleKeyPress(event)">
-          <button onclick="sendMessage()">
-            <svg viewBox="0 0 24 24">
-              <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
-            </svg>
-          </button>
-        </div>
-      </div>
-  </div>
-
   <!-- Scripts JavaScript -->
   <script src="js/script.js"></script>
   <script src="js/data/projects-data.js"></script>
@@ -442,7 +433,6 @@
   <script src="js/modules/projects-carousel.js"></script>
   <script src="js/modules/project-modal.js"></script>
   <!-- Lazy load: Leaflet carregado sob demanda -->
-  <script src="/chat/widget.js" data-api="https://api.engdaniel.org" data-client="engdaniel-chat-v2"></script>
   <script>
     (function() {
       var leafletLoaded = false;
@@ -478,125 +468,6 @@
       if (mapS) observer.observe(mapS);
     })();
   </script>
-  <script>
-    // Estado do chat
-    let isOpen = false;
-
-    // Toggle do chat
-    function toggleChat() {
-      isOpen = !isOpen;
-      const container = document.getElementById('chatContainer');
-      if (isOpen) {
-        container.classList.add('active');
-        document.getElementById('messageInput').focus();
-      } else {
-        container.classList.remove('active');
-      }
-    }
-
-    // Enviar mensagem
-    function sendMessage() {
-      const input = document.getElementById('messageInput');
-      const message = input.value.trim();
-
-      if (!message) return;
-
-      // Adicionar mensagem do usuário
-      addMessage(message, 'user');
-
-      // Limpar input
-      input.value = '';
-
-      // Mostrar indicador de digitação
-      showTyping();
-
-      // Simular resposta (substituir por chamada real da API)
-      setTimeout(() => {
-        hideTyping();
-        const response = getResponse(message);
-        addMessage(response, 'bot');
-      }, 1000 + Math.random() * 1000);
-    }
-
-    // Adicionar mensagem ao chat
-    function addMessage(text, sender) {
-      const messagesContainer = document.getElementById('chatMessages');
-      const messageDiv = document.createElement('div');
-      messageDiv.className = `message ${sender}`;
-      messageDiv.innerHTML = `<div class="message-bubble">${text}</div>`;
-      messagesContainer.appendChild(messageDiv);
-      messagesContainer.scrollTop = messagesContainer.scrollHeight;
-    }
-
-    // Mostrar/esconder indicador de digitação
-    function showTyping() {
-      document.getElementById('typingIndicator').classList.add('active');
-    }
-
-    function hideTyping() {
-      document.getElementById('typingIndicator').classList.remove('active');
-    }
-
-    // Handle Enter key
-    function handleKeyPress(event) {
-      if (event.key === 'Enter') {
-        sendMessage();
-      }
-    }
-
-    // Respostas baseadas em palavras-chave
-    function getResponse(message) {
-      const m = message.toLowerCase();
-
-      if (m.includes('oi') || m.includes('olá') || m.includes('ola') || m.includes('bom dia') || m.includes('boa tarde') || m.includes('boa noite')) {
-        return 'Olá! Bem-vindo ao site do Daniel Alves, engenheiro civil estrutural. Posso ajudar com informações sobre <b>projetos estruturais</b>, <b>reforço</b>, <b>laudos técnicos</b>, <b>BIM</b> ou <b>orçamentos</b>. O que precisa?';
-      }
-
-      if (m.includes('orçamento') || m.includes('orcamento') || m.includes('preço') || m.includes('preco') || m.includes('valor') || m.includes('quanto custa')) {
-        return 'Para orçamentos, o melhor caminho é entrar em contato diretamente:<br><br>📱 <a href="https://wa.me/5592985528345" target="_blank">WhatsApp (92) 98552-8345</a><br>📧 <a href="mailto:daniel.alves66@hotmail.com">daniel.alves66@hotmail.com</a><br><br>Ou preencha o <a href="#contact">formulário de contato</a> que o Daniel retorna em até 24h.';
-      }
-
-      if (m.includes('projeto') || m.includes('estrutural') || m.includes('dimensionamento')) {
-        return 'O Daniel trabalha com projetos estruturais completos — do dimensionamento à execução. Especialidades:<br><br>• Concreto armado (fundação a cobertura)<br>• Estruturas metálicas<br>• Reforço estrutural<br>• Laudos técnicos<br><br>Veja os <a href="portfolio.html">projetos realizados</a> ou solicite um <a href="https://wa.me/5592985528345" target="_blank">orçamento</a>.';
-      }
-
-      if (m.includes('reforço') || m.includes('reforco') || m.includes('patologia') || m.includes('trinca') || m.includes('fissura')) {
-        return 'O Daniel é especialista em reforço estrutural. Ele realiza inspeção in loco, análise de patologias (trincas, fissuras, deformações) e projeta soluções de reforço com pilares, vigas e travamentos. Veja o <a href="projetos/reforco-estrutura-guaranas.html">caso da Av. Guaranás</a>.';
-      }
-
-      if (m.includes('laudo') || m.includes('vistoria') || m.includes('inspeção') || m.includes('inspecao')) {
-        return 'O Daniel emite laudos técnicos estruturais com inspeção in loco, levantamento dimensional e análise de segurança. Ideal para edificações com patologias, reformas ou regularização. <a href="https://wa.me/5592985528345" target="_blank">Solicite uma vistoria</a>.';
-      }
-
-      if (m.includes('bim') || m.includes('revit') || m.includes('navisworks') || m.includes('modelagem')) {
-        return 'O Daniel utiliza ferramentas BIM (Revit, Navisworks) para modelagem 3D, coordenação de projetos e detecção de interferências. Isso reduz retrabalho e melhora a comunicação entre disciplinas. Veja o <a href="projetos/clash-detective-metalica.html">projeto de Clash Detective</a>.';
-      }
-
-      if (m.includes('contato') || m.includes('telefone') || m.includes('email') || m.includes('whatsapp') || m.includes('falar')) {
-        return '📱 <a href="https://wa.me/5592985528345" target="_blank">WhatsApp (92) 98552-8345</a><br>📧 <a href="mailto:daniel.alves66@hotmail.com">daniel.alves66@hotmail.com</a><br>📍 Manaus, AM<br><br>Ou use o <a href="#contact">formulário aqui no site</a>!';
-      }
-
-      if (m.includes('python') || m.includes('automação') || m.includes('automacao') || m.includes('programação') || m.includes('programacao')) {
-        return 'O Daniel utiliza Python para automatizar processos na engenharia civil — desde extração de dados de modelos BIM até geração de relatórios e planilhas. Um diferencial que reduz tempo e erros nas entregas.';
-      }
-
-      if (m.includes('metal') || m.includes('aço') || m.includes('aco') || m.includes('içamento') || m.includes('icamento')) {
-        return 'O Daniel tem experiência em execução de estruturas metálicas, incluindo planejamento de içamento e montagem. Veja o <a href="projetos/estrutura-metalica.html">projeto de içamento de marquise metálica</a>.';
-      }
-
-      if (m.includes('obra') || m.includes('execução') || m.includes('execucao') || m.includes('gestão') || m.includes('gestao')) {
-        return 'Com experiência em execução e gestão de obras no setor privado, o Daniel acompanha todas as etapas — do planejamento ao campo. Isso garante que o projeto saia do papel exatamente como foi dimensionado.';
-      }
-
-      if (m.includes('obrigado') || m.includes('valeu') || m.includes('thanks') || m.includes('agradeço')) {
-        return 'De nada! Se precisar de algo mais, é só mandar mensagem. Boa sorte com seu projeto! 💪';
-      }
-
-      return 'Posso ajudar com informações sobre:<br><br>• <b>Projetos estruturais</b> (concreto, metálica)<br>• <b>Reforço estrutural</b> e laudos<br>• <b>BIM/Revit</b> e compatibilização<br>• <b>Orçamentos</b> e contato<br><br>O que gostaria de saber?';
-    }
-
-  </script>
-
 </body>
 
 </html>

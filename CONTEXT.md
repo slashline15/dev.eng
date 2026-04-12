@@ -36,7 +36,7 @@ css/
   pages.css             -> Estilos por secao: hero, about, services-tags, portfolio-page,
                            project-detail, calculadora-page, contact, social-links, economy
   color-balance.css     -> Ajustes de cor
-  chat-widget.css       -> Chat widget + WhatsApp FAB
+  chat-widget.css       -> WhatsApp FAB
   all.min.css           -> Font Awesome 6 local
   components/
     interactive-map.css -> Leaflet map
@@ -82,12 +82,12 @@ images/
 3. **Sobre (#about)** - Bio, imagem, stats
 4. **Servicos (#services)** - Tags que linkam para portfolio.html?tag=<id>
 5. **Mapa (#map-section)** - Leaflet.js com markers (lazy loaded)
-6. **Projetos (#projects)** - Carrossel infinito full-width, 7 cards. Hover: overlay + CTA
-7. **Contato (#contact)** - Info chamativa + form com honeypot + social links
-8. **Footer** - Links rapidos (Inicio, Sobre, Projetos, Contato, Calculadora)
-9. **Modal de Projeto** - Detalhes + "Abrir estudo de caso" + "Fechar"
-10. **WhatsApp FAB** - Botao verde fixo right:90px bottom:20px
-11. **Chat Widget** - Bot fixo bottom-right com respostas por keyword
+6. **Diferenciais (#diferenciais)** - Cards comerciais + CTA forte para WhatsApp
+7. **Projetos (#projects)** - Carrossel infinito full-width, 7 cards. Hover: overlay + CTA
+8. **Contato (#contact)** - Info chamativa + form com honeypot + social links
+9. **Footer** - Links rapidos (Inicio, Sobre, Projetos, Contato, Calculadora)
+10. **Modal de Projeto** - Detalhes + "Abrir estudo de caso" + "Fechar"
+11. **WhatsApp FAB** - Botao verde fixo right:20px bottom:20px
 
 ---
 
@@ -215,3 +215,4 @@ Secoes: breadcrumb, cover, header, detail-grid (6 blocos), gallery, CTAs.
 - CNAME: engdaniel.org
 - Branch: main
 - Functions: functions/api/contact.js (Cloudflare Pages Functions)
+- Redirect legacy: `_redirects` -> `/apresentacao / 301`, `/chat / 301`, `/chatbot.html / 301`

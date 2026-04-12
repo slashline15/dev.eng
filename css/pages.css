@@ -612,6 +612,102 @@ body.dark-mode .service-tag--secondary:hover {
     color: rgba(255, 255, 255, 0.4);
 }
 
+/* Seção Comercial */
+.sales-section {
+    padding-top: 0;
+}
+
+.sales-intro {
+    padding: 1.5rem 1.75rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.sales-intro p {
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--text-color);
+    text-align: center;
+}
+
+body.dark-mode .sales-intro p {
+    color: var(--text-dark);
+}
+
+.sales-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--spacing-md);
+}
+
+.sales-card {
+    padding: 1.5rem;
+}
+
+.sales-card i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 0.9rem;
+    display: inline-flex;
+}
+
+.sales-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-color);
+}
+
+.sales-card p {
+    margin: 0;
+    line-height: 1.65;
+    color: var(--text-light);
+}
+
+body.dark-mode .sales-card h3 {
+    color: var(--text-dark);
+}
+
+body.dark-mode .sales-card p {
+    color: rgba(255, 255, 255, 0.78);
+}
+
+.sales-cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+    padding: 1.5rem 1.75rem;
+}
+
+.sales-cta-text h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.sales-cta-text p {
+    margin: 0;
+    line-height: 1.65;
+    color: var(--text-light);
+    max-width: 62ch;
+}
+
+.sales-cta-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+body.dark-mode .sales-cta-text h3 {
+    color: var(--text-dark);
+}
+
+body.dark-mode .sales-cta-text p {
+    color: rgba(255, 255, 255, 0.78);
+}
+
 /* Seção Contato */
 .contact-intro {
     color: var(--text-light);
@@ -636,6 +732,22 @@ body.dark-mode .contact-item a {
 
 body.dark-mode .contact-item a:hover {
     color: #FF6B35;
+}
+
+@media (max-width: 992px) {
+    .sales-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sales-cta {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .sales-cta-actions {
+        width: 100%;
+        justify-content: flex-start;
+    }
 }
 
 .social-links {
