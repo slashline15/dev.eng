@@ -77,7 +77,7 @@
             color: #f5f5f5;
         }
 
-        .modal-close:hover {
+        .modal-header .modal-close:hover {
             background: rgba(255, 122, 69, 0.2);
             border-color: #ff7a45;
             transform: rotate(90deg);

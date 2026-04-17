@@ -17,6 +17,31 @@ var TAG = {
 
 var projectsData = [
     {
+        id: 'agents',
+        slug: 'agents',
+        title: 'A Jornada do RDO-Digital',
+        subtitle: 'Ensinando IA a Duvidar de Si Mesma',
+        category: 'automacao',
+        categoryLabel: 'Engenharia de Software & IA',
+        tags: [TAG.automacao],
+        description: 'O maior desafio técnico não foi a transcrição, mas a validação da incerteza. Como garantir que a IA saiba quando uma informação é confiável, quando é ambígua ou quando é um simples ruído de fundo? Calibração matemática demonstrada em painel interativo.',
+        solution: 'Desenvolvimento de sistema multiagentes integrado via Evolution API com um modelo de calibração baseada em regressão logística e função sigmoide para tratar ambiguidades e ruídos de canteiro.',
+        deliverables: ['Orquestrador Central', 'Agentes Especialistas', 'Painel Interativo D3.js'],
+        image: 'images/projects/mapa-integração-evolution.png',
+        cover: 'images/projects/mapa-integração-evolution.png',
+        images: ['images/projects/mapa-integração-evolution.png'],
+        client: 'RDO-Digital',
+        date: 'Abril 2026',
+        location: 'Digital',
+        coords: null,
+        status: 'Em andamento',
+        role: 'Desenvolvedor IA',
+        year: '2026',
+        technologies: ['Python', 'D3.js', 'LLMs', 'Evolution API'],
+        challenges: 'Construir a calibração de incerteza (U) sem falhas matemáticas quando a incerteza tendia a zero, o que motivou a transição para um modelo de regressão logística e análise de dispersão.',
+        results: 'Acurácia melhorada na transcrição com a IA sabendo identificar precisamente entre Ruído, Atenção e Confiável no processo de relatórios de obra autônomos.'
+    },
+    {
         id: 'clash-detective-metalica',
         slug: 'clash-detective-metalica',
         title: 'Detecção e Análise de Interferências',

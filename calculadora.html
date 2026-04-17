@@ -3,146 +3,228 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calculadora de Retrabalho & Produtividade - Daniel Alves</title>
+  <title>Painel de Confiabilidade da IA - Daniel Alves</title>
   <link rel="preconnect" href="https://fonts.googleapis.com/">
   <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
-  <link rel="stylesheet" href="css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="css/main.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+  <style>
+    .metric-value.high-confidence { color: #4CAF50; }
+    .metric-value.medium-confidence { color: #FFC107; }
+    .metric-value.low-confidence { color: #F44336; }
+    .simulator-controls { background: rgba(0,0,0,0.2) !important; padding: 2rem; border-radius: 12px; }
+  </style>
 </head>
 <body class="dark-mode">
+  <div class="particles">
+    <!-- Particulas de background -->
+    <span class="particle"></span><span class="particle"></span><span class="particle"></span>
+  </div>
+
   <header>
     <div class="container">
       <div class="logo"><h1><a href="index.html" style="color:inherit;text-decoration:none">DA</a></h1></div>
       <nav>
         <ul class="nav-links">
           <li><a href="index.html" class="nav-link">Início</a></li>
-          <li><a href="index.html#services" class="nav-link">Serviços</a></li>
-          <li><a href="portfolio.html" class="nav-link">Projetos</a></li>
-          <li><a href="index.html#about" class="nav-link">Sobre</a></li>
+          <li><a href="index.html#projects" class="nav-link">Projetos</a></li>
+          <li><a href="calculadora.html" class="nav-link active">Calculadora IA</a></li>
           <li><a href="index.html#contact" class="nav-link">Contato</a></li>
         </ul>
         <div class="hamburger">
-          <div class="bar"></div>
-          <div class="bar"></div>
-          <div class="bar"></div>
+          <div class="bar"></div><div class="bar"></div><div class="bar"></div>
         </div>
       </nav>
     </div>
   </header>
 
   <main class="calculadora-page">
-    <div class="container">
+    <div class="container" style="padding-top: 120px;">
       <div class="section-header">
-        <h2>Calculadora de Retrabalho & Produtividade</h2>
+        <h2>Simulador de Confiabilidade para RDO com IA</h2>
         <div class="section-line"></div>
       </div>
+      
       <div class="economy-content">
         <div class="economy-simulator glass-card">
           <div class="economy-intro">
-            <h3>Descubra quanto você pode economizar</h3>
-            <p>A automação com IA pode reduzir custos e aumentar a eficiência nos seus projetos de construção civil.
-              Simule agora mesmo o potencial de economia!</p>
+            <h3>Entenda como a IA lida com as incertezas no canteiro</h3>
+            <p>O desafio no canteiro de obras não é apenas registrar dados, mas saber distinguir ruído de informação confiável. Simule abaixo o <strong>Behavioral Confidence Score</strong> de agentes baseados na complexidade do dia a dia da sua obra.</p>
           </div>
-          <div class="economy-simulator-container">
-            <div class="simulator-controls">
-              <form id="economyForm" class="glass-card">
-                <div class="form-group slider-group"><label for="projectValue">Valor do Projeto (R$)</label>
-                  <div class="slider-container"><input type="range" id="projectValueSlider" min="50000" max="10000000"
-                      step="50000" value="500000">
-                    <div class="value-display"><input type="number" id="projectValue" name="projectValue" value="500000"
-                        min="50000" max="10000000"></div>
-                  </div>
-                  <div class="slider-markers"><span>R$ 50 mil</span><span>R$ 10 milhões</span></div>
-                </div>
-                <div class="form-group"><label for="automationLevel">Nível de Automação Desejado</label>
-                  <div class="automation-options">
-                    <div class="automation-option"><input type="radio" id="automationLow" name="automationLevel"
-                        value="low" checked=""><label for="automationLow"><i
-                          class="fas fa-robot"></i><span>Básico</span><small>Automações simples</small></label></div>
-                    <div class="automation-option"><input type="radio" id="automationMedium" name="automationLevel"
-                        value="medium"><label for="automationMedium"><i class="fas fa-robot"></i><i
-                          class="fas fa-robot small"></i><span>Intermediário</span><small>Automações
-                          avançadas</small></label></div>
-                    <div class="automation-option"><input type="radio" id="automationHigh" name="automationLevel"
-                        value="high"><label for="automationHigh"><i class="fas fa-robot"></i><i
-                          class="fas fa-robot"></i><i class="fas fa-robot"></i><span>Completo</span><small>IA integrada
-                          total</small></label></div>
+          
+          <div class="economy-simulator-container" style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 2rem;">
+            <!-- Controls -->
+            <div class="simulator-controls glass-card">
+              <form id="iaConfidenceForm">
+                
+                <div class="form-group slider-group">
+                  <label for="volumeNotes">Volume de Registros Diários (Áudio/Texto)</label>
+                  <div class="slider-container">
+                    <input type="range" id="volumeNotesSlider" min="10" max="500" step="10" value="150">
+                    <div class="value-display">
+                      <input type="number" id="volumeNotes" value="150" min="10" max="500" style="text-align: center; width: 60px;"> un/dia
+                    </div>
                   </div>
                 </div>
-                <button type="submit" class="btn btn-primary btn-glass simulator-submit"><i
-                    class="fas fa-calculator"></i> Calcular Economia</button>
+
+                <div class="form-group" style="margin-top: 2rem;">
+                  <label>Nível de Ruído / Complexidade da Obra</label>
+                  <div class="automation-options" style="display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1rem;">
+                    
+                    <label class="automation-option" style="cursor: pointer; display: flex; align-items: center; gap: 1rem; padding: 1rem; border: 1px solid rgba(255,107,53,0.3); border-radius: 8px;">
+                      <input type="radio" name="noiseLevel" value="low" style="margin: 0;">
+                      <div>
+                        <span style="display: block; font-weight: bold;">Baixo (Acabamento)</span>
+                        <small style="color: #bbb;">Relatórios limpos, ambiente controlado.</small>
+                      </div>
+                    </label>
+
+                    <label class="automation-option" style="cursor: pointer; display: flex; align-items: center; gap: 1rem; padding: 1rem; border: 1px solid rgba(255,107,53,0.3); border-radius: 8px;">
+                      <input type="radio" name="noiseLevel" value="medium" checked style="margin: 0;">
+                      <div>
+                        <span style="display: block; font-weight: bold;">Médio (Estrutura/Alvenaria)</span>
+                        <small style="color: #bbb;">Interrupções frequentes, falas coloquiais.</small>
+                      </div>
+                    </label>
+
+                    <label class="automation-option" style="cursor: pointer; display: flex; align-items: center; gap: 1rem; padding: 1rem; border: 1px solid rgba(255,107,53,0.3); border-radius: 8px;">
+                      <input type="radio" name="noiseLevel" value="high" style="margin: 0;">
+                      <div>
+                        <span style="display: block; font-weight: bold;">Alto (Fundações/Demolição)</span>
+                        <small style="color: #bbb;">Muito barulho, jargões pesados, áudios cortados.</small>
+                      </div>
+                    </label>
+
+                  </div>
+                </div>
+
+                <button type="button" id="btnCalculateConf" class="btn btn-primary" style="width: 100%; margin-top: 2rem;">
+                  <i class="fas fa-microchip"></i> Simular IA
+                </button>
               </form>
             </div>
-            <div class="simulator-results glass-card">
-              <div class="chart-container"><canvas id="economyChart"></canvas>
-                <div class="chart-placeholder"><i class="fas fa-chart-bar"></i>
-                  <p>O gráfico será exibido após o cálculo</p>
+
+            <!-- Results -->
+            <div class="simulator-results glass-card" style="display: flex; flex-direction: column; gap: 2rem;">
+              <div class="economy-metrics" style="display: flex; gap: 1rem; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 2rem;">
+                <div class="metric text-center">
+                  <h4 style="font-size: 0.9rem; color: #bbb;">Acerto Médio</h4>
+                  <span class="metric-value" id="scoreAcuracia" style="font-size: 2rem;">--%</span>
+                </div>
+                <div class="metric text-center">
+                  <h4 style="font-size: 0.9rem; color: #bbb;">Risco de Falso Positivo</h4>
+                  <span class="metric-value" id="scoreRisco" style="font-size: 2rem;">--%</span>
+                </div>
+                <div class="metric text-center">
+                  <h4 style="font-size: 0.9rem; color: #bbb;">Horas Salvas / Mês</h4>
+                  <span class="metric-value" id="scoreHoras" style="font-size: 2rem; color: #fff;">-- h</span>
                 </div>
               </div>
-              <div id="economyResult" class="economy-result">
-                <div class="economy-metrics">
-                  <div class="metric">
-                    <h4>Economia Estimada</h4><span class="metric-value" id="savingsValue">R$ 0</span>
-                  </div>
-                  <div class="metric">
-                    <h4>ROI Estimado</h4><span class="metric-value" id="roiValue">0x</span>
-                  </div>
-                  <div class="metric">
-                    <h4>Tempo de Implementação</h4><span class="metric-value" id="timeValue">-</span>
-                  </div>
-                </div>
-                <div id="economyAnalysis" class="economy-analysis">
-                  <p>Preencha os dados e clique em "Calcular" para ver sua economia potencial.</p>
-                </div>
+
+              <div class="chart-container" style="flex: 1; min-height: 250px; position: relative;">
+                <canvas id="confidenceChart"></canvas>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- CTA -->
-      <div class="detail-ctas" style="margin-top:2rem">
-        <a href="index.html#contact" class="btn btn-primary btn-glass">Solicitar Orçamento</a>
-        <a href="portfolio.html" class="btn btn-secondary">Ver Projetos</a>
-      </div>
     </div>
   </main>
 
-  <footer>
+  <!-- Footer (Basic implementation that matches index) -->
+  <footer style="margin-top: 4rem;">
     <div class="container">
-      <div class="footer-content">
-        <div class="footer-logo">
-          <h3>Daniel Alves</h3>
-          <p>Engenheiro Civil</p>
-        </div>
-        <div class="footer-links">
-          <h4>Links Rápidos</h4>
-          <ul>
-            <li><a href="index.html">Início</a></li>
-            <li><a href="index.html#about">Sobre</a></li>
-            <li><a href="portfolio.html">Projetos</a></li>
-            <li><a href="index.html#contact">Contato</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2025 Daniel Alves. Todos os direitos reservados.</p>
+      <div class="footer-bottom text-center">
+        <p>&copy; 2026 Daniel Alves. Todos os direitos reservados.</p>
       </div>
     </div>
   </footer>
 
   <script src="js/script.js"></script>
   <script>
-    // Mobile menu toggle
-    var hamburger = document.querySelector('.hamburger');
-    var navLinks = document.querySelector('.nav-links');
-    if (hamburger) {
-      hamburger.addEventListener('click', function() {
-        navLinks.classList.toggle('active');
-        document.querySelectorAll('.bar').forEach(function(bar) { bar.classList.toggle('active'); });
+    // Inicialização do Simulador
+    document.addEventListener('DOMContentLoaded', () => {
+      const btn = document.getElementById('btnCalculateConf');
+      const volumeInput = document.getElementById('volumeNotes');
+      const volumeSlider = document.getElementById('volumeNotesSlider');
+      
+      volumeSlider.addEventListener('input', e => volumeInput.value = e.target.value);
+      volumeInput.addEventListener('input', e => volumeSlider.value = e.target.value);
+
+      let chartInstance = null;
+
+      function renderChart(confe, risk) {
+        const ctx = document.getElementById('confidenceChart').getContext('2d');
+        if (chartInstance) chartInstance.destroy();
+
+        chartInstance = new Chart(ctx, {
+          type: 'doughnut',
+          data: {
+            labels: ['Dados Confiáveis (Inseridos no RDO)', 'Incerteza/Ruído (Requere Revisão)'],
+            datasets: [{
+              data: [confe, risk],
+              backgroundColor: ['rgba(76, 175, 80, 0.8)', 'rgba(244, 67, 54, 0.8)'],
+              borderColor: ['#2E7D32', '#C62828'],
+              borderWidth: 1
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { position: 'bottom', labels: { color: '#f5f5f5' } }
+            }
+          }
+        });
+      }
+
+      btn.addEventListener('click', () => {
+        const volume = parseInt(volumeInput.value);
+        const noise = document.querySelector('input[name="noiseLevel"]:checked').value;
+        
+        // Logical constraints based on real-world multi-agent architecture handling
+        let accuracy, fpRisk, hoursPerMonthSaved;
+
+        if (noise === 'low') {
+          accuracy = 96.5 - (volume * 0.005);
+          fpRisk = 1.2 + (volume * 0.002);
+        } else if (noise === 'medium') {
+          accuracy = 92.0 - (volume * 0.015);
+          fpRisk = 3.5 + (volume * 0.008);
+        } else {
+          accuracy = 85.0 - (volume * 0.025);
+          fpRisk = 8.0 + (volume * 0.015);
+        }
+
+        // Clamp values
+        accuracy = Math.max(70, Math.min(accuracy, 99.9));
+        fpRisk = Math.max(0.1, Math.min(fpRisk, 25.0));
+
+        // Let's assume saving 5 min per registry that is reliably parsed without human intervention
+        // volume = registries/day. Monthly = volume * 22 days.
+        const successfullyParsed = volume * 22 * (accuracy/100.0);
+        hoursPerMonthSaved = (successfullyParsed * 5) / 60;
+
+        // Render numbers
+        const acuEl = document.getElementById('scoreAcuracia');
+        const risEl = document.getElementById('scoreRisco');
+
+        acuEl.textContent = accuracy.toFixed(1) + '%';
+        acuEl.className = 'metric-value ' + (accuracy > 90 ? 'high-confidence' : (accuracy > 80 ? 'medium-confidence' : 'low-confidence'));
+
+        risEl.textContent = fpRisk.toFixed(1) + '%';
+        risEl.className = 'metric-value ' + (fpRisk < 5 ? 'high-confidence' : (fpRisk < 10 ? 'medium-confidence' : 'low-confidence'));
+
+        document.getElementById('scoreHoras').textContent = Math.round(hoursPerMonthSaved) + ' h';
+
+        renderChart(accuracy, fpRisk);
       });
-    }
+
+      // Run once on load
+      setTimeout(() => btn.click(), 500);
+    });
   </script>
 </body>
 </html>

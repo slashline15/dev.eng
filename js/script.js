@@ -519,7 +519,9 @@ function setupInteractiveMap() {
     return;
   }
 
-  const map = L.map('interactive-map').setView([-3.07, -60.02], 12);
+  const map = L.map('interactive-map', { 
+    scrollWheelZoom: false 
+  }).setView([-3.07, -60.02], 12);
 
   L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',

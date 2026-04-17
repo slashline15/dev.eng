@@ -121,112 +121,7 @@
     </div>
   </section>
 
-  <section id="about" class="about">
-    <div class="container">
-      <div class="section-header">
-        <h2>Sobre mim</h2>
-        <div class="section-line"></div>
-      </div>
-      <div class="about-content">
-        <div class="about-image fade-in appear slide-in-left" data-animation="slide-in-left">
-          <div class="about-image-container">
-            <img src="images/about.png" alt="Foto de Ação Técnica" loading="lazy">
-          </div>
-        </div>
-        <div class="about-text fade-in appear slide-in-right" data-animation="slide-in-right">
-          <h3>Quem sou eu</h3>
-          <p>Sou engenheiro civil formado desde 2021, com atuação em execução e gestão de obras no setor privado. Minha especialidade é projetos estruturais — dimensionamento em concreto armado e estruturas metálicas — e reforço estrutural de edificações com patologias ou necessidade de adequação de carga. Realizo laudos técnicos, projetos de fundação a cobertura e acompanhamento de execução em campo.</p>
-          <p>Utilizo ferramentas BIM e automação com Python como diferencial para otimizar entregas e reduzir retrabalho. Se você precisa de um profissional que entende tanto de projeto quanto de obra, entre em contato.</p>
-          <div class="about-stats">
-            <div class="stat-item"><i class="fas fa-briefcase"></i>
-              <div class="stat-text">
-                <h4>Experiência</h4>
-                <p>Execução e Gestão de Obras</p>
-              </div>
-            </div>
-
-            <div class="stat-item"><i class="fas fa-building"></i>
-              <div class="stat-text">
-                <h4>Especialidade</h4>
-                <p>Projetos e Reforço Estrutural</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="services" class="services-tags">
-    <div class="container">
-      <div class="section-header">
-        <h2>Serviços</h2>
-        <div class="section-line"></div>
-      </div>
-      <div class="tags-container">
-        <a href="portfolio.html?tag=concreto-armado" class="service-tag">Concreto armado</a>
-        <a href="portfolio.html?tag=estruturas-metalicas" class="service-tag">Estruturas metálicas</a>
-        <a href="portfolio.html?tag=reforco-estrutural" class="service-tag">Reforço estrutural</a>
-        <a href="portfolio.html?tag=laudos-tecnicos" class="service-tag">Laudos técnicos</a>
-        <a href="portfolio.html?tag=execucao-de-obras" class="service-tag">Execução de obras</a>
-        <a href="portfolio.html?tag=bim" class="service-tag">BIM / Revit</a>
-        <a href="portfolio.html?tag=compatibilizacao" class="service-tag">Compatibilização</a>
-        <a href="portfolio.html?tag=planejamento" class="service-tag">Planejamento de obras</a>
-        <span class="service-tag service-tag--secondary">Automação (Python)</span>
-      </div>
-    </div>
-  </section>
-
-  <section id="diferenciais" class="sales-section">
-    <div class="container">
-      <div class="section-header">
-        <h2>RDO digital para sua obra</h2>
-        <div class="section-line"></div>
-      </div>
-      <div class="sales-intro glass-card">
-        <p>Se você quer organizar a obra com mais controle, registrar a rotina com clareza e facilitar a comunicação com a equipe, o RDO é o caminho mais simples para profissionalizar esse processo.</p>
-      </div>
-      <div class="sales-grid">
-        <article class="sales-card glass-card">
-          <i class="fas fa-shield-alt"></i>
-          <h3>Mais controle</h3>
-          <p>Registre avanço, ocorrências e pendências em um fluxo claro, sem depender de planilhas soltas ou anotações perdidas.</p>
-        </article>
-        <article class="sales-card glass-card">
-          <i class="fas fa-comments"></i>
-          <h3>Comunicação direta</h3>
-          <p>Tenha uma visão mais organizada do que aconteceu no dia e compartilhe a informação com quem precisa decidir rápido.</p>
-        </article>
-        <article class="sales-card glass-card">
-          <i class="fas fa-diagram-project"></i>
-          <h3>Entrada rápida</h3>
-          <p>Acesse a apresentação para entender o fluxo ou entre no painel e veja como o sistema funciona na prática.</p>
-        </article>
-      </div>
-      <div class="sales-cta glass-card">
-        <div class="sales-cta-text">
-          <h3>Quer conhecer o RDO?</h3>
-          <p>Abra a apresentação do sistema ou entre direto no painel para ver como a rotina da obra pode ficar mais simples.</p>
-        </div>
-        <div class="sales-cta-actions">
-          <a href="https://rdo.engdaniel.org/apresentacao" target="_blank" rel="noopener" class="btn btn-primary btn-glass">Ver apresentação</a>
-          <a href="https://rdo.engdaniel.org/login" target="_blank" rel="noopener" class="btn btn-secondary">Entrar no painel</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="map-section" class="map-section">
-    <div class="container">
-      <div class="section-header">
-        <h2>Obras Realizadas</h2>
-        <div class="section-line"></div>
-      </div>
-      <div id="interactive-map" class="interactive-map"></div>
-    </div>
-  </section>
-
-  <section id="projects" class="projects-section">
+<section id="projects" class="projects-section">
     <div class="container">
       <div class="section-header">
         <h2>Projetos Recentes</h2>
@@ -309,13 +204,103 @@
       </div>
     </div>
 
+      <div class="carousel-nav">
+        <button id="carousel-prev" class="carousel-btn"><i class="fas fa-chevron-left"></i></button>
+        <button id="carousel-next" class="carousel-btn"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
+
     <div class="container">
       <a href="portfolio.html" class="view-all-btn">Ver Todos os Projetos</a>
     </div>
   </section>
 
+<section id="diferenciais" class="sales-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>RDO digital para sua obra</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="sales-intro glass-card">
+        <p>Se você quer organizar a obra com mais controle, registrar a rotina com clareza e facilitar a comunicação com a equipe, o RDO é o caminho mais simples para profissionalizar esse processo.</p>
+      </div>
+      <div class="sales-grid">
+        <article class="sales-card glass-card">
+          <i class="fas fa-shield-alt"></i>
+          <h3>Mais controle</h3>
+          <p>Registre avanço, ocorrências e pendências em um fluxo claro, sem depender de planilhas soltas ou anotações perdidas.</p>
+        </article>
+        <article class="sales-card glass-card">
+          <i class="fas fa-comments"></i>
+          <h3>Comunicação direta</h3>
+          <p>Tenha uma visão mais organizada do que aconteceu no dia e compartilhe a informação com quem precisa decidir rápido.</p>
+        </article>
+        <article class="sales-card glass-card">
+          <i class="fas fa-diagram-project"></i>
+          <h3>Entrada rápida</h3>
+          <p>Acesse a apresentação para entender o fluxo ou entre no painel e veja como o sistema funciona na prática.</p>
+        </article>
+      </div>
+      <div class="sales-cta glass-card">
+        <div class="sales-cta-text">
+          <h3>Quer conhecer o RDO?</h3>
+          <p>Abra a apresentação do sistema ou entre direto no painel para ver como a rotina da obra pode ficar mais simples.</p>
+        </div>
+        <div class="sales-cta-actions">
+          <a href="https://rdo.engdaniel.org/apresentacao" target="_blank" rel="noopener" class="btn btn-primary btn-glass">Ver apresentação</a>
+          <a href="https://rdo.engdaniel.org/login" target="_blank" rel="noopener" class="btn btn-secondary">Entrar no painel</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <section id="contact" class="contact">
+<section id="services" class="services-tags">
+    <div class="container">
+      <div class="section-header">
+        <h2>Serviços</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="tags-container">
+        <a href="portfolio.html?tag=concreto-armado" class="service-tag">Concreto armado</a>
+        <a href="portfolio.html?tag=estruturas-metalicas" class="service-tag">Estruturas metálicas</a>
+        <a href="portfolio.html?tag=reforco-estrutural" class="service-tag">Reforço estrutural</a>
+        <a href="portfolio.html?tag=laudos-tecnicos" class="service-tag">Laudos técnicos</a>
+        <a href="portfolio.html?tag=execucao-de-obras" class="service-tag">Execução de obras</a>
+        <a href="portfolio.html?tag=bim" class="service-tag">BIM / Revit</a>
+        <a href="portfolio.html?tag=compatibilizacao" class="service-tag">Compatibilização</a>
+        <a href="portfolio.html?tag=planejamento" class="service-tag">Planejamento de obras</a>
+        <a href="portfolio.html?tag=automacao" class="service-tag service-tag--secondary">Automação (Python)</a>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="about" class="about">
+    <div class="container">
+      <div class="section-header">
+        <h2>Sobre</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="about-content" style="display: block; text-align: center; max-width: 800px; margin: 0 auto;">
+        <h3 style="margin-bottom: 1rem; color: #f5f5f5;">Engenharia de precisão com suporte de inovação</h3>
+        <p style="color: #b0b0b0; line-height: 1.8; margin-bottom: 1rem;">Atuação focada em projetos estruturais de alta performance, reforço estrutural, compatibilização e liderança em projetos técnicos de engenharia em Manaus e todo o Brasil.</p>
+        <p style="color: #b0b0b0; line-height: 1.8;"><strong>Especialista em Estruturas Metálicas e Concreto Armado.</strong> Entusiasta da inteligência artificial aplicada ao canteiro de obras e adoção da fluidez BIM (Revit/Navisworks).</p>
+      </div>
+    </div>
+  </section>
+
+
+<section id="map-section" class="map-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Obras Realizadas</h2>
+        <div class="section-line"></div>
+      </div>
+      <div id="interactive-map" class="interactive-map"></div>
+    </div>
+  </section>
+
+<section id="contact" class="contact">
     <div class="dynamic-background"></div>
     <div class="container">
       <div class="section-header">
@@ -358,29 +343,60 @@
     </div>
   </section>
 
+
   <footer>
     <div class="container">
-      <div class="footer-content">
+      <div class="footer-content" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
         <div class="footer-logo">
           <h3>Daniel Alves</h3>
-          <p>Engenheiro Civil</p>
+          <p style="color: #ff7a45; margin-bottom: 1rem;">Engenheiro Civil</p>
+          <div class="social-links" style="margin-top: 1rem; justify-content: flex-start;">
+            <a href="https://wa.me/5592985528345" target="_blank" rel="noopener" class="social-link" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com/daniel.engdev/" target="_blank" rel="noopener" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://github.com/slashline15" target="_blank" rel="noopener" class="social-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          </div>
         </div>
         <div class="footer-links">
-          <h4>Links Rápidos</h4>
-          <ul>
-            <li><a href="index.html">Início</a></li>
-            <li><a href="#about">Sobre</a></li>
-            <li><a href="portfolio.html">Projetos</a></li>
-            <li><a href="#contact">Contato</a></li>
-            <li><a href="calculadora.html">Calculadora</a></li>
+          <h4>Navegação Rápida</h4>
+          <ul style="list-style: none; padding: 0;">
+            <li style="margin-bottom: 0.5rem;"><a href="index.html" style="color: #b0b0b0; text-decoration: none;">Início</a></li>
+            <li style="margin-bottom: 0.5rem;"><a href="#projects" style="color: #b0b0b0; text-decoration: none;">Projetos Recentes</a></li>
+            <li style="margin-bottom: 0.5rem;"><a href="calculadora.html" style="color: #b0b0b0; text-decoration: none;">Calculadora IA</a></li>
+            <li style="margin-bottom: 0.5rem;"><a href="#contact" style="color: #b0b0b0; text-decoration: none;">Contato Direto</a></li>
           </ul>
+        </div>
+        <div class="footer-newsletter">
+          <h4>Fique por dentro</h4>
+          <p style="color: #b0b0b0; font-size: 0.9rem; margin-bottom: 1rem;">Se cadastre para receber atualizações, estudos de caso e insights de automação na construção.</p>
+          <form class="newsletter-form" style="display: flex; gap: 0.5rem;" onsubmit="event.preventDefault(); this.innerHTML = '<p style=\'color: #4CAF50;\'>Obrigado por se inscrever!</p>';">
+            <input type="email" placeholder="Seu melhor e-mail" required style="flex: 1; padding: 0.75rem; border-radius: 5px; border: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.3); color: white;">
+            <button type="submit" class="btn btn-primary" style="padding: 0.75rem 1rem;">Assinar</button>
+          </form>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>© 2026 Daniel Alves. Todos os direitos reservados.</p>
+        <p>&copy; 2026 Daniel Alves. Todos os direitos reservados.</p>
       </div>
     </div>
   </footer>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
 
   <div class="project-modal-overlay" id="projectModal">
     <div class="project-modal">
