@@ -194,10 +194,10 @@
 
     /* Content Typography inside project-detail */
     .article-content {
-        max-width: 800px; 
-        margin: 0 auto; 
-        font-size: 1.15rem; 
-        line-height: 1.8; 
+        /* max-width: 800px; */
+        margin: 0;
+        font-size: 1.15rem;
+        line-height: 1.8;
     }
     
     .article-content p {
@@ -236,12 +236,22 @@
     }
 
     .article-image {
-        width: 100%;
-        border-radius: 12px;
-        margin: 2rem 0;
+        position: relative;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
         box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
         border: 1px solid rgba(255, 255, 255, 0.1);
+        margin-right: -50vw;
     }
+
+img.article-image {
+    width: 100vw;
+    max-width: 1100vw;
+    position: relative;
+    /* left: 50%; */
+    /* transform: translateX(-50%); */
+}
 
     .status-badge {
         display: inline-block;

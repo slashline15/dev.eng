@@ -18,36 +18,59 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(ellipse at center, rgba(255,107,53,0.08) 0%, transparent 70%);
+      background: radial-gradient(ellipse at center, rgba(255, 107, 53, 0.08) 0%, transparent 70%);
       z-index: 0;
     }
+
     .hero-canvas-replacement::before {
       content: '';
       position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
       background:
-        radial-gradient(2px 2px at 20% 30%, rgba(255,107,53,0.3), transparent),
-        radial-gradient(2px 2px at 40% 70%, rgba(255,107,53,0.2), transparent),
-        radial-gradient(2px 2px at 60% 20%, rgba(255,179,128,0.2), transparent),
-        radial-gradient(2px 2px at 80% 60%, rgba(255,107,53,0.15), transparent);
+        radial-gradient(2px 2px at 20% 30%, rgba(255, 107, 53, 0.3), transparent),
+        radial-gradient(2px 2px at 40% 70%, rgba(255, 107, 53, 0.2), transparent),
+        radial-gradient(2px 2px at 60% 20%, rgba(255, 179, 128, 0.2), transparent),
+        radial-gradient(2px 2px at 80% 60%, rgba(255, 107, 53, 0.15), transparent);
       animation: subtleShift 20s ease-in-out infinite alternate;
     }
+
     .hero-canvas-replacement::after {
       content: '';
       position: absolute;
-      top: 50%; left: 50%;
-      width: 300px; height: 300px;
+      top: 50%;
+      left: 50%;
+      width: 300px;
+      height: 300px;
       transform: translate(-50%, -50%);
-      background: radial-gradient(circle, rgba(255,107,53,0.06) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(255, 107, 53, 0.06) 0%, transparent 70%);
       animation: heroPulse 8s ease-in-out infinite alternate;
     }
+
     @keyframes subtleShift {
-      0% { opacity: 0.6; transform: scale(1); }
-      100% { opacity: 1; transform: scale(1.05); }
+      0% {
+        opacity: 0.6;
+        transform: scale(1);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1.05);
+      }
     }
+
     @keyframes heroPulse {
-      0% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
-      100% { transform: translate(-50%, -50%) scale(1.5); opacity: 0.8; }
+      0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.5;
+      }
+
+      100% {
+        transform: translate(-50%, -50%) scale(1.5);
+        opacity: 0.8;
+      }
     }
   </style>
 </head>
@@ -69,7 +92,8 @@
   <header>
     <div class="container">
       <div class="logo">
-        <h1><a href="index.html" style="color:inherit;text-decoration:none" aria-label="Daniel Alves - Engenheiro Civil">DA</a></h1>
+        <h1><a href="index.html" style="color:inherit;text-decoration:none"
+            aria-label="Daniel Alves - Engenheiro Civil">DA</a></h1>
       </div>
       <nav>
         <ul class="nav-links">
@@ -99,7 +123,8 @@
   <section id="home" class="hero">
     <div class="hero-canvas-replacement"></div>
     <div class="particle-background"></div>
-    <div class="dynamic-background"></div>
+    <div class="dynamic-background-content"> </div>
+    </div>
     <div class="container">
       <div class="hero-content glass-card">
         <h1 class="hero-title">Daniel Alves</h1>
@@ -107,9 +132,12 @@
           <span id="typing-text"></span>
           <span class="cursor">|</span>
         </h2>
-        <p class="hero-description">Engenheiro civil com experiência em execução de obras e projetos estruturais. Atuo em dimensionamento, reforço estrutural e laudos técnicos para edificações residenciais e comerciais, com foco em segurança, clareza e entregas sem retrabalho.</p>
+        <p class="hero-description">Engenheiro civil com experiência em execução de obras e projetos estruturais. Atuo
+          em dimensionamento, reforço estrutural e laudos técnicos para edificações residenciais e comerciais, com foco
+          em segurança, clareza e entregas sem retrabalho.</p>
         <div class="hero-cta">
-          <a href="https://wa.me/5592985528345?text=Ol%C3%A1%20Daniel!%20Vi%20seu%20site%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="btn btn-primary btn-glass">Falar no WhatsApp</a>
+          <a href="https://wa.me/5592985528345?text=Ol%C3%A1%20Daniel!%20Vi%20seu%20site%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento."
+            target="_blank" rel="noopener" class="btn btn-primary btn-glass">Falar no WhatsApp</a>
           <a href="portfolio.html" class="btn btn-secondary">Ver projetos</a>
         </div>
       </div>
@@ -120,8 +148,7 @@
       </div>
     </div>
   </section>
-
-<section id="projects" class="projects-section">
+  <section id="projects" class="projects-section">
     <div class="container">
       <div class="section-header">
         <h2>Projetos Recentes</h2>
@@ -129,80 +156,120 @@
       </div>
     </div>
 
-    <!-- Carrossel full-width -->
     <div class="projects-carousel">
       <div class="projects-wrapper">
         <article class="project-card" data-category="bim" data-project-id="clash-detective-metalica">
-          <div class="project-image"><img src="images/projects/clash-detective-metalica.png" alt="Clash Detective" loading="lazy"></div>
+          <div class="project-image">
+            <img src="images/projects/clash-detective-metalica.png" alt="Clash Detective" loading="lazy">
+          </div>
           <div class="project-overlay"></div>
           <div class="project-content">
             <span class="project-category">Coordenação BIM</span>
             <h3 class="project-title">Detecção de Interferências</h3>
-            <div class="project-tags"><span class="tag">Navisworks</span><span class="tag">Revit</span></div>
+            <div class="project-tags">
+              <span class="tag">Navisworks</span>
+              <span class="tag">Revit</span>
+            </div>
+            <a href="projetos/clash-detective-metalica.html" class="card-cta">Ver estudo de caso</a>
           </div>
         </article>
 
         <article class="project-card" data-category="engenharia" data-project-id="nippon-seiki-ampliacao">
-          <div class="project-image"><img src="images/projects/nippon-seiki-main.jpg" alt="Nippon Seiki" loading="lazy"></div>
+          <div class="project-image">
+            <img src="images/projects/nippon-seiki-main.jpg" alt="Nippon Seiki" loading="lazy">
+          </div>
           <div class="project-overlay"></div>
           <div class="project-content">
             <span class="project-category">Planejamento de Obras</span>
             <h3 class="project-title">Ampliação Nippon Seiki</h3>
-            <div class="project-tags"><span class="tag">Revit</span><span class="tag">MS Project</span></div>
+            <div class="project-tags">
+              <span class="tag">Revit</span>
+              <span class="tag">MS Project</span>
+            </div>
+            <a href="projetos/nippon-seiki-ampliacao.html" class="card-cta">Ver estudo de caso</a>
           </div>
         </article>
 
         <article class="project-card" data-category="engenharia" data-project-id="reforco-estrutura-guaranas">
-          <div class="project-image"><img src="images/projects/reforco-guaranas-main.png" alt="Reforço Estrutural" loading="lazy"></div>
+          <div class="project-image">
+            <img src="images/projects/reforco-guaranas-main.png" alt="Reforço Estrutural" loading="lazy">
+          </div>
           <div class="project-overlay"></div>
           <div class="project-content">
             <span class="project-category">Engenharia Estrutural</span>
             <h3 class="project-title">Reforço Estrutural – Guaranás</h3>
-            <div class="project-tags"><span class="tag">Eberick</span><span class="tag">AutoCAD</span></div>
+            <div class="project-tags">
+              <span class="tag">Eberick</span>
+              <span class="tag">AutoCAD</span>
+            </div>
+            <a href="projetos/reforco-estrutura-guaranas.html" class="card-cta">Ver estudo de caso</a>
           </div>
         </article>
 
         <article class="project-card" data-category="execucao" data-project-id="estrutura-metalica">
-          <div class="project-image"><img src="images/projects/valeu-a-pena.png" alt="Estrutura metálica" loading="lazy"></div>
+          <div class="project-image">
+            <img src="images/projects/valeu-a-pena.png" alt="Estrutura metálica" loading="lazy">
+          </div>
           <div class="project-overlay"></div>
           <div class="project-content">
             <span class="project-category">Execução</span>
             <h3 class="project-title">Içamento de Estrutura Metálica</h3>
-            <div class="project-tags"><span class="tag">Execução</span><span class="tag">Planejamento</span></div>
+            <div class="project-tags">
+              <span class="tag">Execução</span>
+              <span class="tag">Planejamento</span>
+            </div>
+            <a href="projetos/estrutura-metalica.html" class="card-cta">Ver estudo de caso</a>
           </div>
         </article>
 
         <article class="project-card" data-category="bim" data-project-id="projeto-bim">
-          <div class="project-image"><img src="images/projects/projeto_bim.png" alt="Modelagem BIM" loading="lazy"></div>
+          <div class="project-image">
+            <img src="images/projects/projeto_bim.png" alt="Modelagem BIM" loading="lazy">
+          </div>
           <div class="project-overlay"></div>
           <div class="project-content">
             <span class="project-category">BIM / Modelagem</span>
             <h3 class="project-title">Modelagem BIM</h3>
-            <div class="project-tags"><span class="tag">Revit</span><span class="tag">AutoCAD</span></div>
+            <div class="project-tags">
+              <span class="tag">Revit</span>
+              <span class="tag">AutoCAD</span>
+            </div>
+            <a href="projetos/projeto-bim.html" class="card-cta">Ver estudo de caso</a>
           </div>
         </article>
 
         <article class="project-card" data-category="engenharia" data-project-id="layout-canteiro">
-          <div class="project-image"><img src="images/projects/layout_canteiro.png" alt="Layout de canteiro" loading="lazy"></div>
+          <div class="project-image">
+            <img src="images/projects/layout_canteiro.png" alt="Layout de canteiro" loading="lazy">
+          </div>
           <div class="project-overlay"></div>
           <div class="project-content">
             <span class="project-category">Planejamento</span>
             <h3 class="project-title">Layout de Canteiro de Obras</h3>
-            <div class="project-tags"><span class="tag">AutoCAD</span><span class="tag">MS Project</span></div>
+            <div class="project-tags">
+              <span class="tag">AutoCAD</span>
+              <span class="tag">MS Project</span>
+            </div>
+            <a href="projetos/layout-canteiro.html" class="card-cta">Ver estudo de caso</a>
           </div>
         </article>
 
         <article class="project-card" data-category="engenharia" data-project-id="vila">
-          <div class="project-image"><img src="images/projects/vila.jpg" alt="Projeto Residencial" loading="lazy"></div>
+          <div class="project-image">
+            <img src="images/projects/vila.jpg" alt="Projeto Residencial" loading="lazy">
+          </div>
           <div class="project-overlay"></div>
           <div class="project-content">
             <span class="project-category">Engenharia Estrutural</span>
             <h3 class="project-title">Projeto Residencial Vila</h3>
-            <div class="project-tags"><span class="tag">Eberick</span><span class="tag">AutoCAD</span></div>
+            <div class="project-tags">
+              <span class="tag">Eberick</span>
+              <span class="tag">AutoCAD</span>
+            </div>
+            <a href="projetos/vila.html" class="card-cta">Ver estudo de caso</a>
           </div>
         </article>
       </div>
-    </div>
 
       <div class="carousel-nav">
         <button id="carousel-prev" class="carousel-btn"><i class="fas fa-chevron-left"></i></button>
@@ -214,47 +281,53 @@
       <a href="portfolio.html" class="view-all-btn">Ver Todos os Projetos</a>
     </div>
   </section>
-
-<section id="diferenciais" class="sales-section">
+  <section id="diferenciais" class="sales-section">
     <div class="container">
       <div class="section-header">
         <h2>RDO digital para sua obra</h2>
         <div class="section-line"></div>
       </div>
       <div class="sales-intro glass-card">
-        <p>Se você quer organizar a obra com mais controle, registrar a rotina com clareza e facilitar a comunicação com a equipe, o RDO é o caminho mais simples para profissionalizar esse processo.</p>
+        <p>Se você quer organizar a obra com mais controle, registrar a rotina com clareza e facilitar a comunicação com
+          a equipe, o RDO é o caminho mais simples para profissionalizar esse processo.</p>
       </div>
       <div class="sales-grid">
         <article class="sales-card glass-card">
           <i class="fas fa-shield-alt"></i>
           <h3>Mais controle</h3>
-          <p>Registre avanço, ocorrências e pendências em um fluxo claro, sem depender de planilhas soltas ou anotações perdidas.</p>
+          <p>Registre avanço, ocorrências e pendências em um fluxo claro, sem depender de planilhas soltas ou anotações
+            perdidas.</p>
         </article>
         <article class="sales-card glass-card">
           <i class="fas fa-comments"></i>
           <h3>Comunicação direta</h3>
-          <p>Tenha uma visão mais organizada do que aconteceu no dia e compartilhe a informação com quem precisa decidir rápido.</p>
+          <p>Tenha uma visão mais organizada do que aconteceu no dia e compartilhe a informação com quem precisa decidir
+            rápido.</p>
         </article>
         <article class="sales-card glass-card">
           <i class="fas fa-diagram-project"></i>
           <h3>Entrada rápida</h3>
-          <p>Acesse a apresentação para entender o fluxo ou entre no painel e veja como o sistema funciona na prática.</p>
+          <p>Acesse a apresentação para entender o fluxo ou entre no painel e veja como o sistema funciona na prática.
+          </p>
         </article>
       </div>
       <div class="sales-cta glass-card">
         <div class="sales-cta-text">
           <h3>Quer conhecer o RDO?</h3>
-          <p>Abra a apresentação do sistema ou entre direto no painel para ver como a rotina da obra pode ficar mais simples.</p>
+          <p>Abra a apresentação do sistema ou entre direto no painel para ver como a rotina da obra pode ficar mais
+            simples.</p>
         </div>
         <div class="sales-cta-actions">
-          <a href="https://rdo.engdaniel.org/apresentacao" target="_blank" rel="noopener" class="btn btn-primary btn-glass">Ver apresentação</a>
-          <a href="https://rdo.engdaniel.org/login" target="_blank" rel="noopener" class="btn btn-secondary">Entrar no painel</a>
+          <a href="https://rdo.engdaniel.org/apresentacao" target="_blank" rel="noopener"
+            class="btn btn-primary btn-glass">Ver apresentação</a>
+          <a href="https://rdo.engdaniel.org/login" target="_blank" rel="noopener" class="btn btn-secondary">Entrar no
+            painel</a>
         </div>
       </div>
     </div>
   </section>
 
-<section id="services" class="services-tags">
+  <section id="services" class="services-tags">
     <div class="container">
       <div class="section-header">
         <h2>Serviços</h2>
@@ -283,14 +356,18 @@
       </div>
       <div class="about-content" style="display: block; text-align: center; max-width: 800px; margin: 0 auto;">
         <h3 style="margin-bottom: 1rem; color: #f5f5f5;">Engenharia de precisão com suporte de inovação</h3>
-        <p style="color: #b0b0b0; line-height: 1.8; margin-bottom: 1rem;">Atuação focada em projetos estruturais de alta performance, reforço estrutural, compatibilização e liderança em projetos técnicos de engenharia em Manaus e todo o Brasil.</p>
-        <p style="color: #b0b0b0; line-height: 1.8;"><strong>Especialista em Estruturas Metálicas e Concreto Armado.</strong> Entusiasta da inteligência artificial aplicada ao canteiro de obras e adoção da fluidez BIM (Revit/Navisworks).</p>
+        <p style="color: #b0b0b0; line-height: 1.8; margin-bottom: 1rem;">Atuação focada em projetos estruturais de alta
+          performance, reforço estrutural, compatibilização e liderança em projetos técnicos de engenharia em Manaus e
+          todo o Brasil.</p>
+        <p style="color: #b0b0b0; line-height: 1.8;"><strong>Especialista em Estruturas Metálicas e Concreto
+            Armado.</strong> Entusiasta da inteligência artificial aplicada ao canteiro de obras e adoção da fluidez BIM
+          (Revit/Navisworks).</p>
       </div>
     </div>
   </section>
 
 
-<section id="map-section" class="map-section">
+  <section id="map-section" class="map-section">
     <div class="container">
       <div class="section-header">
         <h2>Obras Realizadas</h2>
@@ -300,7 +377,7 @@
     </div>
   </section>
 
-<section id="contact" class="contact">
+  <section id="contact" class="contact">
     <div class="dynamic-background"></div>
     <div class="container">
       <div class="section-header">
@@ -310,7 +387,8 @@
       <div class="contact-content">
         <div class="contact-info fade-in glass-card appear">
           <h3>Vamos conversar?</h3>
-          <p class="contact-intro">Precisa de um projeto estrutural, laudo técnico ou consultoria? Entre em contato e vamos encontrar a melhor solução.</p>
+          <p class="contact-intro">Precisa de um projeto estrutural, laudo técnico ou consultoria? Entre em contato e
+            vamos encontrar a melhor solução.</p>
           <div class="contact-item"><i class="fab fa-whatsapp"></i>
             <a href="https://wa.me/5592985528345" target="_blank" rel="noopener">(92) 98552-8345</a>
           </div>
@@ -321,16 +399,21 @@
             <p>Manaus, AM</p>
           </div>
           <div class="social-links">
-            <a href="https://wa.me/5592985528345" target="_blank" rel="noopener" class="social-link" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-            <a href="https://www.instagram.com/daniel.engdev/" target="_blank" rel="noopener" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.linkedin.com/in/daniel-alves-pereira-8579b832b/" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/slashline15" target="_blank" rel="noopener" class="social-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://wa.me/5592985528345" target="_blank" rel="noopener" class="social-link"
+              aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com/daniel.engdev/" target="_blank" rel="noopener" class="social-link"
+              aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/daniel-alves-pereira-8579b832b/" target="_blank" rel="noopener"
+              class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/slashline15" target="_blank" rel="noopener" class="social-link"
+              aria-label="GitHub"><i class="fab fa-github"></i></a>
           </div>
         </div>
         <div class="contact-form fade-in appear">
           <h3>Envie uma Mensagem</h3>
           <form id="contactForm" class="glass-card">
-            <div class="form-group" style="position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden" aria-hidden="true"><input type="text" name="website" tabindex="-1" autocomplete="off"></div>
+            <div class="form-group" style="position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden"
+              aria-hidden="true"><input type="text" name="website" tabindex="-1" autocomplete="off"></div>
             <div class="form-group"><input type="text" id="name" name="name" placeholder="Seu Nome" required></div>
             <div class="form-group"><input type="email" id="email" name="email" placeholder="Seu E-mail" required></div>
             <div class="form-group"><input type="text" id="subject" name="subject" placeholder="Assunto" required></div>
@@ -346,30 +429,41 @@
 
   <footer>
     <div class="container">
-      <div class="footer-content" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+      <div class="footer-content"
+        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
         <div class="footer-logo">
           <h3>Daniel Alves</h3>
           <p style="color: #ff7a45; margin-bottom: 1rem;">Engenheiro Civil</p>
           <div class="social-links" style="margin-top: 1rem; justify-content: flex-start;">
-            <a href="https://wa.me/5592985528345" target="_blank" rel="noopener" class="social-link" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-            <a href="https://www.instagram.com/daniel.engdev/" target="_blank" rel="noopener" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://github.com/slashline15" target="_blank" rel="noopener" class="social-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://wa.me/5592985528345" target="_blank" rel="noopener" class="social-link"
+              aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com/daniel.engdev/" target="_blank" rel="noopener" class="social-link"
+              aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://github.com/slashline15" target="_blank" rel="noopener" class="social-link"
+              aria-label="GitHub"><i class="fab fa-github"></i></a>
           </div>
         </div>
         <div class="footer-links">
           <h4>Navegação Rápida</h4>
           <ul style="list-style: none; padding: 0;">
-            <li style="margin-bottom: 0.5rem;"><a href="index.html" style="color: #b0b0b0; text-decoration: none;">Início</a></li>
-            <li style="margin-bottom: 0.5rem;"><a href="#projects" style="color: #b0b0b0; text-decoration: none;">Projetos Recentes</a></li>
-            <li style="margin-bottom: 0.5rem;"><a href="calculadora.html" style="color: #b0b0b0; text-decoration: none;">Calculadora IA</a></li>
-            <li style="margin-bottom: 0.5rem;"><a href="#contact" style="color: #b0b0b0; text-decoration: none;">Contato Direto</a></li>
+            <li style="margin-bottom: 0.5rem;"><a href="index.html"
+                style="color: #b0b0b0; text-decoration: none;">Início</a></li>
+            <li style="margin-bottom: 0.5rem;"><a href="#projects"
+                style="color: #b0b0b0; text-decoration: none;">Projetos Recentes</a></li>
+            <li style="margin-bottom: 0.5rem;"><a href="calculadora.html"
+                style="color: #b0b0b0; text-decoration: none;">Calculadora IA</a></li>
+            <li style="margin-bottom: 0.5rem;"><a href="#contact" style="color: #b0b0b0; text-decoration: none;">Contato
+                Direto</a></li>
           </ul>
         </div>
         <div class="footer-newsletter">
           <h4>Fique por dentro</h4>
-          <p style="color: #b0b0b0; font-size: 0.9rem; margin-bottom: 1rem;">Se cadastre para receber atualizações, estudos de caso e insights de automação na construção.</p>
-          <form class="newsletter-form" style="display: flex; gap: 0.5rem;" onsubmit="event.preventDefault(); this.innerHTML = '<p style=\'color: #4CAF50;\'>Obrigado por se inscrever!</p>';">
-            <input type="email" placeholder="Seu melhor e-mail" required style="flex: 1; padding: 0.75rem; border-radius: 5px; border: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.3); color: white;">
+          <p style="color: #b0b0b0; font-size: 0.9rem; margin-bottom: 1rem;">Se cadastre para receber atualizações,
+            estudos de caso e insights de automação na construção.</p>
+          <form class="newsletter-form" style="display: flex; gap: 0.5rem;"
+            onsubmit="event.preventDefault(); this.innerHTML = '<p style=\'color: #4CAF50;\'>Obrigado por se inscrever!</p>';">
+            <input type="email" placeholder="Seu melhor e-mail" required
+              style="flex: 1; padding: 0.75rem; border-radius: 5px; border: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.3); color: white;">
             <button type="submit" class="btn btn-primary" style="padding: 0.75rem 1rem;">Assinar</button>
           </form>
         </div>
@@ -383,20 +477,20 @@
 
 
 
-  
-
-  
-
-  
-
-  
-
-  
 
 
-  
 
-  
+
+
+
+
+
+
+
+
+
+
+
 
   <div class="project-modal-overlay" id="projectModal">
     <div class="project-modal">
@@ -438,7 +532,8 @@
 
 
   <!-- WhatsApp FAB -->
-  <a href="https://wa.me/5592985528345?text=Ol%C3%A1%20Daniel!%20Vi%20seu%20site%20e%20gostaria%20de%20conversar%20sobre%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="whatsapp-fab" aria-label="Contato via WhatsApp">
+  <a href="https://wa.me/5592985528345?text=Ol%C3%A1%20Daniel!%20Vi%20seu%20site%20e%20gostaria%20de%20conversar%20sobre%20um%20or%C3%A7amento."
+    target="_blank" rel="noopener" class="whatsapp-fab" aria-label="Contato via WhatsApp">
     <i class="fab fa-whatsapp"></i>
   </a>
 
@@ -450,13 +545,13 @@
   <script src="js/modules/project-modal.js"></script>
   <!-- Lazy load: Leaflet carregado sob demanda -->
   <script>
-    (function() {
+    (function () {
       var leafletLoaded = false;
 
       function loadScript(src, cb) {
         var s = document.createElement('script');
         s.src = src;
-        s.onload = cb || function(){};
+        s.onload = cb || function () { };
         document.body.appendChild(s);
       }
 
@@ -467,13 +562,13 @@
         document.head.appendChild(l);
       }
 
-      var observer = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
           if (!entry.isIntersecting) return;
           if (entry.target.id === 'map-section' && !leafletLoaded) {
             leafletLoaded = true;
             loadCSS('https://unpkg.com/leaflet@1.7.1/dist/leaflet.css');
-            loadScript('https://unpkg.com/leaflet@1.7.1/dist/leaflet.js', function() {
+            loadScript('https://unpkg.com/leaflet@1.7.1/dist/leaflet.js', function () {
               if (typeof setupInteractiveMap === 'function') setupInteractiveMap();
             });
           }
