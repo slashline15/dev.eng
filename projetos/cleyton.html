@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CLEYTON // SYS.MONITOR</title>
+<style>
+@font-face {
+  font-family: 'Terminus';
+  src: local('Terminus'), local('Fixedsys'), local('Monaco'), monospace;
+}
+
+* {
+  margin: 0; padding: 0; box-sizing: border-box;
+  image-rendering: pixelated;
+}
+
+:root {
+  --bg:        #0a0b0f;
+  --bg2:       #11131a;
+  --bg3:       #1a1d2a;
+  --fg:        #e0e2e8;
+  --fg2:       #9094a0;
+  --accent:    #00ff41;
+  --accent2:   #00cc33;
+  --warn:      #ff9900;
+  --crit:      #ff0040;
+  --info:      #00ccff;
+  --purple:    #b366ff;
+  --border:    #222;
+  --grid:      rgba(0,255,65,0.04);
+}
+
+@keyframes scanlines {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 4px; }
+}
+
+@keyframes pulse-glow {
+  0%,100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-150%); }
+}
+
+@keyframes blink-cursor {
+  0%,100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'Terminus', 'Courier New', monospace;
+  font-size: 13px;
+  line-height: 1.5;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* TELA MATRIX ATRÁS */
+#matrix-canvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  opacity: 0.18;
+  pointer-events: none;
+}
+
+/* SCANLINES CRT */
+.crt::before {
+  content: "";
+  position: fixed; top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: repeating-linear-gradient(
+    0deg, transparent, transparent 2px, rgba(0,0,0,0.15) 2px, rgba(0,0,0,0.15) 4px
+  );
+  z-index: 9999;
+  pointer-events: none;
+  animation: scanlines 0.5s linear infinite;
+}
+
+/* BORDA GLITCH */
+@keyframes glitch-border {
+  0%,100% { border-color: var(--accent); }
+  20% { border-color: var(--crit); }
+  40% { border-color: var(--info); }
+  60% { border-color: var(--warn); }
+  80% { border-color: var(--purple); }
+}
+
+/* MAIN CONTAINER */
+#app {
+  position: relative;
+  z-index: 1;
+  max-width: 100%;
+  padding: 8px;
+}
+
+/* NÃO ABUZE */
+.raiden {
+  border: 1px solid var(--accent);
+  background: var(--bg2);
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+.raiden:hover {
+  border-color: var(--info);
+}
+.raiden::before {
+  content: "::";
+  position: absolute; top: 2px; left: 4px;
+  color: var(--accent2); font-size: 10px;
+}
+
+/* HEADER */
+.sys-header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 8px;
+  padding: 8px 12px;
+  margin-bottom: 8px;
+  background: linear-gradient(90deg, var(--bg2), var(--bg3));
+  border: 1px solid var(--accent);
+}
+.sys-header .sigil {
+  width: 40px; height: 40px;
+  border: 2px solid var(--accent);
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  animation: pulse-glow 2s ease infinite;
+}
+.sys-header .title-block h1 {
+  font-size: 16px;
+  color: var(--accent);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.sys-header .title-block .sub {
+  font-size: 11px;
+  color: var(--fg2);
+}
+.sys-header .uptime {
+  text-align: right;
+  color: var(--fg2);
+  font-size: 11px;
+}
+.sys-header .uptime .big {
+  color: var(--accent);
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* MARQUEE DE AVISO */
+.warn-marquee {
+  overflow: hidden;
+  white-space: nowrap;
+  background: rgba(255,0,64,0.08);
+  border: 1px solid var(--crit);
+  padding: 4px 8px;
+  margin-bottom: 8px;
+  font-size: 12px;
+  color: var(--crit);
+}
+.warn-marquee span {
+  display: inline-block;
+  animation: marquee 15s linear infinite;
+}
+
+/* GRID DO DASHBOARD */
+.grid-death {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 8px;
+}
+
+@media (min-width: 1024px) {
+  .grid-death {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+/* PAINEL GENÉRICO */
+.panel {
+  padding: 12px;
+  min-height: 180px;
+}
+.panel-title {
+  font-size: 12px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.panel-title .live {
+  width: 6px; height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  animation: blink-cursor 1s step-end infinite;
+}
+
+/* BARRA DE PROGRESSO BLOOD */
+.blood-bar {
+  height: 18px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  position: relative;
+  margin: 4px 0;
+}
+.blood-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  transition: width 0.5s ease;
+  position: relative;
+}
+.blood-bar-fill::after {
+  content: "";
+  position: absolute; right: 0; top: 0; bottom: 0;
+  width: 2px;
+  background: var(--fg);
+  animation: blink-cursor 0.8s step-end infinite;
+}
+.blood-bar-text {
+  position: absolute; top: 0; left: 4px;
+  font-size: 10px; line-height: 18px;
+  color: var(--fg);
+  text-shadow: 0 0 4px var(--bg);
+}
+
+/* LISTA DE PROCESSOS */
+.proc-list {
+  list-style: none;
+  font-size: 11px;
+}
+.proc-list li {
+  display: grid;
+  grid-template-columns: 30px 1fr 50px 50px;
+  gap: 6px;
+  padding: 2px 0;
+  border-bottom: 1px dotted var(--border);
+}
+.proc-list .pid { color: var(--fg2); }
+.proc-list .name { color: var(--info); }
+.proc-list .cpu { color: var(--warn); text-align: right; }
+.proc-list .mem { color: var(--purple); text-align: right; }
+
+/* TERMINAL SIMPLES */
+.fake-term {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 8px;
+  font-size: 11px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+.fake-term .line {
+  margin: 1px 0;
+}
+.fake-term .prompt {
+  color: var(--accent);
+}
+.fake-term .cmd { color: var(--fg); }
+.fake-term .out { color: var(--fg2); }
+.fake-term .err { color: var(--crit); }
+
+/* TELA DE OBJETOS / LOTES */
+.lote-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+  gap: 4px;
+  margin-top: 6px;
+}
+.mini-tile {
+  aspect-ratio: 1;
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 10px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.mini-tile:hover {
+  border-color: var(--accent);
+  background: rgba(0,255,65,0.05);
+}
+.mini-tile .lot-id {
+  font-size: 9px;
+  color: var(--fg2);
+}
+.mini-tile .lot-stat {
+  font-size: 14px;
+  font-weight: bold;
+}
+.mini-tile.active { border-color: var(--accent); background: rgba(0,255,65,0.1); }
+.mini-tile.late { border-color: var(--warn); background: rgba(255,153,0,0.1); }
+.mini-tile.crit { border-color: var(--crit); background: rgba(255,0,64,0.1); }
+
+/* FOOTER */
+.sys-footer {
+  margin-top: 8px;
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--fg2);
+}
+
+/* SCROLLBAR HORROR */
+::-webkit-scrollbar { width: 6px; background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--accent2); border: 1px solid var(--bg); }
+
+/* RESPONSIVO MOBILE HORROR */
+@media (max-width: 480px) {
+  body { font-size: 12px; }
+  .sys-header { grid-template-columns: 1fr; text-align: center; }
+  .sys-header .uptime { text-align: center; }
+  .grid-death { grid-template-columns: 1fr; }
+  .proc-list li { grid-template-columns: 25px 1fr 35px 35px; }
+}
+</style>
+</head>
+<body class="crt">
+<canvas id="matrix-canvas"></canvas>
+
+<div id="app">
+
+<!-- HEADER -->
+<div class="sys-header raiden">
+  <div class="sigil">◉</div>
+  <div class="title-block">
+    <h1>CLEYTON_SYS // OBRA_MONITOR_v2.4</h1>
+    <div class="sub">RDO_CONVERGED /// TELEGRAM_WEBAPP /// LOCAL_FIRST</div>
+  </div>
+  <div class="uptime">
+    <div>UPTIME</div>
+    <div class="big" id="uptime">00:00:00</div>
+    <div id="date">----/--/--</div>
+  </div>
+</div>
+
+<!-- MARQUEE -->
+<div class="warn-marquee raiden">
+  <span id="marquee-txt">
+    ☠ ALERTA: LOTE-7 ATRASADO 3 DIAS | EFETIVO MENOR QUE PREVISTO | CLIMA: CHUVA PREVISTA 14h-16h | MEMO: REUNIÃO ALMOÇO SEXTA | BATERIA DO TRATOR #3 EM 23% | ☠ 
+  </span>
+</div>
+
+<!-- GRID PAINÉIS -->
+<div class="grid-death">
+
+<!-- CPU / USO GERAL -->
+<div class="panel raiden">
+  <div class="panel-title">CPU_SYS <span class="live"></span></div>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:6px;">
+    <div style="text-align:center;">
+      <div style="font-size:28px; color:var(--accent);" id="cpu-main">0%</div>
+      <div style="font-size:10px; color:var(--fg2);">PRINCIPAL</div>
+    </div>
+    <div style="text-align:center;">
+      <div style="font-size:28px; color:var(--warn);" id="cpu-sec">0%</div>
+      <div style="font-size:10px; color:var(--fg2);">SECUNDÁRIO</div>
+    </div>
+  </div>
+  <div class="blood-bar"><div class="blood-bar-fill" id="cpu-bar" style="width:0%"></div><span class="blood-bar-text">LOAD_AVG</span></div>
+  <div class="proc-list" id="cpu-procs">
+    <li><span class="pid">1042</span><span class="name">concretagem</span><span class="cpu">34%</span><span class="mem">12%</span></li>
+    <li><span class="pid">2081</span><span class="name">aterro</span><span class="cpu">28%</span><span class="mem">8%</span></li>
+    <li><span class="pid">0555</span><span class="name">ferragem</span><span class="cpu">19%</span><span class="mem">6%</span></li>
+    <li><span class="pid">0991</span><span class="name">logística</span><span class="cpu">12%</span><span class="mem">4%</span></li>
+  </div>
+</div>
+
+<!-- MEMÓRIA / EFETIVO -->
+<div class="panel raiden">
+  <div class="panel-title">EFETIVO_RAM <span class="live"></span></div>
+  <div style="margin-bottom:8px;">
+    <div style="display:flex; justify-content:space-between; margin-bottom:2px;">
+      <span style="color:var(--fg2);">EFETIVO</span><span id="mem-used">0 / 0</span>
+    </div>
+    <div class="blood-bar"><div class="blood-bar-fill" id="mem-bar" style="width:0%; background:linear-gradient(90deg,var(--info),var(--purple));"></div></div>
+  </div>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; font-size:11px;">
+    <div style="border:1px solid var(--border); padding:6px;">
+      <div style="color:var(--fg2);">PREVISTO</div>
+      <div style="font-size:18px; color:var(--accent);" id="mem-prev">0</div>
+    </div>
+    <div style="border:1px solid var(--border); padding:6px;">
+      <div style="color:var(--fg2);">REAL</div>
+      <div style="font-size:18px; color:var(--warn);" id="mem-real">0</div>
+    </div>
+    <div style="border:1px solid var(--border); padding:6px;">
+      <div style="color:var(--fg2);">AUSÊNCIA</div>
+      <div style="font-size:18px; color:var(--crit);" id="mem-aus">0</div>
+    </div>
+    <div style="border:1px solid var(--border); padding:6px;">
+      <div style="color:var(--fg2);">HORA-EXT</div>
+      <div style="font-size:18px; color:var(--purple);" id="mem-hora">0</div>
+    </div>
+  </div>
+</div>
+
+<!-- REDE / CLIMA -->
+<div class="panel raiden">
+  <div class="panel-title">CLIMA_NET <span class="live"></span></div>
+  <div style="display:grid; grid-template-columns:auto 1fr; gap:8px; font-size:11px; margin-bottom:8px;">
+    <div style="font-size:36px;">⛈</div>
+    <div>
+      <div style="font-size:20px; color:var(--info);" id="clima-temp">--°C</div>
+      <div style="color:var(--fg2);" id="clima-desc">INDISPONÍVEL</div>
+      <div style="color:var(--warn); margin-top:4px;">UMID: <span id="clima-umid">--%</span></div>
+      <div style="color:var(--accent);">VENTO: <span id="clima-vento">--</span> km/h</div>
+    </div>
+  </div>
+  <div style="border-top:1px solid var(--border); padding-top:6px;">
+    <div style="font-size:10px; color:var(--fg2); margin-bottom:4px;">PREVISÃO 4H</div>
+    <div style="display:flex; gap:4px; font-size:10px;">
+      <div style="flex:1; text-align:center; border:1px solid var(--border); padding:4px;">
+        <div>12h</div><div style="color:var(--warn);">🌧</div><div>78%</div>
+      </div>
+      <div style="flex:1; text-align:center; border:1px solid var(--border); padding:4px;">
+        <div>13h</div><div style="color:var(--crit);">⛈</div><div>92%</div>
+      </div>
+      <div style="flex:1; text-align:center; border:1px solid var(--border); padding:4px;">
+        <div>14h</div><div style="color:var(--crit);">⛈</div><div>88%</div>
+      </div>
+      <div style="flex:1; text-align:center; border:1px solid var(--border); padding:4px;">
+        <div>15h</div><div style="color:var(--warn);">🌧</div><div>65%</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LOTES / MAPA -->
+<div class="panel raiden" style="grid-column:span 2;">
+  <div class="panel-title">LOTES_MAP <span class="live"></span></div>
+  <div class="lote-grid" id="lotes">
+    <!-- Gerado via JS -->
+  </div>
+</div>
+
+<!-- TERMINAL -->
+<div class="panel raiden">
+  <div class="panel-title">RDO_LOG <span class="live"></span></div>
+  <div class="fake-term" id="term">
+    <div class="line"><span class="prompt">cleyton@ obra:~$</span> <span class="cmd">./checkpoint.sh lotes</span></div>
+    <div class="line out">[09:42] Lote-01: 34 operários, 6% atraso</div>
+    <div class="line out">[09:42] Lote-03: 21 operários, 0% atraso</div>
+    <div class="line out">[09:41] Lote-07: <span style="color:var(--crit)">CRÍTICO</span> — falta material, parada 2h</div>
+    <div class="line out">[09:38] Bomba de concreto #2 — manutenção preventiva agendada</div>
+    <div class="line out">[09:35] Trator #3 bateria 23%, troca necessária</div>
+    <div class="line"><span class="prompt">cleyton@ obra:~$</span> <span class="cmd">_</span><span style="animation:blink-cursor 1s infinite;">█</span></div>
+  </div>
+</div>
+
+</div> <!-- fim grid-death -->
+
+<!-- FOOTER -->
+<div class="sys-footer raiden">
+  <span>TelegramID: <span id="tg-id">N/A</span></span>
+  <span>Platform: <span id="tg-platform">N/A</span></span>
+  <span>ColorScheme: <span id="tg-color">N/A</span></span>
+  <span>Version: <span id="tg-version">N/A</span></span>
+</div>
+
+</div>
+
+<script>
+/* ===================== MATRIX RAIN ===================== */
+const canvas = document.getElementById('matrix-canvas');
+const ctx = canvas.getContext('2d');
+let cw, ch, cols, drops;
+
+const katakana = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン01234567890';
+const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234567890';
+const chars = (latin + katakana).split('');
+
+function resizeMatrix() {
+  cw = canvas.width = window.innerWidth;
+  ch = canvas.height = window.innerHeight;
+  const fontSize = 14;
+  cols = Math.floor(cw / fontSize);
+  drops = Array(cols).fill(1);
+  ctx.font = fontSize + 'px monospace';
+}
+resizeMatrix();
+window.addEventListener('resize', resizeMatrix);
+
+function drawMatrix() {
+  ctx.fillStyle = 'rgba(10,11,15,0.05)';
+  ctx.fillRect(0, 0, cw, ch);
+  ctx.fillStyle = '#0f0';
+  for (let i = 0; i < drops.length; i++) {
+    const text = chars[Math.floor(Math.random() * chars.length)];
+    ctx.fillText(text, i * 14, drops[i] * 14);
+    if (drops[i] * 14 > ch && Math.random() > 0.975) drops[i] = 0;
+    drops[i]++;
+  }
+  requestAnimationFrame(drawMatrix);
+}
+drawMatrix();
+
+/* ===================== DADOS FICTÍCIOS DE OBRA ===================== */
+const obraData = {
+  efetivo: { previsto: 120, real: 94, ausente: 18, horaExtra: 12 },
+  clima: { temp: 31, desc: 'PARCIALMENTE NUBLADO', umid: 72, vento: 14 },
+  lotes: Array.from({length:16}, (_,i) => ({
+    id: i+1,
+    stat: Math.floor(Math.random()*100),
+    state: Math.random() > 0.8 ? (Math.random() > 0.5 ? 'crit' : 'late') : 'active'
+  }))
+};
+
+/* EFETIVO */
+document.getElementById('mem-prev').textContent = obraData.efetivo.previsto;
+document.getElementById('mem-real').textContent = obraData.efetivo.real;
+document.getElementById('mem-aus').textContent = obraData.efetivo.ausente;
+document.getElementById('mem-hora').textContent = obraData.efetivo.horaExtra;
+document.getElementById('mem-used').textContent = `${obraData.efetivo.real} / ${obraData.efetivo.previsto}`;
+document.getElementById('mem-bar').style.width = Math.round((obraData.efetivo.real/obraData.efetivo.previsto)*100) + '%';
+
+/* CLIMA */
+document.getElementById('clima-temp').textContent = obraData.clima.temp + '°C';
+document.getElementById('clima-desc').textContent = obraData.clima.desc;
+document.getElementById('clima-umid').textContent = obraData.clima.umid + '%';
+document.getElementById('clima-vento').textContent = obraData.clima.vento;
+
+/* LOTES */
+const lg = document.getElementById('lotes');
+obraData.lotes.forEach(l => {
+  const t = document.createElement('div');
+  t.className = 'mini-tile ' + l.state;
+  t.innerHTML = `<div class="lot-id">L${String(l.id).padStart(2,'0')}</div><div class="lot-stat">${l.stat}%</div>`;
+  lg.appendChild(t);
+});
+
+/* ===================== TELEGRAM WEBAPP DATA ===================== */
+function tgInit() {
+  let tgData = null;
+  try {
+    if (window.Telegram && Telegram.WebApp) {
+      tgData = Telegram.WebApp.initDataUnsafe;
+      document.getElementById('tg-id').textContent = tgData.user ? tgData.user.id : '---';
+      document.getElementById('tg-platform').textContent = Telegram.WebApp.platform;
+      document.getElementById('tg-color').textContent = Telegram.WebApp.colorScheme;
+      document.getElementById('tg-version').textContent = Telegram.WebApp.version;
+    }
+  } catch(e) {
+    document.getElementById('tg-id').textContent = 'local';
+    document.getElementById('tg-platform').textContent = 'browser';
+    document.getElementById('tg-color').textContent = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    document.getElementById('tg-version').textContent = 'n/a';
+  }
+}
+tgInit();
+
+/* ===================== RELÓGIO / UPTIME ===================== */
+let startT = Date.now();
+function tick() {
+  const now = new Date();
+  document.getElementById('date').textContent = now.toISOString().slice(0,10);
+  const elapsed = Math.floor((Date.now() - startT) / 1000);
+  const h = String(Math.floor(elapsed/3600)).padStart(2,'0');
+  const m = String(Math.floor((elapsed%3600)/60)).padStart(2,'0');
+  const s = String(elapsed%60).padStart(2,'0');
+  document.getElementById('uptime').textContent = `${h}:${m}:${s}`;
+
+  /* CPU FAKE DANCE */
+  const cpu = 30 + Math.floor(Math.random()*50);
+  document.getElementById('cpu-main').textContent = cpu + '%';
+  document.getElementById('cpu-sec').textContent = (cpu*0.4).toFixed(0) + '%';
+  document.getElementById('cpu-bar').style.width = cpu + '%';
+
+  /* BAR GLITCH */
+  const b = document.getElementById('cpu-bar');
+  if (Math.random() > 0.92) {
+    b.style.background = `linear-gradient(90deg, var(--${['accent','warn','crit','info','purple'][Math.floor(Math.random()*5)]}), ${['var(--accent2)','var(--bg3)'][Math.floor(Math.random()*2)]})`;
+  } else {
+    b.style.background = 'linear-gradient(90deg, var(--accent), var(--accent2))';
+  }
+}
+setInterval(tick, 1000);
+tick();
+
+/* ===================== FUNÇÃO EXTRA: DUMP RANDOM TERM ===================== */
+const termEl = document.getElementById('term');
+const logs = [
+  'Lote-05: concluído alicerce, próx: pilar P12-P18',
+  'Equip. #7: falha sensor nível, alerta enviado',
+  'Operário ID-8841: check-in 07:02 via QR',
+  'Caminhão #3: chegada agregado 14m³, OK',
+  'LOTE-07 PARADA: falta armadura CA-50 lote 223-B',
+  'Clima: rajada 45km/h detectada, alerta guindaste',
+  'Backup DB local: 06:00, 06:30, 07:00 [OK]'
+];
+setInterval(() => {
+  if (Math.random() > 0.85) {
+    const l = logs[Math.floor(Math.random()*logs.length)];
+    const d = new Date();
+    const ts = String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0');
+    const div = document.createElement('div');
+    div.className = 'line out';
+    if (l.includes('PARADA') || l.includes('falha')) div.className = 'line err';
+    div.innerHTML = `[${ts}] ${l}`;
+    termEl.insertBefore(div, termEl.lastElementChild);
+    if (termEl.children.length > 24) termEl.removeChild(termEl.children[1]);
+    termEl.scrollTop = termEl.scrollHeight;
+  }
+}, 3000);
+</script>
+
+</body>
+</html>
